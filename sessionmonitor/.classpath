@@ -16,8 +16,5 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bboss-mvc.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bboss-security-web.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bboss-core.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mongo-java-driver-2.12.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mongo-java-driver-2.12.4-sources.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mongo-java-driver-2.12.4.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
