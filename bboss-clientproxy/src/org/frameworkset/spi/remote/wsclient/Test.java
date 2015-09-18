@@ -53,13 +53,13 @@ public class Test {
 	            
 	            pe.setAlternativeSelector(new MaximalAlternativeSelector(){
 
-					@Override
+					
 					public Collection<Assertion> selectAlternative(
 							Policy policy, PolicyEngine engine,
-							Assertor assertor, List<List<Assertion>> request) {
+							Assertor assertor, List<List<Assertion>> request, org.apache.cxf.message.Message msg) {
 						// TODO Auto-generated method stub
 						try {
-							Collection<Assertion> ca = super.selectAlternative(policy, engine, assertor, request);
+							Collection<Assertion> ca = super.selectAlternative(policy, engine, assertor, request,msg);
 							if(ca == null)
 								ca = new ArrayList<Assertion>();
 							return ca;
@@ -79,10 +79,10 @@ public class Test {
 					}
 
 					@Override
-					public void initialize() {
+					public void initialize(org.apache.cxf.message.Message msg) {
 						// TODO Auto-generated method stub
 						try {
-							super.initialize();
+							super.initialize(msg);
 						} catch (Exception e) {
 //							// TODO Auto-generated catch block
 //							e.printStackTrace();
@@ -102,7 +102,7 @@ public class Test {
 	            ClassInfo info = ClassUtil.getClassInfo(EndpointPolicyImpl.class);
 	            try {
 					info.getPropertyDescriptor("assertor").setValue(policy, new WrappedAssertor(conduit));
-					 policy.initialize();
+					 policy.initialize(null);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

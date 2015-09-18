@@ -45,5 +45,6 @@
 	<classpathentry kind="lib" path="lib/cxf/jaxb-xjc-2.2.11.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/neethi-3.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/xmlschema-core-2.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/cxf/cxf-rt-ws-policy-3.1.0.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
