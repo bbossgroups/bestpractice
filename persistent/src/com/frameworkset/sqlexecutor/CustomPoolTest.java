@@ -29,7 +29,7 @@ public class CustomPoolTest {
 	@Test
 	public void initdata() throws SQLException
 	{
-		List<String> data = SQLExecutor.queryListWithDBName(String.class,"test","select MODULE_ID from TB_MODULE_INFO where MODULE_URL like '%/CrmAccount/%'");
+		List<String> data = SQLExecutor.queryListWithDBName(String.class,"test","select MODULE_ID from TB_MODULE_INFO where MODULE_URL like ?","%/CrmAccount/%");
 		int aid  =SQLExecutor.queryObjectWithDBName(int.class, "test","select max(to_number(AUTH_ID)) from TB_MODULE_AUTH");
 		aid ++;
 		for(String mid:data)
