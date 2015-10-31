@@ -37,7 +37,7 @@ public class LoginNameQuery {
 	 * @param loginname
 	 * @return
 	 */
-	@HandlerMapping(value="/examples/namequery/{loginname}")
+	@HandlerMapping(value="/examples/namequery/{loginname}.page")
 	public @ResponseBody(charset="UTF-8") 
 		String loginnamequery(@PathVariable(value="loginname",decodeCharset="UTF-8") String loginname)
 	{			

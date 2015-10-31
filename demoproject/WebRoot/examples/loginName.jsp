@@ -13,7 +13,7 @@
 					return false;
 				}
 				//这里之所以要编码，是因为中文不能出现在url组成部分中（参数可以由中文）
-			 	var resturl = "<%=request.getContextPath() %>/examples/namequery/" + encodeURIComponent(encodeURIComponent($("#loginName3").val()));
+			 	var resturl = "<%=request.getContextPath() %>/examples/namequery/" + encodeURIComponent($("#loginName3").val())+".page";
 				$("#queryresult").load(resturl);
 				return false;
 			}
