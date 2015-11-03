@@ -51,6 +51,33 @@ svn下载地址
 
 https://github.com/bbossgroups/bigdatas/trunk 
 
+# bboss rpc源码 
+github托管地址 
+
+https://github.com/bbossgroups/bboss-rpc
+
+svn下载地址 
+
+https://github.com/bbossgroups/bboss-rpc/trunk 
+
+# bboss 搭建平台开发环境工具源码 
+github托管地址 
+
+https://github.com/bbossgroups/genproject
+
+svn下载地址 
+
+https://github.com/bbossgroups/genproject/trunk
+
+# bboss site源码 
+github托管地址 
+
+https://github.com/bbossgroups/bboss-site
+
+svn下载地址 
+
+https://github.com/bbossgroups/bboss-site/trunk
+
 # bboss设计相关文档
 github托管地址 
 
