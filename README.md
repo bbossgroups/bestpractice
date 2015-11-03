@@ -5,9 +5,9 @@ http://www.bbossgroups.com
 http://yin-bp.iteye.com/
 
 bboss 源码github托管地址： 
-https://github.com/bbossgroups/bbossgroups-3.5 
+https://github.com/bbossgroups/bboss 
 svn下载地址 
-https://github.com/bbossgroups/bbossgroups-3.5/trunk 
+https://github.com/bbossgroups/bboss/trunk 
 
 bboss demos源码github托管地址： 
 https://github.com/bbossgroups/bestpractice 
