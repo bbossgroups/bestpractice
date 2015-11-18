@@ -26,8 +26,8 @@
 	<classpathentry kind="lib" path="lib/cxf/woodstox-core-asl-4.2.0.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/wsdl4j-1.6.3.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/xml-resolver-1.2.jar"/>
-	<classpathentry kind="lib" path="lib/bboss-core.jar"/>
-	<classpathentry kind="lib" path="lib/bboss-rpc.jar"/>
+	<classpathentry kind="lib" path="lib/bboss-core.jar" sourcepath="/bboss-core"/>
+	<classpathentry kind="lib" path="lib/bboss-rpc.jar" sourcepath="/bboss-rpc"/>
 	<classpathentry kind="lib" path="lib/asm-5.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-nodep-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/cxf/cxf-core-3.1.0.jar"/>
