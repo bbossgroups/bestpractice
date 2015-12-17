@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 	$("#wait").hide();
        		
-	queryList();   
+	queryList(false,false);   
 	
 	$('#delBatchButton').click(function() {
 		delSessions();
@@ -63,9 +63,10 @@ $(document).ready(function() {
 });
        
 //加载实时任务列表数据  
-function queryList(reset){
+function queryList(reset,loadextendattrs){
 	if(reset)
 		doreset();
+	
 	var appkey = $("#app_key").val();
 	var sessionid = $("#sessionid").val();
 	var createtime_start = $("#createtime_start").val();
@@ -84,7 +85,7 @@ function queryList(reset){
     	"referip":referip,"host":host,"validate":validate},
     	function(){});
     
-    getTreeDate();
+    getTreeDate(loadextendattrs,appkey);
 }
 
 function doreset(){
@@ -93,10 +94,14 @@ function doreset(){
 
 var treeData = null;
 
-function getTreeDate(){
+function getTreeDate(loadextendattrs,appKey){
+	var data = {loadextendattrs:loadextendattrs};
+	if(appKey != null && appKey != '')
+	  $.extend(data,{ "appKey":appKey});
 	$.ajax({
  	 	type: "POST",
 		url : "<%=request.getContextPath()%>/session/sessionManager/getAppSessionData.page",
+		data :data,
 		dataType : 'json',
 		async:false,
 		beforeSend: function(XMLHttpRequest){
@@ -159,7 +164,7 @@ function doClickTreeNode(app_id,selectedNode){
 	$("#app_query_th").html("&nbsp;");
    	$("#wf_app_name_td").html("&nbsp;");
 
-	queryList(true);
+	queryList(true,true);
 } 
 
 function sessionInfo(sessionid){
@@ -287,14 +292,14 @@ function delAllSessions () {
 <body>
 <div class="mcontent" style="width:98%;margin:0 auto;overflow:auto;">
 	
-	
+	<sany:menupath menuid="sessioncontrol" />
 
 	<div id="leftContentDiv">
 			    
 		<div class="left_menu" style="width:193px;">
 		    <ul>
 		    	<li class="select_links">
-		    		<a href="#">应用查询：</a><input type="input" style="width:100px;" name="app_query" id="app_query" onKeyUp="sortAppTree()" />
+		    		<a href="javascript:void(0)">应用查询：</a><input type="input" style="width:100px;" name="app_query" id="app_query" onKeyUp="sortAppTree()" />
 		    		<ul style="display: block;" id="app_tree_module">
 		    			
 		    		</ul>
@@ -334,8 +339,8 @@ function delAllSessions () {
 											 onclick="new WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'})" class="w120" />
 										</td>
 										<td rowspan="2" style="text-align:right">
-																						<a href="javascript:void(0)" class="bt_1" id="queryButton" onclick="queryList()"><span>查询</span></a>
-											<a href="javascript:void(0)" class="bt_2" id="resetButton" onclick="doreset()"><span>重置</span></a>
+											<a href="javascript:void(0)" class="bt_1" id="queryButton" onclick="queryList()"><span><pg:message code="sany.pdp.common.operation.search"/></span></a>
+											<a href="javascript:void(0)" class="bt_2" id="resetButton" onclick="doreset()"><span><pg:message code="sany.pdp.common.operation.reset"/></span></a>
 											<input type="reset" id="reset" style="display:none"/>
 										</td>
 									</tr>
@@ -367,13 +372,13 @@ function delAllSessions () {
 			
 		<div class="title_box">
 			<div class="rightbtn">
-				<a href="#" class="bt_small" id="delAllButton"><span>清空应用下Session</span></a>
-				<a href="#" class="bt_small" id="delBatchButton"><span>批量删除</span></a>
-				 <%if(SessionHelper.isMonitorAll()){%><a href="#" class="bt_small" id="delAppButton"><span>删除应用（慎用）</span></a><%} %>
+				<a href="javascript:void(0)" class="bt_small" id="delAllButton"><span>清空应用下Session</span></a>
+				<a href="javascript:void(0)" class="bt_small" id="delBatchButton"><span>批量删除</span></a>
+				 <%if(SessionHelper.isMonitorAll()){%><a href="javascript:void(0)" class="bt_small" id="delAppButton"><span>删除应用（慎用）</span></a><%} %>
 			</div>
 					
 			<strong><span id="titileSpan">Session列表</span></strong>
-			<img id="wait" src="<%=request.getContextPath()%>/images/wait.gif" />
+			<img id="wait" src="<%=request.getContextPath()%>/common/images/wait.gif" />				
 		</div>
 			
 		<div id="sessionContainer" style="overflow:auto"></div>
