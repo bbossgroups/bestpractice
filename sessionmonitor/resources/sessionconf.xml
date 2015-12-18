@@ -14,8 +14,8 @@
 			<property name="secure" value="false"/>
 			<property name="monitorAttributes" ><![CDATA[
 			[
-				{"name":"userAccount","cname":"账号","type":"String","like":true,"enableEmptyValue":false},				
-				{"name":"worknumber","cname":"工号","type":"String","like":false,"enableEmptyValue":true}
+				{"name":"userAccount","cname":"账号","type":"String","like":true,"enableEmptyValue":true},				
+				{"name":"worknumber","cname":"工号","type":"String","like":true,"enableEmptyValue":true}
 			]			
 			]]></property>
 	<!--
