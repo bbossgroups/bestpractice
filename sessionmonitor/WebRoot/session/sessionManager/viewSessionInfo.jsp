@@ -6,8 +6,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Session详情</title>
-<%@ include file="/include/css.jsp"%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/include/dialog/lhgdialog.js?self=false&skin=sany"></script>
+<script type='text/javascript' src='<%=request.getContextPath() %>/include/jquery-1.4.2.min.js' language='JavaScript'></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/include/css/common.css">
+ 
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/include/syntaxhighlighter/styles/SyntaxHighlighter.css"></link>
 <script language="javascript" src="${pageContext.request.contextPath}/include/syntaxhighlighter/shCore.js"></script>
 <script language="javascript" src="${pageContext.request.contextPath}/include/syntaxhighlighter/shBrushJava.js"></script>
@@ -80,28 +81,18 @@
 						<%if(!StringUtil.isIE(request)){ %>
 						<div class='info'><p><div id='detail'>
 							<table border='1' cellspacing='0' width='100%' id='resultsTable'><tbody>
-							<pg:empty actual="${sessionInfo.attributes}" >
-								<tr><td colspan="2">没有session属性</td></tr>
-							</pg:empty> 
-							<pg:notempty actual="${sessionInfo.attributes}" >
 								<pg:map actual='${sessionInfo.attributes}'>
 									<tr><td ><pg:mapkey/></td><td><pre name='code' class='xml'><pg:cell htmlEncode='true'/></pre></td></tr>
 								</pg:map>
-							</pg:notempty>
 						</tbody></table></div></p></div>
 						<%}else{ %>
 							<table border='1' cellpadding='0' cellspacing='0' class='table2' width='100%'>
-							<pg:empty actual="${sessionInfo.attributes}" >
-								<tr><td colspan="2">没有session属性</td></tr>
-							</pg:empty> 
-							<pg:notempty actual="${sessionInfo.attributes}" >
-								<pg:map actual='${sessionInfo.attributes}'>
-									<tr height='60px'><td ><pg:mapkey/></td> 
-										<td><textarea rows='8' cols='50'  class='w120'  
-									           style='width: 800px;font-size: 12px;height:60px;' ><pg:cell htmlEncode='true'/></textarea>
-									</td></tr>
-								</pg:map>
-							</pg:notempty>
+							<pg:map actual='${sessionInfo.attributes}'>
+								<tr height='60px'><td ><pg:mapkey/></td> 
+									<td><textarea rows='8' cols='50'  class='w120'  
+								           style='width: 800px;font-size: 12px;height:60px;' ><pg:cell htmlEncode='true'/></textarea>
+								</td></tr>
+							</pg:map>
 							</table>
 						<%} %>
 						</div>
@@ -111,9 +102,7 @@
 		</div>
   	</div>	
   		
-	<div class="btnarea" >
-		
-	</div>	
+	
 </div>
 </body>
 <script type="text/javascript">
@@ -131,6 +120,6 @@ if(!$.browser.msie) {
 
 </script>
 
- 
+
 </head>
 </html>

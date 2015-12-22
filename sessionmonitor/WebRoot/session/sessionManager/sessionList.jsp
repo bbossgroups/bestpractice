@@ -24,7 +24,9 @@
 	        <pg:header>
 	            <th align=center><input id="CKA" name="CKA" type="checkbox" 
 								onClick="checkAll('CKA','CK')"></th>
-				<th>SessionID</th>
+				<th>SessionID</th>				
+				<pg:list requestKey="monitorAttributes"><th><pg:cell colName="cname"/></th></pg:list>
+				
 	       		<th>创建时间</th>
 	       		<th>最后访问时间</th>
 	       		<th>失效时间</th>
@@ -45,7 +47,7 @@
 					<tr >
 						<td colspan="100" align="center"><pg:empty actual="${message}"  evalbody="true">
 							<pg:yes>
-	                  没有session数据
+								<img src="${pageContext.request.contextPath}/include/images/no_data.jpg"/>
 							</pg:yes>
 							<pg:no>
 								<span style=" color: red;">${message}</span>
@@ -60,15 +62,19 @@
 					        <td class="td_center">
 				                <input id="CK" type="checkbox" name="CK" <pg:equal colName="sessionid" value="${currentsessionid}">disabled</pg:equal> onClick="checkOne('CKA','CK')" value="<pg:cell colName="sessionid" />"/>
 				            </td>
+				            
 				    		<td><pg:equal colName="sessionid" value="${currentsessionid}" evalbody="true">
 					    		<pg:yes><span style=" color: blue;"><b><pg:cell colName="sessionid" /></b></span></pg:yes>
 					    		<pg:no><pg:cell colName="sessionid" /></pg:no>
 				    		    </pg:equal></td> 
+				    		<pg:list colName="extendAttributes">
+				            	<td><pg:cell colName="value" /></td>
+				            </pg:list>    
 				    		<td><pg:cell colName="creationTime" dateformat="yyyy-MM-dd HH:mm:ss"/></td>
 				    		<td><pg:cell colName="lastAccessedTime" dateformat="yyyy-MM-dd HH:mm:ss"/></td>       
 				       		<td><pg:cell colName="loseTime" dateformat="yyyy-MM-dd HH:mm:ss"/></td>
 				       		<td><pg:cell colName="requesturi"/></td>
-				       		<td ><pg:cell colName="lastAccessedUrl"/></td>
+				       		<td ><pg:cell colName="lastAccessedUrl" htmlEncode="true"/></td>
 				       		<td><pg:cell colName="lastAccessedHostIP"/></td>
 				       		<td><pg:cell colName="referip"/></td>
 				       		<td><pg:cell colName="host" /></td>

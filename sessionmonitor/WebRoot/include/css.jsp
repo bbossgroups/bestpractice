@@ -3,4 +3,4 @@
 <link href='<%=request.getContextPath() %>/include/pager.css' type='text/css' rel='stylesheet'>
 
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/include/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/include/css/common.css">

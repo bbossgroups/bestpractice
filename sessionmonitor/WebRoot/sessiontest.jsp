@@ -38,5 +38,10 @@ out.println("<br>");
 String privateAttr = (String)session.getAttribute("privateAttr");//session应用设置的共享会话属性
 out.println("sessionmonitor's private attribute:"+privateAttr+"<br>");
 out.println("shared attribute userAccount:"+userAccount+"<br>");
+session.setAttribute("userAccount", "sessionmonitor 张三");
+userAccount = (String)session.getAttribute("userAccount");
+out.println("after modify shared attribute userAccount:"+userAccount+"<br>");
 out.println("shared attribute testVO:"+testVO.getId()+"<br>");
  %>
+ 
+ <div><a href="session/sessionManager/sessionManager.page" target="_blank">session监控管理</a></div>

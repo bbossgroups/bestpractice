@@ -19,6 +19,8 @@
 	   <url-pattern>*.jsp</url-pattern>
 	 </filter-mapping>
 	 
-  
+   <welcome-file-list>
+    <welcome-file>sessiontest.jsp</welcome-file>
+  </welcome-file-list>
   
 </web-app>
