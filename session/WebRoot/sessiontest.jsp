@@ -37,4 +37,6 @@ testVO = (TestVO)session.getAttribute("testVO");
 out.println("shared attribute testVO:"+testVO.getId()+"<br>");
  %>
  
- <a href="http://sub.bboss.com.cn:8080/sessionmonitor/sessiontest.jsp" target="_blank">sessionmonitor</a>
+ <a href="http://sessionmonitor.bbossgroups.com" target="demo">session跨域测试</a>
+ <br>
+ <a href="http://sessionmonitor.bbossgroups.com/session/sessionManager/sessionManager.page" target="demomonitor">session监控</a>

@@ -44,4 +44,6 @@ out.println("after modify shared attribute userAccount:"+userAccount+"<br>");
 out.println("shared attribute testVO:"+testVO.getId()+"<br>");
  %>
  
- <div><a href="session/sessionManager/sessionManager.page" target="_blank">session监控管理</a></div>
+ <a href="http://session.bbossgroups.com" target="demo">session跨域测试</a>
+ <br>
+ <a href="http://sessionmonitor.bbossgroups.com/session/sessionManager/sessionManager.page" target="demomonitor">session监控</a>
