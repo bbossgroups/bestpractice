@@ -11,11 +11,11 @@
 			<property name="cookiename" value="b_sessionid"/>			
 			<property name="httpOnly" value="true"/>
 			<property name="secure" value="false"/>
-			<property name="monitorAttributes" ><![CDATA[
+			<!-- <property name="monitorAttributes" ><![CDATA[
 			[
 				{"name":"userAccount","cname":"账号","type":"String","like":true,"enableEmptyValue":true}
 			]			
-			]]></property>
+			]]></property> -->
 	<!--
 	  应用编码，如果没有指定appcode值默认为应用上下文
 	  appcode的作用：当所有的应用上下文为“/”时，用来区分后台统计的会话信息
