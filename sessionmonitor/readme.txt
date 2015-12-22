@@ -1,3 +1,37 @@
+监控新增功能：
+1.应用定制查询属性：在sessionconf.xml文件中可以配置需要在监控管理查询的session属性
+2.如果“账号”框不填值，并且选中查询账号为空的记录复选框，则查询所有没有设置账号或者账号为""的session记录
+3.自定义的账号属性也会在列表中出现
+4.可以查看选中的应用的session共享配置，应用加载session共享框架组件时，会将本地的session管理配置推送到session监控中心，进行统一监控管理：可以在线查看应用有没有开启失效session销毁进程等配置
+5.可以在线查看应用配置的可查询session属性信息，应用可以配置多个session属性，
+如果没有配置则不需要在线查看，可查询属性在sessionconf.xml中进行配置，采用json格式配置，例如：
+
+			[
+				{"name":"userAccount","cname":"账号","type":"String","like":true,"enableEmptyValue":true},				
+				{"name":"worknumber","cname":"工号","type":"String","like":false,"enableEmptyValue":true}
+				
+6.在线查看跨域跨站session共享配置：
+根域名
+共享属性
+应用私有session属性命名空间
+
+7.采用json数组进行配置可查询session属性，配置的属性包含以下信息：
+name:属性名称
+cname:属性中文名称
+type：属性数据对应的java类型
+like:是否采用模糊查询，查询输入的条件串开始的session对象
+enableEmptyValue:是否可以查询属性值为null或者为""串的session对象
+useIndex:是否对指定的session属性值建立索引(保留属性，目前未启用)
+
+需要查询的属性通过以下java语句在程序中设置属性值：
+session.setAttribute("userAccount", this.getUserAccount());
+		session.setAttribute("worknumber", this.getUserAttribute("userWorknumber"));
+
+
+
+如果启用了跨域跨站的session共享，则只能配置应用间共享的session属性，
+不能配置应用私有的session属性
+				
 准备了两个工程
 session工程 ----如果只需要session共享功能，则整合这个工程中的配置文件和jar包即可
 sessionmonitor工程----如果需要session共享以及监控功能，则整合这个工程中的配置文件和jar包即可

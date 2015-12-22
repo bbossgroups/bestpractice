@@ -43,7 +43,7 @@
 			如果没有指定shareSessionAttrs，则会话数据全部在三个应用间共享。
 			-->
 			<property name="crossDomain" class="org.frameworkset.security.session.domain.CrossDomain" 
-			    f:domain="127.0.0.1"  
+			    f:domain="bboss.com.cn"  
 			    f:shareSessionAttrs="userAccount" 
 			    init-method="init">
 			    <property name="domainApps">
@@ -56,7 +56,7 @@
 				            />				        
 				        <property class="org.frameworkset.security.session.domain.App"				            	
 				            	f:path="/sessionmonitor"	
-                                                f:currentApp="true"
+                                                f:currentApp="false"
 				            	f:attributeNamespace="sessionmonitor_bboss_com_cn"
 				            	init-method="init"
 				            />
