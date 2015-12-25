@@ -14,13 +14,14 @@ else//设置用户选择语言  ,通常情况下，我们会在mvc 控制器方�
 		e.printStackTrace();
 	}
 }
+String cont = request.getContextPath();
 
 %>
 <script language="JavaScript">
 <!--
 function changeLan(){
 	var lan = document.getElementById("language").value;
-	window.location.href="i18n.jsp?language="+lan;
+	window.location.href="<%=cont%>/examples/i18n.jsp?language="+lan;
 }
 //-->
 </script>
