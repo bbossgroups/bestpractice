@@ -14,13 +14,13 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/derby.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/derbyclient.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/frameworkset.jar"/>
-	<classpathentry kind="lib" path="/bboss-mvc/lib-compile/jsp-api.jar"/>
-	<classpathentry kind="lib" path="/bboss-mvc/lib-compile/servlet-api.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-fileupload.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-lang-2.6.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bboss-security.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/bboss-core.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/asm-5.0.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cglib-nodep-3.1.jar"/>
+	<classpathentry kind="lib" path="/demoproject/compilelib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="/demoproject/compilelib/servlet-api.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
