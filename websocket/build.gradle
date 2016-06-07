@@ -8,7 +8,7 @@
      gretty {
 	    httpPort = 80
 	   
-	    contextPath = '/bboss-websocket'
+	    contextPath = '/websocket'
 	    jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
 	  //  servletContainer = 'jetty7'
 	  

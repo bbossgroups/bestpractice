@@ -1,0 +1,15 @@
+<property name="testWebsocket" class="org.frameworkset.web.socket.config.WebSocketRegistryMeta" enablewebsocket="true"
+	f:websocketUrl="/websocket.page" f:sockJSUrl="/sockjs/websck/info.page">
+	
+	<property name="websocketHandler" class="org.frameworkset.websocket.SystemWebSocketHandler"  f:supportsPartialMessages="true"/>
+	<property name="handshakeInterceptors">
+		<list componentType="bean">
+			<property class="org.frameworkset.websocket.HandshakeInterceptor"/>
+		</list>
+	</property>
+	
+	<property name="allowedOrigins" value="*"/>
+		
+</property>
+
+ 
