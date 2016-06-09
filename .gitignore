@@ -53,3 +53,4 @@ easyuidatagrid/.project
 *.classpath
 bboss-clientproxy/.project
 *.project
+*.lock
