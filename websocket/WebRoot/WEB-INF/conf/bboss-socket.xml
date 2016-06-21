@@ -2,7 +2,7 @@
 	f:websocketUrl="/websocket.page" f:sockJSUrl="/sockjs/websck/info.page">
 	
 	<property name="websocketHandler" class="org.frameworkset.websocket.SystemWebSocketHandler"  f:supportsPartialMessages="true"/>
-	<property name="handshakeInterceptors">
+	<property name="interceptors">
 		<list componentType="bean">
 			<property class="org.frameworkset.websocket.HandshakeInterceptor"/>
 		</list>

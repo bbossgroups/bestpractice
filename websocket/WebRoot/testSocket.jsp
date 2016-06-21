@@ -57,9 +57,9 @@
 
             //ws = (url.indexOf('sockjs') != -1) ?new SockJS(url, undefined, {protocols_whitelist: transports}) : new WebSocket(url);
             if ('WebSocket' in window) {
-                ws= new WebSocket("ws://localhost/websocket/websck");
+                ws= new WebSocket("ws://localhost/websocket/websocket.page");
             }else {
-                ws = new SockJS("http://localhost/websocket/sockjs/websck");
+                ws = new SockJS("http://localhost/websocket/sockjs/websck/info.page");
             }
             //websocket = new SockJS("http://localhost/websocket/sockjs/websck");
             ws.onopen = function () {
@@ -135,10 +135,10 @@
     Javascript and reload this page!</h2></noscript>
 <div>
     <div id="connect-container">
-        <input id="radio1" type="radio" name="group1" onclick="updateUrl('/websocket/websocket');">
+        <input id="radio1" type="radio" name="group1" onclick="updateUrl('/websocket/websocket.page');">
             <label for="radio1">W3C WebSocket</label>
         <br>
-        <input id="radio2" type="radio" name="group1" onclick="updateUrl('/websocket/sockjs/websocket');">
+        <input id="radio2" type="radio" name="group1" onclick="updateUrl('/websocket/sockjs/websck/info.page');">
             <label for="radio2">SockJS</label>
         <div id="sockJsTransportSelect" style="visibility:hidden;">
             <span>SockJS transport:</span>

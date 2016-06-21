@@ -28,10 +28,10 @@ public class TestWebsocketServiceRegist {
 //		registerWebSocketHandlers(registry);
 		HandlerMappingsTable hm = null;
 		registry.registHandlerMapping(hm);
+	 
 //		hm.setOrder(1);
 //		return hm;
-		
-		org.apache.tomcat.websocket.server.WsSci s;
+		 
 	}
 	
 	public ThreadPoolTaskScheduler defaultSockJsTaskScheduler() {
