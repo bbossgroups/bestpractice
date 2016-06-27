@@ -4,7 +4,7 @@
 	<property name="websocketHandler" class="org.frameworkset.websocket.SystemWebSocketHandler"  f:supportsPartialMessages="true"/>
 	<property name="interceptors">
 		<list componentType="bean">
-			<property class="org.frameworkset.websocket.HandshakeInterceptor"/>
+			<property class="org.frameworkset.websocket.HandshakeInterceptor" f:createSession="true"  f:copyAllAttributes="true" f:copyHttpSessionId="true"/>
 		</list>
 	</property>
 	
