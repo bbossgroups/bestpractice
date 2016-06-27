@@ -1,0 +1,88 @@
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            
+        }
+        resources{
+        	
+        	
+        	
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+        resources{
+        	srcDir 'resources'
+        }
+    }
+    
+}
+
+dependencies {
+    compile (
+             [group: 'log4j', name: 'log4j', version: '1.2.16', transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+            
+            [group: 'com.bbossgroups', name: 'bboss-data', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+              [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],
+                [group: 'cglib', name: 'cglib-nodep', version: '3.1', transitive: false],
+              
+              
+               [group: 'org.apache.commons', name: 'commons-pool2', version: '2.4.2', transitive: false],
+               [group: 'redis.clients', name: 'jedis', version: '2.8.1', transitive: false],
+                
+               
+    )
+    runtime (
+             [group: 'com.bbossgroups', name: 'bboss-rt', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+             
+               
+    )
+     testCompile (            
+            
+            //fileTree(dir: 'lib-compile', include: '**/*.jar')
+           
+    )
+}
+
+task copyJarFiles(type: Copy,dependsOn:'jar'){
+	 
+	 from jar.outputs
+	 from configurations.compile
+	 into 'build/dist/lib'
+	 
+}
+
+
+task copyResourceFiles(type: Copy ){
+	 
+	 from 'resources'   
+	into 'build/dist/resources'
+	 
+}
+
+ 
+task copyToolFiles(type: Copy ){
+	 
+	from ('runfiles')
+	{
+		expand(bboss_version: '${PROJ_BBOSS_VERSION}',main_class:'com.timesontransfar.mfsp.util.CacheUtil')
+		
+	} 
+    from configurations.runtime - configurations.compile
+    //filteringCharset = 'UTF-8'            
+	into 'build/dist/'
+	 
+}
+ 
+task releasedRedisDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
+    //appendix = 'wrapper'
+   classifier = 'released'
+   from 'build/dist/'
+   
+}
+

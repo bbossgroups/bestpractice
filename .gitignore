@@ -47,7 +47,6 @@ Temporary Items
 
 *.prefs
 easyuidatagrid/.project
-*.properties
 .gradle/2.13/taskArtifacts/cache.properties.lock
 *.bin
 *.classpath

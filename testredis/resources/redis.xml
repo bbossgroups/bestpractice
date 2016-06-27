@@ -1,0 +1,36 @@
+<properties>
+	<!-- 增加mongodb数据源配置和client工厂类 -->
+	<property name="default" class="org.frameworkset.nosql.redis.RedisDB">
+		
+		<!-- 这里不需要配置destroy-method，因为bboss持久层在jvm退出时会自动调用数据源的close方法 -->
+		<property name="nodes">
+			<list componentType="bean"> 
+				<!-- 测试环境 -->
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="192.168.10.132" f:port="6379"/>
+				
+				
+				<!-- 生产环境
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis1.gripay.zhuji.com" f:port="6401"/>
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis2.gripay.zhuji.com" f:port="6401"/>
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis2.gripay.zhuji.com" f:port="6402"/>
+				
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis1.gripay.zhuji.com" f:port="6411"/>
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis2.gripay.zhuji.com" f:port="6411"/>
+				<property class="org.frameworkset.nosql.redis.NodeInfo" f:host="redis2.gripay.zhuji.com" f:port="6412"/>
+				 -->
+			</list>
+		</property>
+		
+		<!-- single|cluster|shared -->
+		<!-- mode属性指定redis的三种部署模式： 
+single 单redis服务器模式，nodes列表只需要配置一个redis服务器的地址和端口即可
+cluster redis集群或者分片集群模式，nodes列表需要配置所有redis服务器的地址和端口（包括主节点和从节点）
+shared  保留，暂不使用 -->
+		<property name="mode" value="single" />
+		
+		<property name="poolMaxTotal" value="10"/>	
+		<property name="poolMaxWaitMillis" value="2000"/>	
+		 
+	</property>
+	 
+</properties>
