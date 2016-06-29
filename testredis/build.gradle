@@ -70,7 +70,7 @@ task copyToolFiles(type: Copy ){
 	 
 	from ('runfiles')
 	{
-		expand(bboss_version: '${PROJ_BBOSS_VERSION}',main_class:'com.timesontransfar.mfsp.util.CacheUtil')
+		expand(bboss_version: "${PROJ_BBOSS_VERSION}",main_class:'com.timesontransfar.mfsp.util.CacheUtil')
 		
 	} 
     from configurations.runtime - configurations.compile
