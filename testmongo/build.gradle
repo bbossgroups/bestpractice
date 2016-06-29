@@ -79,7 +79,7 @@ task copyToolFiles(type: Copy ){
 	 
 }
  
-task releaseRedisDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
+task releaseMongoDBDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
     //appendix = 'wrapper'
    classifier = 'released'
    from 'build/dist/'
