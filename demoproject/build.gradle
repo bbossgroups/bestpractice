@@ -85,7 +85,6 @@ dependencies {
              [group: 'org.apache.cxf', name: 'cxf-rt-wsdl', version: '3.1.0', transitive: false],
             [group: 'org.apache.geronimo.specs', name: 'geronimo-jaxws_2.2_spec', version: '1.1', transitive: false],
             [group: 'org.apache.geronimo.specs', name: 'geronimo-jms_1.1_spec', version: '1.1.1', transitive: false],
-            [group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version: '1.0', transitive: false],
             [group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m10', transitive: false],
             [group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12', transitive: false],
             [group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.2.11', transitive: false],
@@ -98,7 +97,7 @@ dependencies {
             [group: 'org.apache.geronimo.specs', name: 'geronimo-activation_1.1_spec', version: '1.1', transitive: false],
             [group: 'org.apache.geronimo.specs', name: 'geronimo-annotation_1.0_spec', version: '1.1.1', transitive: false],
              [group: 'org.jasypt', name: 'jasypt', version: '1.9.2', transitive: false],
-             
+             [group: 'javax.servlet', name: 'jsp-api', version: '2.0', transitive: false],
              
     )
      compile ( 
@@ -107,7 +106,8 @@ dependencies {
 	 
     	
      providedRuntime (            
-            
+              [group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version: '1.0', transitive: false],
+          
             [group: 'javax.servlet', name: 'javax.servlet-api', version: "3.0.1", transitive: false],
             [group: 'javax.servlet', name: 'jsp-api', version: '2.0', transitive: false],
     )
