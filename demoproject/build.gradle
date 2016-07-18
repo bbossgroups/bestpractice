@@ -96,6 +96,8 @@ dependencies {
             [group: 'wsdl4j', name: 'wsdl4j', version: '1.6.3', transitive: false],
             [group: 'org.jasypt', name: 'jasypt', version: '1.9.2', transitive: false],
              [group: 'javax.servlet', name: 'jsp-api', version: '2.0', transitive: false],
+             
+            [group: 'javax.servlet', name: 'javax.servlet-api', version: "3.0.1", transitive: false],
              [group: 'org.jgroups', name: 'jgroups', version: '3.6.1.Final', transitive: false]
     )
      compile ( 
