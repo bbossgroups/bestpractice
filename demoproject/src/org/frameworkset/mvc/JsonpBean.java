@@ -21,7 +21,7 @@ package org.frameworkset.mvc;
  * <p> bboss workgroup </p>
  * <p> Copyright (c) 2009 </p>
  * 
- * @Date 2012-5-16 ионГ9:07:37
+ * @Date 2012-5-16 9:07:37
  * @author biaoping.yin
  * @version 1.0
  */
