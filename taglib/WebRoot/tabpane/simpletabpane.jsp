@@ -19,7 +19,7 @@
 	</head>
 	<body bgcolor="#F7F8FC">
 
-		<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0">
 			
 			<tr>
 				<td colspan="2" align="left">
