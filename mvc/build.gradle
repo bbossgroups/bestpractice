@@ -1,0 +1,69 @@
+ apply plugin: 'war'
+   
+  if(enable_gretty.equals("true"))
+  {
+  
+     apply plugin: 'org.akhikhl.gretty'
+  
+     gretty {
+	    httpPort = 80
+	   
+	    contextPath = project.name
+	    //jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
+	  //  servletContainer = 'jetty7'
+	  
+	  }
+  } 
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+        resources {
+			srcDirs 'resources'
+        }
+    }
+    
+     test {
+        java {
+            srcDirs 'test'
+        }
+    }
+   
+}
+
+dependencies {
+   
+
+   
+    compile  (
+			
+			[group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.7.4',transitive: false],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.7.4',transitive: false],
+            [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.4',transitive: false],
+            [group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.7.4',transitive: false],
+              [group: 'cglib', name: 'cglib-nodep', version: '3.1', transitive: false],
+             [group: 'org.ow2.asm', name: 'asm', version: '5.0.3', transitive: false],
+           [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+           [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+           [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+             [group: 'com.bbossgroups', name: 'bboss-taglib', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+              [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+          [group: 'com.bbossgroups', name: 'bboss-tabpane', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+          [group: 'com.bbossgroups', name: 'bboss-htmlparser', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+         [group: 'com.bbossgroups.security', name: 'bboss-security', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+             [group: 'com.fasterxml.uuid', name: 'java-uuid-generator', version: '3.1.2', transitive: false],
+         [group: 'log4j', name: 'log4j', version: '1.2.16', transitive: false],          
+            [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],         
+               [group: 'jstl', name: 'jstl', version: '1.2', transitive: false],
+         
+    )
+    providedCompile (
+    )
+   
+    
+     
+}
+
+webAppDirName = 'WebRoot'  
