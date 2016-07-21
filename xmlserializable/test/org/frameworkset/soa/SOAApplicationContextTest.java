@@ -17,7 +17,6 @@ package org.frameworkset.soa;
 
 
 
-import java.beans.IntrospectionException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,9 +85,9 @@ public class SOAApplicationContextTest {
 			"</call>"+
 		"</esb>";
 		bean.setArrays(content.getBytes() );
-		String xmlcontent = ObjectSerializable.convertBeanObjectToXML("beanarray",bean, bean.getClass());
+		String xmlcontent = ObjectSerializable.toXML(bean);
 		System.out.println(xmlcontent);
-		ArrayBean bean1 = ObjectSerializable.convertXMLToBeanObject("beanarray",xmlcontent,ArrayBean.class);
+		ArrayBean bean1 = ObjectSerializable.toBean(xmlcontent,ArrayBean.class);
 		System.out.println(new String(bean1.getArrays()));
 		System.out.println(bean1.getE());
 		
