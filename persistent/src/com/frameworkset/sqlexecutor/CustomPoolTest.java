@@ -3,7 +3,6 @@ package com.frameworkset.sqlexecutor;
 import java.sql.SQLException;
 import java.util.List;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.frameworkset.common.poolman.SQLExecutor;
@@ -14,8 +13,8 @@ public class CustomPoolTest {
 	public CustomPoolTest() {
 		// TODO Auto-generated constructor stub
 	}
-	@BeforeClass
-	public static void init()
+	 
+	public   void init()
 	{
 		SQLUtil.startPool("test",//数据源名称
 				"oracle.jdbc.driver.OracleDriver",//oracle驱动
@@ -39,10 +38,11 @@ public class CustomPoolTest {
 		
 //		SQLExecutor.insertWithDBName("test", "insert into TB_MODULE_AUTH(AUTH_ID,ADMIN_ID,MODULE_ID) values(?,'25',?)", aid+"","11");///SanyUIMPC/page/SanyAccount/orgTree.jsp
 	}
-	
-	public void testsqlite(String dbpath)
+	@Test
+	public void testsqlite()
 	{
 		//启动sqlite数据源gencode
+		String dbpath = "d:/sqllite";
 		SQLUtil.startPool("gencode","org.sqlite.JDBC","jdbc:sqlite://"+dbpath,"root","root",
 				 "select 1"				
 	        		);
