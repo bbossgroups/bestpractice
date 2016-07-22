@@ -29,7 +29,7 @@ dependencies {
             [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],
             [group: 'commons-lang', name: 'commons-lang', version: '2.6', transitive: false],
             [group: 'commons-logging', name: 'commons-logging', version: '1.1', transitive: false],
-            [group: 'com.ibm.icu', name: 'icu4j', version: '57.1', transitive: false],
+            [group: 'com.ibm.icu', name: 'icu4j', version: '2.6.1', transitive: false],
              [group: 'org.jboss.netty', name: 'netty', version: '3.2.10.Final', transitive: false],
           [group: 'org.jasypt', name: 'jasypt', version: '1.9.2', transitive: false],
           [group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.0.1', transitive: false],
