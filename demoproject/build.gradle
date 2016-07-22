@@ -101,7 +101,7 @@ dependencies {
              [group: 'org.jgroups', name: 'jgroups', version: '3.6.1.Final', transitive: false]
     )
      compile ( 
-         fileTree(dir: '../lib', include: '**/*.jar'),
+         fileTree(dir: '../lib/cxf', include: '**/*.jar'),
     	)
 	 
     	
