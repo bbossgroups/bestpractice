@@ -1,19 +1,4 @@
- apply plugin: 'war'
-   
-  if(enable_gretty.equals("true"))
-  {
-  
-     apply plugin: 'org.akhikhl.gretty'
-  
-     gretty {
-	    httpPort = 80
-	   
-	    contextPath = project.name
-	    //jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
-	  //  servletContainer = 'jetty7'
-	  
-	  }
-  } 
+ 
 sourceSets {
     main {
         java {
@@ -60,10 +45,10 @@ dependencies {
             [group: 'commons-io', name: 'commons-io', version: '2.4', transitive: false],
           [group: 'org.apache.derby', name: 'derby', version: '10.9.1.0', transitive: false],
             [group: 'org.apache.derby', name: 'derbyclient', version: '10.12.1.1', transitive: false],
+           
             
     )
-    providedCompile (
-    )
+
    
     
      
