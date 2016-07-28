@@ -63,7 +63,7 @@ dependencies {
             [group: 'wsdl4j', name: 'wsdl4j', version: '1.6.3', transitive: false],
             [group: 'xml-resolver', name: 'xml-resolver', version: '1.2', transitive: false],
             [group: 'org.apache.ws.xmlschema', name: 'xmlschema-core', version: '2.2.1', transitive: false],
-            
+             [group: 'junit', name: 'junit', version: '4.12', transitive: false],
     )    
      compile ( 
          fileTree(dir: '../lib/cxf', include: '**/*.jar'),

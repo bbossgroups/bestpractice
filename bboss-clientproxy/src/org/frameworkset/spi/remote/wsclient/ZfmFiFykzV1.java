@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>anonymous complex typeµÄ Java Àà¡£
+ * <p>anonymous complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType>
@@ -50,7 +50,7 @@ public class ZfmFiFykzV1 {
     protected String iTxtlg;
 
     /**
-     * »ñÈ¡fi00O06ÊôĞÔµÄÖµ¡£
+     * è·å–fi00O06å±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -62,7 +62,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * ÉèÖÃfi00O06ÊôĞÔµÄÖµ¡£
+     * è®¾ç½®fi00O06å±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -74,7 +74,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * »ñÈ¡iFuncAreaÊôĞÔµÄÖµ¡£
+     * è·å–iFuncAreaå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -86,7 +86,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * ÉèÖÃiFuncAreaÊôĞÔµÄÖµ¡£
+     * è®¾ç½®iFuncAreaå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -98,7 +98,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * »ñÈ¡iPstngDateÊôĞÔµÄÖµ¡£
+     * è·å–iPstngDateå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -110,7 +110,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * ÉèÖÃiPstngDateÊôĞÔµÄÖµ¡£
+     * è®¾ç½®iPstngDateå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -122,7 +122,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * »ñÈ¡iTxtlgÊôĞÔµÄÖµ¡£
+     * è·å–iTxtlgå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -134,7 +134,7 @@ public class ZfmFiFykzV1 {
     }
 
     /**
-     * ÉèÖÃiTxtlgÊôĞÔµÄÖµ¡£
+     * è®¾ç½®iTxtlgå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
