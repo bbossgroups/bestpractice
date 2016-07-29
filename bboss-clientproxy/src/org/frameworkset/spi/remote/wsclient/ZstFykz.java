@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>ZstFykz complex typeµÄ Java Àà¡£
+ * <p>ZstFykz complex typeçš„ Java ç±»ã€‚
  * 
- * <p>ÒÔÏÂÄ£Ê½Æ¬¶ÎÖ¸¶¨°üº¬ÔÚ´ËÀàÖĞµÄÔ¤ÆÚÄÚÈİ¡£
+ * <p>ä»¥ä¸‹æ¨¡å¼ç‰‡æ®µæŒ‡å®šåŒ…å«åœ¨æ­¤ç±»ä¸­çš„é¢„æœŸå†…å®¹ã€‚
  * 
  * <pre>
  * &lt;complexType name="ZstFykz">
@@ -49,7 +49,7 @@ public class ZstFykz {
     protected String locCurrcy;
 
     /**
-     * »ñÈ¡glAccountÊôĞÔµÄÖµ¡£
+     * è·å–glAccountå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class ZstFykz {
     }
 
     /**
-     * ÉèÖÃglAccountÊôĞÔµÄÖµ¡£
+     * è®¾ç½®glAccountå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class ZstFykz {
     }
 
     /**
-     * »ñÈ¡txtshÊôĞÔµÄÖµ¡£
+     * è·å–txtshå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class ZstFykz {
     }
 
     /**
-     * ÉèÖÃtxtshÊôĞÔµÄÖµ¡£
+     * è®¾ç½®txtshå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class ZstFykz {
     }
 
     /**
-     * »ñÈ¡debCreLcÊôĞÔµÄÖµ¡£
+     * è·å–debCreLcå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class ZstFykz {
     }
 
     /**
-     * ÉèÖÃdebCreLcÊôĞÔµÄÖµ¡£
+     * è®¾ç½®debCreLcå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is
@@ -121,7 +121,7 @@ public class ZstFykz {
     }
 
     /**
-     * »ñÈ¡locCurrcyÊôĞÔµÄÖµ¡£
+     * è·å–locCurrcyå±æ€§çš„å€¼ã€‚
      * 
      * @return
      *     possible object is
@@ -133,7 +133,7 @@ public class ZstFykz {
     }
 
     /**
-     * ÉèÖÃlocCurrcyÊôĞÔµÄÖµ¡£
+     * è®¾ç½®locCurrcyå±æ€§çš„å€¼ã€‚
      * 
      * @param value
      *     allowed object is

@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.frameworkset.spi.InitializingBean;
 import org.frameworkset.upload.dao.UpLoadDao;
 import org.frameworkset.web.multipart.MultipartFile;
 
@@ -19,7 +20,7 @@ import com.frameworkset.common.poolman.handle.FieldRowHandler;
 import com.frameworkset.common.poolman.handle.NullRowHandler;
 import com.frameworkset.util.StringUtil;
 
-public class UpLoadDaoImpl implements UpLoadDao {
+public class UpLoadDaoImpl implements UpLoadDao,InitializingBean {
 	
 	@Override
 	/**
@@ -161,6 +162,18 @@ public class UpLoadDaoImpl implements UpLoadDao {
 	}
 
 	@Override
+	/**
+	 * 
+	 * filetable (FILENAME,FILECONTENT,fileid,FILESIZE)
+	 * CREATE
+    TABLE filetable
+    (
+        FILEID VARCHAR(100),
+        FILENAME VARCHAR(100),
+        FILESIZE BIGINT,
+        FILECONTENT BLOB
+    )
+	 */
 	public List<HashMap> queryfiles() throws Exception
 	{
 
@@ -220,6 +233,34 @@ public class UpLoadDaoImpl implements UpLoadDao {
 		{
 			throw e;
 		}
+		
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		 /*CREATE TABLE CLOBFILE(FILEID VARCHAR(100), FILENAME VARCHAR(100),FILESIZE BIGINT,FILECONTENT CLOB(2147483647))*/
+		
+		/**
+		 * 
+		 * filetable (FILENAME,FILECONTENT,fileid,FILESIZE)
+		 * CREATE TABLE filetable ( FILEID VARCHAR(100),FILENAME VARCHAR(100),FILESIZE BIGINT,FILECONTENT BLOB)
+		 */
+		
+		try {
+			SQLExecutor.queryObject(String.class, "select FILEID from filetable where 1=0");
+		} catch (Exception e) {
+			SQLExecutor.update(
+					"CREATE TABLE filetable ( FILEID VARCHAR(100),FILENAME VARCHAR(100),FILESIZE BIGINT,FILECONTENT BLOB)");
+		}
+		try {
+			SQLExecutor.queryObject(String.class, "select FILEID from CLOBFILE where 1=0");
+		} catch (Exception e) {
+			SQLExecutor.update(
+					"CREATE TABLE CLOBFILE(FILEID VARCHAR(100), FILENAME VARCHAR(100),FILESIZE BIGINT,FILECONTENT CLOB(2147483647))");
+		}
+		
+		
+		
 		
 	}
 
