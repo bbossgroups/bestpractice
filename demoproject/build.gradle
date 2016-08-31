@@ -85,7 +85,7 @@ dependencies {
     	)
 	 
     	
-     providedRuntime (            
+     compileOnly (            
               [group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version: '1.0', transitive: false],
           
     )
