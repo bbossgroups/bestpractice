@@ -3,4 +3,7 @@
 		path:sayHello="/examples/hello.jsp"
 		class="org.frameworkset.mvc.HelloWord">
 	</property>
+	<property name="/caches/*.page"
+		class="org.frameworkset.mvc.HttpCache">
+	</property>
 </properties>
