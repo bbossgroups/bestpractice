@@ -31,8 +31,8 @@ public class HttpCache {
 		      HttpServletRequest request,
 		      //为了方便测试，此处传入文档最后修改时间
 		      @RequestParam(name="millis") long lastModifiedMillis,
-		      //浏览器验证文档内容是否修改时传入的Last-Modified
-		      @RequestHeader (name = "If-Modified-Since", required = false,dateformat="EEE, d MMM yyyy HH:mm:ss 'GMT'",locale = "en_US") Date ifModifiedSince) {
+		      //浏览器验证文档内容是否修改时传入的Last-Modified If-Modified-Since
+		      @RequestHeader (name = "If-Modified-Since", required = false,dateformat="EEE, d MMM yyyy HH:mm:ss.SSS 'GMT'",locale = "en_US") Date ifModifiedSince) {
 
 		    //当前系统时间
 		    long now = System.currentTimeMillis();
@@ -44,8 +44,8 @@ public class HttpCache {
 		        return new ResponseEntity<String>(HttpStatus.NOT_MODIFIED);
 		    }
 
-		    DateFormat gmtDateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-
+		    DateFormat gmtDateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss.SSS 'GMT'", Locale.US);
+		    System.out.println(System.currentTimeMillis());
 		    String body = "<a href=''>点击访问当前链接</a>";
 		    MultiValueMap<String, String> headers = new HttpHeaders();
 
@@ -57,7 +57,7 @@ public class HttpCache {
 		    headers.add("Expires", gmtDateFormat.format(new Date(now + maxAge)));
 		    //文档生存时间 http 1.1支持
 		    headers.add("Cache-Control", "max-age=" + maxAge);
-		    return new ResponseEntity<String>(body, headers, HttpStatus.OK);
+		    return new ResponseEntity<String>(body, headers, HttpStatus.OK,"String");
 		}
 
 }
