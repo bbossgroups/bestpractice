@@ -1,17 +1,15 @@
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+        resources {
+			srcDirs 'resources'
+        }
+    }
+}
 
-if(enable_gretty.equals("true"))
-{
-    apply plugin: 'org.akhikhl.gretty'
-    
-     gretty {
-	    httpPort = 80
-	   
-	    contextPath = project.name
-	    jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
-	  //  servletContainer = 'jetty7'
-	  
-	  }
-} 
+
 webAppDirName = 'WebRoot'  
 dependencies {
     compile (
@@ -85,7 +83,7 @@ dependencies {
     	)
 	 
     	
-     providedRuntime (            
+     compileOnly (            
               [group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version: '1.0', transitive: false],
           
     )

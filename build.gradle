@@ -191,8 +191,10 @@ configure([project(":websocket"),project(":xmlrequest"),project(":i18n")
   
      gretty {
 	    httpPort = 80
-	   
-	    contextPath = project.name
+	     inplaceMode="hard"	  
+	   scanInterval=0
+	    contextPath = '/'
+	    //project.name
 	    //jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
 	  //  servletContainer = 'jetty7'
 	  
