@@ -9,19 +9,7 @@ sourceSets {
     }
 }
 
-if(enable_gretty.equals("true"))
-{
-    apply plugin: 'org.akhikhl.gretty'
-    
-     gretty {
-	    httpPort = 80
-	   
-	    contextPath = project.name
-	    jvmArgs = ['-Xmx1024M', '-XX:PermSize=128M', '-XX:MaxPermSize=256M']
-	  //  servletContainer = 'jetty7'
-	  
-	  }
-} 
+
 webAppDirName = 'WebRoot'  
 dependencies {
     compile (
