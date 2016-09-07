@@ -190,7 +190,7 @@ configure([project(":websocket"),project(":xmlrequest"),project(":i18n")
      apply plugin: 'org.akhikhl.gretty'
   
      gretty {
-	    httpPort = 80
+	    httpPort = 8080
 	     inplaceMode="hard"	  
 	   scanInterval=0
 	    contextPath = '/'
