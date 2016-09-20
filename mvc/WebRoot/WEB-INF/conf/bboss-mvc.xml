@@ -5,6 +5,7 @@
 	     指定这些controller所在的根目录
 -->
 <properties>
+	<config file="org/frameworkset/mvc/mvc.properties"/>
 	
 	<!-- 
 		导入mvc的相关文件,属性说明：

@@ -15,7 +15,8 @@ import org.frameworkset.util.annotations.RequestHeader;
 import org.frameworkset.util.annotations.RequestParam;
 
 public class HttpCache {
-
+	private String varValue;
+	private String varValue1;
 	public HttpCache() {
 		// TODO Auto-generated constructor stub
 	}
@@ -44,7 +45,7 @@ public class HttpCache {
 
 		    DateFormat gmtDateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss.SSS 'GMT'", Locale.US);
 		    System.out.println(System.currentTimeMillis());
-		    String body = "<a href=''>点击访问当前链接</a>";
+		    String body = "<a href=''>点击访问当前链接</a><p>varValue="+varValue+",varValue1="+varValue1+"</p>";
 		    MultiValueMap<String, String> headers = new HttpHeaders();
 
 		    //文档修改时间
@@ -68,7 +69,7 @@ public class HttpCache {
 		    //文档可以在浏览器端/proxy上缓存多久
 		    long maxAge = 10;
 
-		    String body = "<a href=''>点击访问当前链接</a>";
+		    String body = "<a href=''>点击访问当前链接</a><p>varValue="+varValue+",varValue1="+varValue1+"</p>";
 
 		    //弱实体
 		    String etag = "W/\"" + DigestUtils.md5DigestAsHex(body.getBytes()) + "\"";
