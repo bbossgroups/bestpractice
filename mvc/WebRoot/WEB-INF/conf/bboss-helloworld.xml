@@ -4,6 +4,8 @@
 		class="org.frameworkset.mvc.HelloWord">
 	</property>
 	<property name="/caches/*.page"
+		f:varValue="${varValue}"
+		f:varValue1="${varValue1}"
 		class="org.frameworkset.mvc.HttpCache">
 	</property>
 </properties>

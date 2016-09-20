@@ -5,6 +5,7 @@ sourceSets {
         }
         resources {
 			srcDirs 'resources'
+			srcDirs 'src' exclude '**/*.java'
         }
     }
     
