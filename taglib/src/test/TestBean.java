@@ -3,6 +3,7 @@ package test;
 public class TestBean {
 	private String id;
 	private String name;
+	private TestBean inner;
 	public String getId() {
 		return id;
 	}
@@ -14,6 +15,12 @@ public class TestBean {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public TestBean getInner() {
+		return inner;
+	}
+	public void setInner(TestBean inner) {
+		this.inner = inner;
 	}
 
 }

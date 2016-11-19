@@ -8,17 +8,33 @@
 	bean = new TestBean();
 	bean.setId("uuid");
 	bean.setName("多多");
+	
+	TestBean ibean = new TestBean();
+	ibean.setId("uuidinner");
+	ibean.setName("多多uuidinner");
+	bean.setInner(ibean);
 	mapbeans.put(bean.getId(),bean);
 	
 	bean = new TestBean();
 	bean.setId("uuid1");
 	bean.setName("多多1");
+	
+	ibean = new TestBean();
+	ibean.setId("uuid1inner");
+	ibean.setName("uuid1inner");
+	bean.setInner(ibean);
 	mapbeans.put(bean.getId(),bean);
 	bean = new TestBean();
 	bean.setId("uuid2");
 	bean.setName("多多2");
+	ibean = new TestBean();
+	ibean.setId("uuid2inner");
+	ibean.setName("uuid2inner");
+	bean.setInner(ibean);
 	mapbeans.put(bean.getId(),bean);
 	request.setAttribute("mapbeans",mapbeans);
+	
+	request.setAttribute("testbean",bean);
 	
 	Map<String,String> mapstrings = new HashMap<String,String>();
 	mapstrings.put("id1","多多1");
@@ -51,9 +67,36 @@
 				<td>
 					name:<pg:cell colName="name" />
 				</td> 
+				
+				<td>
+					innerid:<pg:cell colName="inner" property="id" />
+				</td> 
+				<td>
+					innername:<pg:cell colName="inner"  property="name" />
+				</td> 
 			</tr>
 		</pg:map>
 		
+		<pg:beaninfo actual="${testbean }">
+		<tr class="cms_data_tr">
+				<td>
+					testbean:
+				</td> 
+				<td>
+					id:<pg:cell colName="id" />
+				</td> 
+				<td>
+					name:<pg:cell colName="name" />
+				</td> 
+				
+				<td>
+					innerid:<pg:cell colName="inner" property="id" />
+				</td> 
+				<td>
+					innername:<pg:cell colName="inner"  property="name" />
+				</td> 
+			</tr>
+			</pg:beaninfo>
 		
 	</table>
 	
