@@ -158,11 +158,12 @@ public class UploadController
 	 * @throws IllegalStateException
 	 * @throws IOException
 	 */
-	public @ResponseBody File uploaddownFileWithMultipartFile( MultipartFile upload1) throws IllegalStateException, IOException
+	public @ResponseBody File uploaddownFileWithMultipartFile( MultipartFile upload1,String name) throws IllegalStateException, IOException
 	{
 
 		File f = new File("d:/" + upload1.getOriginalFilename());
 		upload1.transferTo(f);
+		System.out.println("name:"+name);
 		return f;
 		// 根据服务器的文件保存地址和原文件名创建目录文件全路径
 		
