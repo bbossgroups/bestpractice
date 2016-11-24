@@ -88,7 +88,9 @@
 				<td>
 					name:<pg:cell colName="name" />
 				</td> 
-				
+				<td>
+					name:<pg:cell colName="sellMonery"/>
+				</td>
 				<td>
 					innerid:<pg:cell colName="inner" property="id" />
 				</td> 

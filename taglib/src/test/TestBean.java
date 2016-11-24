@@ -4,6 +4,9 @@ public class TestBean {
 	private String id;
 	private String name;
 	private TestBean inner;
+	private long sellMonery = 1000l;
+	private double selldoubleMonery = 100000.00d;
+	
 	public String getId() {
 		return id;
 	}
@@ -21,6 +24,18 @@ public class TestBean {
 	}
 	public void setInner(TestBean inner) {
 		this.inner = inner;
+	}
+	public long getSellMonery() {
+		return sellMonery;
+	}
+	public void setSellMonery(long sellMonery) {
+		this.sellMonery = sellMonery;
+	}
+	public double getSelldoubleMonery() {
+		return selldoubleMonery;
+	}
+	public void setSelldoubleMonery(double selldoubleMonery) {
+		this.selldoubleMonery = selldoubleMonery;
 	}
 
 }
