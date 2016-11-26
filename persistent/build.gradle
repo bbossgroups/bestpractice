@@ -36,8 +36,8 @@ dependencies {
     )
     
     testCompile(
-     		[group: 'mysql', name: 'mysql-connector-java', version: "3.1.14", transitive: false],
-        
+     		      [group: 'mysql', name: 'mysql-connector-java', version: '5.1.39', transitive: false],
+       
       		fileTree(dir: '../lib/jdbc', include: '**/*.jar'),
               [group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11.2', transitive: false],
     )

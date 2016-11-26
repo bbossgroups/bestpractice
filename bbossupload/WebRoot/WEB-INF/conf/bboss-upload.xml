@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding='UTF-8'?>
+<!-- 
+http://localhost:8080/bbossupload/upload/uploaddownFileWithMultipartFile.page
+ -->
 <properties>
 	<property name="/upload/*.page"				
 		path:main="/upload.jsp"
