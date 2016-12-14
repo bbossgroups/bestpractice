@@ -1,4 +1,3 @@
-rootProject.name = 'bestpractice'
 include 'bboss-clientproxy'
 include 'bbossupload'
 include 'demoproject'
