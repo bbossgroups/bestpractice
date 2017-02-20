@@ -16,7 +16,7 @@ sourceSets {
 dependencies {
    
     compile  (
-			 [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "4.10.9", transitive: false],
+			 [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-soa', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],         

@@ -56,3 +56,4 @@ bboss-clientproxy/.project
 *.bak
 /.gradle/
 /.settings/
+/.idea/

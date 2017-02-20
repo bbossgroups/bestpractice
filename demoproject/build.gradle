@@ -20,13 +20,14 @@ dependencies {
             [group: 'com.bbossgroups', name: 'bboss-core', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-soa', version: "${bboss_version}", transitive: false],
-            [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "4.10.9", transitive: false],
+            [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-schedule', version: "${bboss_version}", transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${bboss_version}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${bboss_version}", transitive: false],
-                [group: 'com.bbossgroups.security', name: 'bboss-security', version: "${bboss_version}", transitive: false],
-               
+                [group: 'com.bbossgroups.security', name: 'bboss-security', version: "${SECURITY_PROJ_VERSION}", transitive: false],
+               [group: 'com.bbossgroups.security', name: 'bboss-ticket', version: "${SECURITY_PROJ_VERSION}", transitive: false],
+              
           [group: 'com.bbossgroups', name: 'bboss-soa', version: "${bboss_version}", transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-taglib', version: "${bboss_version}", transitive: false],
              [group: 'com.bbossgroups', name: 'bboss-tabpane', version: "${bboss_version}", transitive: false],
