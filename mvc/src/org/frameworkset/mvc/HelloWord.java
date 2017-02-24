@@ -16,6 +16,7 @@
 package org.frameworkset.mvc;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -197,5 +198,13 @@ public class HelloWord
 	public String index()
 	{		
 		return "path:sayHello";
+	}
+	
+	public @ResponseBody(datatype="jsonp") ExampleBean getJsonDateBean(){
+		ExampleBean bean = new ExampleBean();
+		bean.setName("多多");
+		bean.setBirthDate(new Date());
+		return bean;
+		
 	}
 }
