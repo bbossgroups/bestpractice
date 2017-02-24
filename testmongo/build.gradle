@@ -40,11 +40,7 @@ dependencies {
              
                
     )
-     testCompile (            
-            
-            //fileTree(dir: 'lib-compile', include: '**/*.jar')
-           
-    )
+     
 }
 
 task copyJarFiles(type: Copy,dependsOn:'jar'){

@@ -15,6 +15,7 @@
  */
 package org.frameworkset.mvc;
 
+import java.util.Date;
 
 /**
  * <p>ExampleBean.java</p>
@@ -29,8 +30,18 @@ package org.frameworkset.mvc;
 public class ExampleBean
 {
 	private String name = null;
-
+	private Date birthDate;
 	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+
 	public String getName()
 	{
 	
