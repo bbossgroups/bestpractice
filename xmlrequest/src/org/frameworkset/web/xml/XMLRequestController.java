@@ -18,6 +18,8 @@ package org.frameworkset.web.xml;
 import org.frameworkset.util.annotations.RequestBody;
 import org.frameworkset.util.annotations.ResponseBody;
 
+import java.util.Map;
+
 
 /**
  * <p>XMLRequestController.java</p>
@@ -66,6 +68,18 @@ public class XMLRequestController
 //		XMLBean.setId(StringUtil.getUUID());
 		xml.setData("Response:"+xml.getData());
 		return xml;
+	}
+
+	public @ResponseBody(datatype="json") Map<String, String> echohttpjson(@RequestBody(datatype="json") Map<String,String> jsondata)
+	{
+
+		return jsondata;
+	}
+
+	public @ResponseBody String echohttpstring(@RequestBody String jsondata)
+	{
+
+		return jsondata;
 	}
 	public String index()
 	{
