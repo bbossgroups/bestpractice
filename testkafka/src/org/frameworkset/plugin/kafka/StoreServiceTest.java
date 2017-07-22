@@ -12,7 +12,9 @@ public class StoreServiceTest implements StoreService {
 	public void store(MessageAndMetadata<byte[], byte[]> message) throws Exception {
 		
 		String data = sd.deserialize(null,message.message());
-		long key = ld.deserialize(null, message.key());
+		long key = 0;
+		if(message.key() != null)
+			key = ld.deserialize(null, message.key());
 		System.out.println("key="+key+",data="+data);
 	}
 
