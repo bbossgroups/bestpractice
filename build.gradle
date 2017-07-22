@@ -3,6 +3,7 @@ configure(allprojects) { project ->
 	group = PROJ_GROUP
 	version = PROJ_VERSION	
 	ext.bboss_version=PROJ_BBOSS_VERSION
+	//ext.isIdea = System.getProperty("idea.active") != null || gradle.startParameter.taskNames.contains('idea') || gradle.startParameter.taskNames.contains('cleanIdea')
 	apply plugin: "java"
 	apply plugin: "maven-publish"
 	apply plugin: "eclipse"

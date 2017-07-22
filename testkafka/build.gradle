@@ -1,0 +1,83 @@
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            
+        }
+        resources{
+            //srcDir 'resources'
+        	
+        	
+        }
+    }
+    test {
+        java {
+            srcDir 'test'
+        }
+        resources{
+        	srcDir 'resources'
+        }
+    }
+    
+}
+/**
+if(isIdea){
+    task copyTestResources(type: Copy) {
+        //from "${projectDir}/resources"
+        from sourceSets.test.resources
+        into "${buildDir}/classes/"
+    }
+    processTestResources.dependsOn copyTestResources
+}*/
+
+dependencies {
+    compile (
+            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
+
+    )
+    runtime (
+             [group: 'com.bbossgroups', name: 'bboss-rt', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+             
+               
+    )
+
+     
+}
+
+task copyJarFiles(type: Copy,dependsOn:'jar'){
+	 
+	 from jar.outputs
+	 from configurations.compile
+	 into 'build/dist/lib'
+	 
+}
+
+
+task copyResourceFiles(type: Copy ){
+	 
+	 from 'resources'   
+	into 'build/dist/resources'
+	 
+}
+
+ 
+task copyToolFiles(type: Copy ){
+	 
+	from ('runfiles')
+	{
+		expand(bboss_version: "${PROJ_BBOSS_VERSION}",main_class:'org.frameworkset.plugin.kafka.TestKafkaConsumer')
+		
+	} 
+    from configurations.runtime - configurations.compile
+    //filteringCharset = 'UTF-8'            
+	into 'build/dist/'
+	 
+}
+
+task releaseKafkaDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
+    //appendix = 'wrapper'
+   classifier = 'released'
+   from 'build/dist/'
+   
+}
+
