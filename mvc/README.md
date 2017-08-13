@@ -4,7 +4,6 @@ gradle war
 
 #启动应用
 
-gradle tomcatStart
 
 #参数绑定demo访问地址
 
