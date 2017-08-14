@@ -32,8 +32,9 @@ dependencies {
               [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
          [group: 'com.bbossgroups.security', name: 'bboss-security', version: "${SECURITY_PROJ_VERSION}", transitive: false],
         [group: 'com.fasterxml.uuid', name: 'java-uuid-generator', version: '3.1.2', transitive: false],
-           [group: 'log4j', name: 'log4j', version: '1.2.16', transitive: false],          
-            [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],         
+           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25', transitive: true],
+
+      [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],         
                [group: 'jstl', name: 'jstl', version: '1.2', transitive: false],
          
     )
