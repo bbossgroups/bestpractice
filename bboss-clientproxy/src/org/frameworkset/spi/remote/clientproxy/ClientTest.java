@@ -40,7 +40,7 @@ public class ClientTest {
 	ClientInf simpleinf;
 	
 	static java.util.concurrent.atomic.AtomicLong longcount = new AtomicLong(0);
-	@Before
+//	@Before、
 	public void init()
 	{
 		//获取mvc容器中组件的远程服务调用接口，mvc容器由服务端mvc框架自动初始化
@@ -307,8 +307,8 @@ public class ClientTest {
 	{
 		
 		WSServiceInMVC WSService = ClientProxyContext.getWebMVCClientBean(
-				"(webservice::http://localhost:8080/SanyPDP/cxfservices)" +
-				"/appBomService?user=admin&password=123456",
+				"(webservice::http://localhost:8080/pdp/cxfservices)" +
+				"/appbom.appBomService?user=admin&password=123456",
 				WSServiceInMVC.class);
 		WSService.sayMvsHello("你好，多多");
 		String ss = "你好，多多,你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多你好，多多" +
@@ -322,8 +322,7 @@ public class ClientTest {
 		
 	}
 	
-	
-	
+	 
 	
 	
 	
@@ -397,6 +396,7 @@ public class ClientTest {
 	
 	public static void main(String[] args)
 	{
+		System.out.print(Throwable.class.isAssignableFrom(java.lang.NullPointerException.class));
 //		testHttp();
 //		testHttpa();
 //		testNetty();
