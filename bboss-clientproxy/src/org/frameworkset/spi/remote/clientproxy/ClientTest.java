@@ -40,7 +40,7 @@ public class ClientTest {
 	ClientInf simpleinf;
 	
 	static java.util.concurrent.atomic.AtomicLong longcount = new AtomicLong(0);
-	
+	@Before
 	public void init()
 	{
 		//获取mvc容器中组件的远程服务调用接口，mvc容器由服务端mvc框架自动初始化

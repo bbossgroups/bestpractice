@@ -47,10 +47,10 @@ public class CustomPoolTest {
 				 "select 1"				
 	        		);
 		//判断数据源gencode中对于的表BBOSS_GENCODE是否存在，不存在则创建
-		String exist = "select 1 from BBOSS_GENCODE";
+		String exist = "select count(1) from BBOSS_GENCODE";
 		
 		try {
-			SQLExecutor.queryObjectWithDBName(int.class,"gencode", exist);
+			System.out.println(SQLExecutor.queryObjectWithDBName(int.class,"gencode", exist));
 		} catch (Exception e) {
 			String tsql = "create table BBOSS_GENCODE (ID string,TABLENAME string,DBNAME string,FIELDINFOS TEXT,AUTHOR string,"
 				       + "COMPANY string,"
