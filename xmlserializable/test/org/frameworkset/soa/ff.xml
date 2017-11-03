@@ -1,0 +1,17 @@
+<ps>
+	<p n="_dflt_" cs="org.frameworkset.soa.NumberPOs">
+		<p n="set" s:t="TreeSet">
+			<s cmt="bean">
+				<p cs="org.frameworkset.soa.WrapNumberPO">
+					<p n="data1" s:t="Integer" v="1" />
+					<p n="data2" s:t="Integer" v="1" />
+				</p>
+				<p cs="org.frameworkset.soa.WrapNumberPO">
+					<p n="data1" s:t="Integer" v="1" />
+					<p n="data2" refid="attr:_dflt_->set[0]->data2" />
+					<p n="data3" refid="attr:_dflt_->set[0]->data1" />
+				</p>
+			</s>
+		</p>
+	</p>
+</ps>
