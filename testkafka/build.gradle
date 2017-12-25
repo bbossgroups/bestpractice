@@ -44,40 +44,48 @@ dependencies {
      
 }
 
-task copyJarFiles(type: Copy,dependsOn:'jar'){
-	 
-	 from jar.outputs
+task copyJarFiles(type: Sync,dependsOn:'jar'){
+
+
+
 	 from configurations.compile
+	 from jar.outputs
+	 exclude { details -> details.file.name.startsWith('bboss-rt')  }
 	 into 'build/dist/lib'
-	 
+
 }
 
+task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
+	 from configurations.runtime - configurations.compile
+	 into 'build/dist'
+     rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
+}
+task copyToolFiles(type: Copy ,dependsOn:'copyRTJarFiles')  {
+			from ('runfiles')
+			{
+				expand(
+						bboss_version:"${bboss_version}",
+                        project:"${project.name}"
+						)
 
-task copyResourceFiles(type: Copy ){
-	 
-	 from 'resources'   
+			}
+		  filteringCharset = 'UTF-8'
+			into 'build/dist/'
+
+
+
+}
+task copyResourcesfiles(type: Sync )  {
+	from fileTree(dir: 'resources')
+	filteringCharset = 'UTF-8'
 	into 'build/dist/resources'
-	 
 }
 
- 
-task copyToolFiles(type: Copy ){
-	 
-	from ('runfiles')
-	{
-		expand(bboss_version: "${PROJ_BBOSS_VERSION}",main_class:'org.frameworkset.plugin.kafka.TestKafkaConsumer')
-		
-	} 
-    from configurations.runtime - configurations.compile
-    //filteringCharset = 'UTF-8'            
-	into 'build/dist/'
-	 
-}
+task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyResourcesfiles']) {
 
-task releaseKafkaDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
     //appendix = 'wrapper'
    classifier = 'released'
    from 'build/dist/'
-   
+
 }
 
