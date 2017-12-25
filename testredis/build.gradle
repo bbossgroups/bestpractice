@@ -46,41 +46,48 @@ dependencies {
     )
      
 }
+task copyJarFiles(type: Sync,dependsOn:'jar'){
 
-task copyJarFiles(type: Copy,dependsOn:'jar'){
-	 
-	 from jar.outputs
+
+
 	 from configurations.compile
+	 from jar.outputs
+	 exclude { details -> details.file.name.startsWith('bboss-rt')  }
 	 into 'build/dist/lib'
-	 
+
 }
 
+task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
+	 from configurations.runtime - configurations.compile
+	 into 'build/dist'
+     rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
+}
+task copyToolFiles(type: Copy ,dependsOn:'copyRTJarFiles')  {
+			from ('runfiles')
+			{
+				expand(
+						bboss_version:"${bboss_version}",
+                        project:"${project.name}"
+						)
 
-task copyResourceFiles(type: Copy ){
-	 
-	 from 'resources'   
+			}
+		  filteringCharset = 'UTF-8'
+			into 'build/dist/'
+
+
+
+}
+task copyResourcesfiles(type: Sync )  {
+	from fileTree(dir: 'resources')
+	filteringCharset = 'UTF-8'
 	into 'build/dist/resources'
-	 
 }
 
- 
-task copyToolFiles(type: Copy ){
-	 
-	from ('runfiles')
-	{
-		expand(bboss_version: "${PROJ_BBOSS_VERSION}",main_class:'com.timesontransfar.mfsp.util.CacheUtil')
-		
-	} 
-    from configurations.runtime - configurations.compile
-    //filteringCharset = 'UTF-8'            
-	into 'build/dist/'
-	 
-}
- 
-task releaseRedisDemo(type: Zip,dependsOn:['copyJarFiles','copyResourceFiles','copyToolFiles']) {
+task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyResourcesfiles']) {
+
     //appendix = 'wrapper'
    classifier = 'released'
    from 'build/dist/'
-   
+
 }
 
