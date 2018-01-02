@@ -11,7 +11,12 @@
 		<keygenerate>composite</keygenerate>
 
 	</datasource>
-
+	<datasource external="true">
+		<dbname>datareuse</dbname>
+		<jndiName>dbcp_datasource_jndiname1</jndiName>
+		<externaljndiName>jdbc/LiferayPool</externaljndiName>
+		<showsql>false</showsql>
+	</datasource>
 	
 
 </poolman>  

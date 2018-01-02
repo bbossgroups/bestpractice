@@ -6,7 +6,7 @@
 		<pg:config enablecontextmenu="false"/>
 		<script type="text/javascript">
 			function doquery(){
-			 
+
 				if($("#loginName3").val() == null || $("#loginName3").val() == "")
 				{
 					alert("请输入要查询的姓名!")
