@@ -62,8 +62,11 @@ configure(allprojects) { project ->
 		maven {
 	        url "http://maven.aliyun.com/nexus/content/groups/public"
 	    }
+		maven {
+			url "https://artifacts.elastic.co/maven"
+		}
 		mavenCentral()
-		
+
 		
 	}
 	if(project.getProperty('skipTest').equals("true"))
