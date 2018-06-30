@@ -1,4 +1,5 @@
-package com.frameworkset.sqlexecutor;/*
+package com.frameworkset.sqlexecutor;
+/*
  *  Copyright 2008 biaoping.yin
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +24,105 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ESJdbcTest {
-	private void initDBSource(){
-		SQLUtil.startPool("es",//数据源名称
-				"org.elasticsearch.xpack.sql.jdbc.jdbc.JdbcDriver",//oracle驱动
-				"jdbc:es://http://127.0.0.1:9200/timezone=UTC&page.size=250",//mysql链接串
-				"elastic","changeme",//数据库账号和口令
-				"" //数据库连接校验sql
+
+	public void initDBSource(){
+		SQLUtil.startPool("es",//ES数据源名称
+				"org.elasticsearch.xpack.sql.jdbc.jdbc.JdbcDriver",//ES jdbc驱动
+				"jdbc:es://http://127.0.0.1:9200/timezone=UTC&page.size=250",//es链接串
+				"elastic","changeme",//es x-pack账号和口令
+				"SHOW tables 'dbclob%'" //数据源连接校验sql
 		);
 	}
+
+	/**
+	 * 执行一个查询
+	 * @throws SQLException
+	 */
 	@Test
-	public void test() throws SQLException {
+	public void testSelect() throws SQLException {
+		initDBSource();//启动数据源
+		//执行查询，将结果映射为HashMap集合
+		 List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,content as content FROM dbclobdemo");
+		 System.out.println(data);
+	}
+
+	/**
+	 * 进行模糊搜索，Elasticsearch 的搜索能力大家都知道，强！在 SQL 里面，可以用 match 关键字来写，如下：
+	 * @throws SQLException
+	 */
+	@Test
+	public void testMatchQuery() throws SQLException {
 		initDBSource();
-	 List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,content as content FROM dbclobdemo");
-	 System.out.println(data);
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE(), * FROM dbclobdemo WHERE match(content, '_ewebeditor_pa_src') ORDER BY documentId DESC");
+		System.out.println(data);
+
+		/**
+		 *还能试试 SELECT 里面的一些其他操作，如过滤，别名，如下：
+		 */
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,title as myname FROM dbclobdemo  as mytable WHERE match(content, '_ewebeditor_pa_src') and (title.keyword = 'adsf' OR title.keyword ='elastic') limit 5 ");
+		System.out.println(data);
+	}
+	/**
+	 * 分组和函数计算
+	 */
+	@Test
+	public void testGroupQuery() throws SQLException {
+		initDBSource();
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT title.keyword,max(documentId) as max_id FROM dbclobdemo as mytable group by title.keyword limit 5");
+		System.out.println(data);
+
+
+	}
+
+
+	/**
+	 * 查看所有的索引表
+	 * @throws SQLException
+	 */
+	@Test
+	public void testShowTable() throws SQLException {
+		initDBSource();
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW tables");
+		System.out.println(data);
+	}
+
+	/**
+	 * 如 dbclob 开头的索引，注意通配符只支持 %和 _，分别表示多个和单个字符（什么，不记得了，回去翻数据库的书去！）
+	 * @throws SQLException
+	 */
+	@Test
+	public void testShowTablePattern() throws SQLException {
+		initDBSource();
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW tables 'dbclob_'");
+		System.out.println(data);
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW tables 'dbclob%'");
+		System.out.println(data);
+	}
+	/**
+	 * 查看索引的字段和元数据
+	 * @throws SQLException
+	 */
+	@Test
+	public void testDescTable() throws SQLException {
+		initDBSource();
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","DESC dbclobdemo");
+		System.out.println(data);
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW COLUMNS IN dbclobdemo");
+		System.out.println(data);
+	}
+
+	/**
+	 * 不记得 ES 支持哪些函数，只需要执行下面的命令，即可得到完整列表
+	 * @throws SQLException
+	 */
+	@Test
+	public void testShowFunctin() throws SQLException {
+		initDBSource();
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW FUNCTIONS");
+		System.out.println(data);
+		//同样支持通配符进行过滤：
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW FUNCTIONS 'S__'");
+		System.out.println(data);
+
 	}
 }
