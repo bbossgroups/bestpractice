@@ -46,6 +46,19 @@ public class ESJdbcTest {
 		 System.out.println(data);
 	}
 
+	@Test
+	public void testQuery() throws SQLException {
+		initDBSource();//启动数据源
+		//执行查询，将结果映射为HashMap集合,全文检索查询
+		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,
+				"es","SELECT * FROM hawkeye-auth-service-web-api-index-2018-06-30 where match(url_group,'synchronize_info')");
+		System.out.println(data);
+		//关键词精确查找
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,
+				"es","SELECT * FROM hawkeye-auth-service-web-api-index-2018-06-30 where url_group.keyword = 'synchronize_info'");
+		System.out.println(data);
+	}
+
 	/**
 	 * 进行模糊搜索，Elasticsearch 的搜索能力大家都知道，强！在 SQL 里面，可以用 match 关键字来写，如下：
 	 * @throws SQLException
