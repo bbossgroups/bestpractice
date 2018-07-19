@@ -23,7 +23,7 @@ dependencies {
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-soa', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],
-            [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${bboss_version}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${bboss_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-schedule', version: "${bboss_version}", transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${bboss_version}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${bboss_version}", transitive: false],

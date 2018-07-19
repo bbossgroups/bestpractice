@@ -27,7 +27,7 @@ dependencies {
            [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],
-            [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${PROJ_BBOSS_VERSION}", transitive: true],
              [group: 'com.bbossgroups', name: 'bboss-taglib', version: "${PROJ_BBOSS_VERSION}", transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
          [group: 'com.bbossgroups.security', name: 'bboss-security', version: "${SECURITY_PROJ_VERSION}", transitive: false],
