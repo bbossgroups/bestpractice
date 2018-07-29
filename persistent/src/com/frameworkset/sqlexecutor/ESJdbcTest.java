@@ -42,8 +42,11 @@ public class ESJdbcTest {
 	public void testSelect() throws SQLException {
 		initDBSource();//启动数据源
 		//执行查询，将结果映射为HashMap集合
-		 List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,content as content FROM dbclobdemo");
+		 List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,* FROM dbclobdemo ");
 		 System.out.println(data);
+
+		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,* FROM dbclobdemo where channelId=?",1);
+		System.out.println(data);
 	}
 
 	@Test
@@ -55,7 +58,7 @@ public class ESJdbcTest {
 		System.out.println(data);
 		//关键词精确查找
 		data =	SQLExecutor.queryListWithDBName(HashMap.class,
-				"es","SELECT * FROM hawkeye-auth-service-web-api-index-2018-06-30 where url_group.keyword = 'synchronize_info'");
+				"es","SELECT * FROM hawkeye-auth-service-web-api-index-2018-06-30 where url_group.keyword = ?","synchronize_info");
 		System.out.println(data);
 	}
 
