@@ -15,21 +15,21 @@
  */
 package com.frameworkset.sqlexecutor;
 
+import com.frameworkset.common.poolman.ConfigSQLExecutor;
+import com.frameworkset.common.poolman.DBUtil;
+import com.frameworkset.common.poolman.SQLParams;
+import com.frameworkset.orm.transaction.TransactionManager;
+import org.junit.Test;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import com.frameworkset.common.poolman.ConfigSQLExecutor;
-import com.frameworkset.common.poolman.SQLParams;
-
 public class ConfigSQLExecutorTest {
 	private ConfigSQLExecutor executor ;
-	@Before
+//	@Before
 	public void init()
 	{
 		executor = new ConfigSQLExecutor("com/frameworkset/sqlexecutor/sqlfile.xml");
@@ -195,6 +195,26 @@ public class ConfigSQLExecutorTest {
 //		 result = (List<ListBean>) SQLExecutor.queryListBeanWithDBName(ListBean.class,"dbname","sql", params);
 //		 System.out.println(result.size());
 		 
+	}
+
+	@Test
+	public void testBatch(){
+		TransactionManager transactionManager = new TransactionManager();
+		try{
+			transactionManager.begin();
+			DBUtil dbUtil = new DBUtil();
+			dbUtil.addBatch("delete from batchtest");
+			dbUtil.addBatch("insert into batchtest(name) values('aaaa')");
+			dbUtil.addBatch("insert into batchtest(name) values('aaaa1')");
+			dbUtil.executeBatch("bboss");
+			transactionManager.commit();
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		finally {
+			transactionManager.release();
+		}
 	}
 
 }
