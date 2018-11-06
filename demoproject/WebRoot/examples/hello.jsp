@@ -260,6 +260,10 @@
 							请输入您的名字：
 						<input name="name" type="text">
 						</td>
+						<td>
+							请输入您的年龄：
+							<input name="age" type="text">
+						</td>
 					</tr>
 					<tr>
 						<td>
@@ -268,7 +272,8 @@
 								没有名字，不问候。
 							</pg:null>
 							<pg:notnull actual="${serverHelloBean}">
-								<common:request name="serverHelloBean" property="name"/>
+								<common:request name="serverHelloBean" property="name"/><br>
+								<common:request name="serverHelloBean" property="age"/>
 							</pg:notnull>
 							
 						</td>

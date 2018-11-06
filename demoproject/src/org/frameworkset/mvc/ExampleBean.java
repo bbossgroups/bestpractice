@@ -16,6 +16,8 @@
 package org.frameworkset.mvc;
 
 
+import org.frameworkset.util.annotations.RequestParam;
+
 /**
  * <p>ExampleBean.java</p>
  * <p> Description: </p>
@@ -30,7 +32,8 @@ public class ExampleBean
 {
 	private String name = null;
 
-	
+	@RequestParam(defaultvalue = "1")
+	private int age;
 	public String getName()
 	{
 	

@@ -15,14 +15,14 @@
  */
 package org.frameworkset.mvc;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-
 import org.frameworkset.util.annotations.MapKey;
 import org.frameworkset.util.annotations.RequestParam;
 import org.frameworkset.util.annotations.ResponseBody;
 import org.frameworkset.web.servlet.ModelMap;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -45,7 +45,7 @@ import org.frameworkset.web.servlet.ModelMap;
 public class HelloWord
 {
 
-	public String sayHelloNumber(@RequestParam(name = "name") int ynum,
+	public String sayHelloNumber(@RequestParam(name = "name",defaultvalue = "0") int ynum,
 			ModelMap model) 
 	{
 
@@ -140,7 +140,6 @@ public class HelloWord
 	/**
 	 * 测试单个字符串向枚举类型值转换
 	 * @param type
-	 * @param response
 	 * @throws IOException
 	 */
 	public   @ResponseBody(charset="UTF-8") 
@@ -167,8 +166,7 @@ public class HelloWord
 	}
 	/**
 	 * 测试单个字符串向枚举类型值转换
-	 * @param type
-	 * @param response
+	 * @param types
 	 * @throws IOException
 	 */
 	public  @ResponseBody(charset="UTF-8") 
@@ -221,6 +219,15 @@ public class HelloWord
 		JsonpBean jsonpbean = new JsonpBean();
 		jsonpbean.setPrice("91.42");
 		jsonpbean.setSymbol("IBM jquery jsonp");
+		return jsonpbean;
+//		return callback + "({\"symbol\" : \"IBM jquery jsonp\", \"price\" : \"91.42\"})";
+	}
+
+	public @ResponseBody(datatype="jsonp") JsonpBean testLong(@RequestParam(defaultvalue = "0") long testId)
+	{
+		JsonpBean jsonpbean = new JsonpBean();
+		jsonpbean.setPrice("91.42");
+		jsonpbean.setSymbol("IBM jquery jsonp:"+testId);
 		return jsonpbean;
 //		return callback + "({\"symbol\" : \"IBM jquery jsonp\", \"price\" : \"91.42\"})";
 	}
