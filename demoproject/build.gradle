@@ -13,13 +13,10 @@ sourceSets {
 webAppDirName = 'WebRoot'  
 dependencies {
     compile (
-    
-           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25', transitive: true],
 
-
-            [group: 'com.bbossgroups', name: 'bboss-util', version: "${bboss_version}", transitive: false],
+			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-data', version: "${bboss_version}", transitive: false],
-            [group: 'com.bbossgroups', name: 'bboss-core', version: "${bboss_version}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-core', version: "${bboss_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-soa', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],

@@ -16,11 +16,14 @@
 package org.frameworkset.mvc;
 
 import org.frameworkset.util.annotations.MapKey;
+import org.frameworkset.util.annotations.RequestHeader;
 import org.frameworkset.util.annotations.RequestParam;
 import org.frameworkset.util.annotations.ResponseBody;
 import org.frameworkset.web.servlet.ModelMap;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 
@@ -231,5 +234,19 @@ public class HelloWord
 		return jsonpbean;
 //		return callback + "({\"symbol\" : \"IBM jquery jsonp\", \"price\" : \"91.42\"})";
 	}
+
+	public @ResponseBody String testTraceHeader(@RequestHeader(name="Pinpoint-TraceID") String traceId,//通过mvc请求头注解中获取链路跟踪id
+												HttpServletRequest request){
+		Enumeration<String> names = request.getHeaderNames();
+		while(names.hasMoreElements()){//遍历所有的请求头，查看所有和链路跟踪id相关的head头部信息
+			String name = names.nextElement();
+			System.out.println(name+":"+request.getHeader(name));
+		}
+		String traceIdFromRequest = request.getHeader("Pinpoint-TraceID");//直接从request中获取Pinpoint-TraceID
+
+		return "Pinpoint-TraceID："+traceId;
+
+	}
+
 	
 }
