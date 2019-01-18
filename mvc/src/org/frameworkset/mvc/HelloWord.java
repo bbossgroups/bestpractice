@@ -15,15 +15,17 @@
  */
 package org.frameworkset.mvc;
 
-import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
 import org.frameworkset.util.annotations.MapKey;
 import org.frameworkset.util.annotations.RequestParam;
 import org.frameworkset.util.annotations.ResponseBody;
 import org.frameworkset.web.servlet.ModelMap;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -49,7 +51,8 @@ public class HelloWord
 	public String sayHelloNumber(@RequestParam(name = "name") int ynum,
 			ModelMap model)
 	{
-
+		HttpServlet servlet;
+		ServletConfig s;
 		if (ynum != 0)
 		{
 			model.addAttribute("serverHelloNumber", "幸运数字为[" + ynum + "]！");
