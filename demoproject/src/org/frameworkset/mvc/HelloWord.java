@@ -15,6 +15,7 @@
  */
 package org.frameworkset.mvc;
 
+import com.frameworkset.util.StringUtil;
 import org.frameworkset.util.annotations.MapKey;
 import org.frameworkset.util.annotations.RequestHeader;
 import org.frameworkset.util.annotations.RequestParam;
@@ -246,6 +247,33 @@ public class HelloWord
 
 		return "Pinpoint-TraceID："+traceId;
 
+	}
+	public @ResponseBody Map getData(){
+		String data = "{\n" +
+				"\t\"isSuccess\": true,\n" +
+				"\t\"errorCode\": \"\",\n" +
+				"\t\"errorMessage\": \"\",\n" +
+				"\t\"returnObject\": [{\n" +
+				"\t\t\"id\": 1001,\n" +
+				"\t\t\"code\": \"huodong\",\n" +
+				"\t\t\"title\": \"最新活动在这里哈\",\n" +
+				"\t\t\"startDate\": \"2017/08/08\",\n" +
+				"\t\t\"endDate\": \"2017/08/20\",\n" +
+				"\t\t\"icon\": \"http://images.cnblogs.com/cnblogs_com/xingxiangyi/1065437/o_timg.jpg\",\n" +
+				"\t\t\"viewer\": 301\n" +
+				"\t},\n" +
+				"\t{\n" +
+				"\t\t\"id\": 1002,\n" +
+				"\t\t\"code\": \"huodong\",\n" +
+				"\t\t\"title\": \"全民来瑜伽\",\n" +
+				"\t\t\"startDate\": \"2017/07/08\",\n" +
+				"\t\t\"endDate\": \"2017/07/20\",\n" +
+				"\t\t\"icon\": \"http://images.cnblogs.com/cnblogs_com/xingxiangyi/1065437/o_timg.jpg\",\n" +
+				"\t\t\"viewer\": 101\n" +
+				"\t}\n" +
+				"\t]\n" +
+				"}";
+		return StringUtil.json2Object(data,Map.class);
 	}
 
 	
