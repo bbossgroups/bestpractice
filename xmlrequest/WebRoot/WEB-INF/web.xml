@@ -25,6 +25,55 @@
 	</description>
 		<listener-class>org.frameworkset.web.listener.ApplicationLifeListener</listener-class>
 	</listener>
+	<filter>
+		<filter-name>HeaderFilter</filter-name>
+		<filter-class>com.frameworkset.common.filter.HeaderFilter</filter-class>
+		<!--是否启用跨站域名防火墙，为true，则启用，如果来源域名不在refererwallwhilelist中，则拒绝访问-->
+		<init-param>
+			<param-name>refererDefender</param-name>
+			<param-value>true</param-value>
+
+		</init-param>
+		<init-param>
+			<param-name>refererwallwhilelist</param-name>
+			<param-value>http://localhost:802/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Timing-Allow-Origin</param-name>
+			<param-value>*</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>cors.allowed.origins</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.methods</param-name>
+			<param-value>GET,POST,OPTIONS</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.allowed.headers</param-name>
+			<param-value>
+				Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.exposed.headers</param-name>
+			<param-value>Access-Control-Allow-Origin,Access-Control-Allow-Credentials</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.support.credentials</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.preflight.maxage</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>HeaderFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
 	 <filter>  
         <filter-name>encodingFilter</filter-name>  
         <filter-class>com.frameworkset.common.filter.CharsetEncodingFilter</filter-class>
