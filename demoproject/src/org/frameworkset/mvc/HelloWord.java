@@ -23,6 +23,7 @@ import org.frameworkset.util.annotations.ResponseBody;
 import org.frameworkset.web.servlet.ModelMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
@@ -48,7 +49,7 @@ import java.util.Map;
  */
 public class HelloWord
 {
-
+	private DataSource ds;
 	public String sayHelloNumber(@RequestParam(name = "name",defaultvalue = "0") int ynum,
 			ModelMap model) 
 	{
