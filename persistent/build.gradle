@@ -16,9 +16,9 @@ sourceSets {
  
 
 dependencies {
-	
+	compile 'org.elasticsearch.plugin:x-pack-sql-jdbc:6.6.2'
     compile(
-			[group: 'org.elasticsearch.plugin', name: 'jdbc', version: "6.3.2", transitive: true],
+			//[group: 'org.elasticsearch.plugin', name: 'jdbc', version: "6.3.2", transitive: true],
              [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${PROJ_BBOSS_VERSION}", transitive: true],
 
            //   [group: 'commons-logging', name: 'commons-logging', version: '1.1', transitive: false],
