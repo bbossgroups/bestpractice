@@ -17,6 +17,7 @@ package com.frameworkset.sqlexecutor;
 
 import com.frameworkset.common.poolman.SQLExecutor;
 import com.frameworkset.common.poolman.util.SQLUtil;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -25,7 +26,8 @@ import java.util.List;
 
 public class ESJdbcTest {
 
-	@Test
+	@Before
+	//启动数据源
 	public void initDBSource(){
 //		SQLUtil.startPool("es",//ES数据源名称 for 6.3.x
 //				"org.elasticsearch.xpack.sql.jdbc.jdbc.JdbcDriver",//ES jdbc驱动
@@ -62,7 +64,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testSelect() throws SQLException {
-		initDBSource();//启动数据源
 		//执行查询，将结果映射为HashMap集合
 		 List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE() as score,* FROM dbclobdemo ");
 		 System.out.println(data);
@@ -73,7 +74,6 @@ public class ESJdbcTest {
 
 	@Test
 	public void testQuery() throws SQLException {
-		initDBSource();//启动数据源
 		//执行查询，将结果映射为HashMap集合,全文检索查询
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,
 				"es","SELECT * FROM hawkeye-auth-service-web-api-index-2018-06-30 where match(url_group,'synchronize_info')");
@@ -90,7 +90,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testMatchQuery() throws SQLException {
-		initDBSource();
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT SCORE(), * FROM dbclobdemo WHERE match(content, '_ewebeditor_pa_src') ORDER BY documentId DESC");
 		System.out.println(data);
 
@@ -105,7 +104,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testGroupQuery() throws SQLException {
-		initDBSource();
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SELECT title.keyword,max(documentId) as max_id FROM dbclobdemo as mytable group by title.keyword limit 5");
 		System.out.println(data);
 
@@ -119,7 +117,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testShowTable() throws SQLException {
-		initDBSource();
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW tables");
 		System.out.println(data);
 	}
@@ -142,7 +139,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testDescTable() throws SQLException {
-		initDBSource();
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","DESC dbclobdemo");
 		System.out.println(data);
 		data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW COLUMNS IN dbclobdemo");
@@ -155,7 +151,6 @@ public class ESJdbcTest {
 	 */
 	@Test
 	public void testShowFunctin() throws SQLException {
-		initDBSource();
 		List<HashMap> data =	SQLExecutor.queryListWithDBName(HashMap.class,"es","SHOW FUNCTIONS");
 		System.out.println(data);
 		//同样支持通配符进行过滤：
