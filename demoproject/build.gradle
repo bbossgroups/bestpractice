@@ -14,7 +14,7 @@ webAppDirName = 'WebRoot'
 dependencies {
     compile (
 
-			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_version}", transitive: true],
+			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-data', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-core', version: "${bboss_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
