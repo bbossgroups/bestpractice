@@ -50,6 +50,7 @@ public class ESJdbcTest {
 //				false,
 //				null, true, false,10000,"es7","com.frameworkset.sqlexecutor.DBElasticsearch7"
 //		);
+		org.elasticsearch.xpack.sql.jdbc.EsDriver s;
 		SQLUtil.startPool("es",//ES数据源名称 for 6.4.x,+
 				"org.elasticsearch.xpack.sql.jdbc.EsDriver",//ES jdbc驱动
 				"jdbc:es://http://192.168.137.1:9200/timezone=UTC&page.size=250",//es链接串
