@@ -15,18 +15,23 @@
  */
 package org.frameworkset.mvc;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import com.frameworkset.common.poolman.SQLExecutor;
+import com.frameworkset.util.StringUtil;
+import org.frameworkset.spi.InitializingBean;
+import org.frameworkset.spi.remote.http.HttpRequestProxy;
+import org.frameworkset.util.annotations.RequestBody;
 import org.frameworkset.util.annotations.ResponseBody;
 import org.frameworkset.web.multipart.IgnoreFieldNameMultipartFile;
 import org.frameworkset.web.multipart.MultipartFile;
 import org.frameworkset.web.servlet.ModelMap;
 
-import com.frameworkset.util.StringUtil;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p> FileController.java</p>
@@ -38,7 +43,7 @@ import com.frameworkset.util.StringUtil;
  * @author biaoping.yin
  * @version 1.0
  */
-public class FileController {
+public class FileController implements InitializingBean {
 	
 	public static String getWorkFoldPath()
 	{
@@ -53,6 +58,7 @@ public class FileController {
 	
 	public String foldertree()
 	{
+
 		return "path:foldertree";
 	}
 	public String filelist(String uri,ModelMap model) throws Exception
@@ -160,6 +166,19 @@ public class FileController {
 		}
 		return "{\"err\":\"\",\"msg\":\"tst.png\"}";
 	}
+
+	public @ResponseBody List<Map> getUserInfo(String testp,String dff) throws SQLException {
+		System.out.println("testp:"+testp);
+		System.out.println("dff:"+dff);
+		return SQLExecutor.queryList(Map.class,"select * from td_sm_user where user_id = ?",1000);
+//		return SQLExecutor.queryList(Map.class,"select * from td_sm_user");
+	}
+
+	public @ResponseBody List<Map> jsonUserInfo(@RequestBody Map params) throws SQLException {
+		System.out.println("params:"+params);
+		return new ArrayList<>();
+//		return SQLExecutor.queryList(Map.class,"select * from td_sm_user");
+	}
 	
 	public static void main(String[] args)
 	{
@@ -172,4 +191,9 @@ public class FileController {
          String sFieldName = dispoString.substring(iFindStart, iFindEnd);
 	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		//加载配置文件，启动负载均衡器
+		HttpRequestProxy.startHttpPools("application.properties");
+	}
 }
