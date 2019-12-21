@@ -32,7 +32,7 @@ if(isIdea){
 
 dependencies {
     compile (
-            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
+            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka1x', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
 
     )
     runtime (

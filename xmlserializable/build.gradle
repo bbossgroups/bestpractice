@@ -22,6 +22,7 @@ dependencies {
             [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              [group: 'com.bbossgroups', name: 'bboss-soa', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-core-entity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-hibernate', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: false],
               [group: 'cglib', name: 'cglib-nodep', version: '3.1', transitive: false],
