@@ -17,6 +17,7 @@ package org.frameworkset.mvc;
 
 import com.frameworkset.common.poolman.SQLExecutor;
 import com.frameworkset.util.StringUtil;
+import org.frameworkset.log.LogBiz;
 import org.frameworkset.spi.InitializingBean;
 import org.frameworkset.spi.remote.http.HttpRequestProxy;
 import org.frameworkset.util.annotations.RequestBody;
@@ -28,10 +29,7 @@ import org.frameworkset.web.servlet.ModelMap;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * <p> FileController.java</p>
@@ -58,7 +56,28 @@ public class FileController implements InitializingBean {
 	
 	public String foldertree()
 	{
+		LogBiz logBiz = new LogBiz();
+		Map log = new HashMap();
+		log.put("modulename","demoproject");
+		log.put("servicename","filecontroller");
+		log.put("mainservice",true);
+		log.put("phonenumber","18175197562");
+		log.put("operid","76010");
+		log.put("starttime",System.currentTimeMillis());
+		log.put("costtime",10);
+		log.put("errlog","错误日志");
+		log.put("bizstatus","0");
+		log.put("subbizstatus","22");
+		log.put("bizstatusdesc","子状态描述");
+		log.put("endtime",System.currentTimeMillis());
+		log.put("ext","入参");
+		log.put("probetype","web");
+//		log.put("apmBizId","demoproject");
+//		log.put("apmBizSessionId","qwerqwerqer");
+		log.put("bizId","demoproject");
+		log.put("bizSessionId","qwerqwerqer");
 
+		logBiz.log(log);
 		return "path:foldertree";
 	}
 	public String filelist(String uri,ModelMap model) throws Exception

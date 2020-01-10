@@ -1,0 +1,208 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+package org.frameworkset.mvc;
+
+import com.frameworkset.common.poolman.SQLExecutor;
+import com.frameworkset.util.StringUtil;
+import com.navercorp.pinpoint.bootstrap.interceptor.AroundInterceptor;
+import com.navercorp.pinpoint.bootstrap.interceptor.Interceptor;
+import com.navercorp.pinpoint.bootstrap.interceptor.registry.InterceptorRegistry;
+import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.frameworkset.log.LogBiz;
+import org.frameworkset.spi.InitializingBean;
+import org.frameworkset.spi.remote.http.HttpRequestProxy;
+import org.frameworkset.util.annotations.RequestBody;
+import org.frameworkset.util.annotations.ResponseBody;
+import org.frameworkset.web.multipart.IgnoreFieldNameMultipartFile;
+import org.frameworkset.web.multipart.MultipartFile;
+import org.frameworkset.web.servlet.ModelMap;
+import org.frameworkset.web.servlet.support.WebApplicationContextUtils;
+
+public class FileController implements InitializingBean {
+    private String filedomain;
+    private String rootPath;
+
+    public FileController() {
+    }
+
+    public static String getWorkFoldPath() {
+        return WebApplicationContextUtils.getWebApplicationContext().getProperty("file.workfolder");
+    }
+
+    public String fileupload() {
+        return "path:fileupload";
+    }
+
+    public String foldertree() {
+        LogBiz logBiz = new LogBiz();
+        Map log = new HashMap();
+        log.put("modulename", "demoproject");
+        log.put("servicename", "filecontroller");
+        log.put("mainservice", true);
+        log.put("phonenumber", "18175197562");
+        log.put("operid", "76010");
+        log.put("starttime", System.currentTimeMillis());
+        log.put("costtime", 10);
+        log.put("errlog", "错误日志");
+        log.put("bizstatus", "0");
+        log.put("subbizstatus", "22");
+        log.put("bizstatusdesc", "子状态描述");
+        log.put("endtime", System.currentTimeMillis());
+        log.put("ext", "入参");
+        log.put("probetype", "web");
+        log.put("bizId", "demoproject");
+        log.put("bizSessionId", "qwerqwerqer");
+        logBiz.log(log);
+        return "path:foldertree";
+    }
+
+    public String filelist(String uri, ModelMap model) throws Exception {
+        Interceptor _$PINPOINT$_interceptor = InterceptorRegistry.getInterceptor(7);
+        Object _$PINPOINT$_result = null;
+        Throwable _$PINPOINT$_throwable = null;
+        Object[] _$PINPOINT$_args = new Object[]{uri, model};
+        ((AroundInterceptor)_$PINPOINT$_interceptor).before(this, _$PINPOINT$_args);
+
+        try {
+            if (uri == null) {
+                uri = "";
+            }
+
+            List files = this.getDirectoryResource(uri);
+            model.addAttribute("files", files);
+            _$PINPOINT$_result = "path:filelist";
+            _$PINPOINT$_throwable = null;
+            ((AroundInterceptor)_$PINPOINT$_interceptor).after(this, _$PINPOINT$_args, _$PINPOINT$_result, (Throwable)_$PINPOINT$_throwable);
+            return "path:filelist";
+        } catch (Throwable var8) {
+            _$PINPOINT$_result = null;
+            ((AroundInterceptor)_$PINPOINT$_interceptor).after(this, _$PINPOINT$_args, _$PINPOINT$_result, var8);
+            throw var8;
+        }
+    }
+
+    @ResponseBody
+    public String mkdir(String workfolder, String uri) {
+        File file = new File(this.rootPath, workfolder);
+        boolean s = false;
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+
+        File d = new File(file.getAbsolutePath(), uri);
+        if (!d.exists()) {
+            s = d.mkdirs();
+        }
+
+        return s ? "success" : "fail";
+    }
+
+    public List getDirectoryResource(String uri) throws Exception {
+        List fileResources = new ArrayList();
+        File[] subFiles = FileUtil.getSubFiles(this.rootPath, uri);
+
+        for(int i = 0; subFiles != null && i < subFiles.length; ++i) {
+            FileResource fr = new FileResource();
+            String theURI = "";
+            if (uri != null && uri.trim().length() != 0) {
+                uri = uri.replace('\\', '/');
+                if (!uri.endsWith("/")) {
+                    theURI = uri + "/";
+                } else {
+                    theURI = uri;
+                }
+
+                if (theURI.trim().equals("/")) {
+                    theURI = "";
+                }
+            }
+
+            fr.setUri(this.filedomain + theURI + subFiles[i].getName());
+            fr.setName(subFiles[i].getName());
+            fr.setSize(subFiles[i].length());
+            fr.setModifyTime(new Date(subFiles[i].lastModified()));
+            fileResources.add(fr);
+        }
+
+        return fileResources;
+    }
+
+    public String uptable() {
+        return "path:uptable";
+    }
+
+    @ResponseBody
+    public String uploadFiles(IgnoreFieldNameMultipartFile[] filedata, boolean overide, String workfolder) {
+        File file = new File(this.rootPath, workfolder);
+        StringBuffer msg = new StringBuffer();
+
+        for(int i = 0; filedata != null && i < filedata.length; ++i) {
+            MultipartFile file_ = filedata[i];
+            File f = new File(file.getAbsolutePath(), file_.getOriginalFilename());
+            if (!f.exists() || overide) {
+                try {
+                    file_.transferTo(f);
+                } catch (Exception var10) {
+                    msg.append(StringUtil.formatBRException(var10));
+                }
+            }
+        }
+
+        return msg.length() == 0 ? "success" : msg.toString();
+    }
+
+    @ResponseBody
+    public String upload(IgnoreFieldNameMultipartFile[] filedata, String testparam) throws IllegalStateException, IOException {
+        if (filedata != null) {
+            filedata[0].transferTo(new File("d:/tst.png"));
+        }
+
+        return "{\"err\":\"\",\"msg\":\"tst.png\"}";
+    }
+
+    @ResponseBody
+    public String uploadwithbean(FileBean filedata, String testparam) throws IllegalStateException, IOException {
+        if (filedata != null) {
+            filedata.getFile().transferTo(new File("d:/tst.png"));
+        }
+
+        return "{\"err\":\"\",\"msg\":\"tst.png\"}";
+    }
+
+    @ResponseBody
+    public List<Map> getUserInfo(String testp, String dff) throws SQLException {
+        System.out.println("testp:" + testp);
+        System.out.println("dff:" + dff);
+        return SQLExecutor.queryList(Map.class, "select * from td_sm_user where user_id = ?", new Object[]{1000});
+    }
+
+    @ResponseBody
+    public List<Map> jsonUserInfo(@RequestBody Map params) throws SQLException {
+        System.out.println("params:" + params);
+        return new ArrayList();
+    }
+
+    public static void main(String[] args) {
+        String dispoString = "attachment; name=\"filedata\"; filename=\"TempPlanDiagram.png\"";
+        int iFindStart = dispoString.indexOf(" filename=\"") + 11;
+        int iFindEnd = dispoString.indexOf("\"", iFindStart);
+        dispoString.substring(iFindStart, iFindEnd);
+        iFindStart = dispoString.indexOf(" name=\"") + 7;
+        iFindEnd = dispoString.indexOf("\"", iFindStart);
+        dispoString.substring(iFindStart, iFindEnd);
+    }
+
+    public void afterPropertiesSet() throws Exception {
+        HttpRequestProxy.startHttpPools("application.properties");
+    }
+}
