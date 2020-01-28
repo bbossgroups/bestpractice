@@ -53,7 +53,7 @@ public class ESJdbcTest {
 		org.elasticsearch.xpack.sql.jdbc.EsDriver s;
 		SQLUtil.startPool("es",//ES数据源名称 for 6.4.x,+
 				"org.elasticsearch.xpack.sql.jdbc.EsDriver",//ES jdbc驱动
-				"jdbc:es://http://192.168.137.1:9200/?timezone=UTC&page.size=250",//es链接串
+				"jdbc:es://http://192.168.137.1:9200?timezone=UTC&page.size=250",//es链接串
 				"elastic","changeme",//es x-pack账号和口令
 				"SELECT 1 AS result" //数据源连接校验sql
 		);

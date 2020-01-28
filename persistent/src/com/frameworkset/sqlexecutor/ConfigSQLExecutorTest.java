@@ -19,6 +19,7 @@ import com.frameworkset.common.poolman.ConfigSQLExecutor;
 import com.frameworkset.common.poolman.DBUtil;
 import com.frameworkset.common.poolman.SQLParams;
 import com.frameworkset.orm.transaction.TransactionManager;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ import java.util.Map;
 
 public class ConfigSQLExecutorTest {
 	private ConfigSQLExecutor executor ;
-//	@Before
+	@Before
 	public void init()
 	{
 		executor = new ConfigSQLExecutor("com/frameworkset/sqlexecutor/sqlfile.xml");
@@ -138,7 +139,7 @@ public class ConfigSQLExecutorTest {
 		 System.out.println(result.size());
 		 params = new SQLParams();
 		 params.addSQLParam("id", 0, SQLParams.INT);
-		 result = (List<ListBean>) executor.queryListBeanWithDBName(ListBean.class,"cim","dynamicsqltemplateid", params);
+		 result = (List<ListBean>) executor.queryListBeanWithDBName(ListBean.class,"bspf","dynamicsqltemplateid", params);
 //		 result = (List<ListBean>) SQLExecutor.queryListBeanWithDBName(ListBean.class,"dbname","sql", params);
 		 System.out.println(result.size());
 		 
