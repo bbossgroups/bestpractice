@@ -1,0 +1,133 @@
+def profile = System.getProperty("profile") ?: "dev"
+println(profile)
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            
+        }
+        resources{
+            //srcDir 'resources'
+        	
+        	
+        }
+    }
+	main {
+		java {
+			srcDir 'src'
+
+		}
+		if(profile == "dev") {
+			resources {
+				srcDir 'resources'
+				srcDir 'src' exclude '**/*.java'
+			}
+		}
+		else{
+			resources {
+				srcDir 'resources' exclude '**/*'
+				srcDir 'src' exclude '**/*.java'
+			}
+		}
+
+
+//			compileClasspath = configurations.compile + configurations.runtime
+	}
+    test {
+        java {
+            srcDir 'test'
+        }
+
+    }
+    
+}
+/**
+if(isIdea){
+    task copyTestResources(type: Copy) {
+        //from "${projectDir}/resources"
+        from sourceSets.test.resources
+        into "${buildDir}/classes/"
+    }
+    processTestResources.dependsOn copyTestResources
+}*/
+
+dependencies {
+    compile (
+            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka2x', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
+
+    )
+	compile (
+			[group: 'org.apache.kafka', name: 'kafka_2.12', version: "${kafka2x}", transitive: true],
+	){
+		exclude group: 'log4j', module: 'log4j'
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+
+	compile ([group: 'org.apache.kafka', name: 'kafka-tools', version: "${kafka2x}", transitive: true],){
+		exclude group: 'log4j', module: 'log4j'
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+
+	compile ([group: 'org.apache.kafka', name: 'kafka-clients', version: "${kafka2x}", transitive: true],){
+		exclude group: 'log4j', module: 'log4j'
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+
+	compile ([group: 'org.apache.kafka', name: 'kafka-streams', version: "${kafka2x}", transitive: true],){
+		exclude group: 'log4j', module: 'log4j'
+		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+	}
+
+	compile (
+			[group: 'com.bbossgroups', name: 'bboss-rt', version: "${bboss_version}", transitive: false],
+	)
+
+     
+}
+
+
+task copyJarFiles(type: Sync,dependsOn:'jar'){
+	from configurations.compile
+	from jar.outputs
+	exclude { details -> details.file.name.startsWith('bboss-rt')  }
+	into 'build/dist/lib'
+
+}
+
+task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
+
+	from configurations.compile
+	include { details -> details.file.name.startsWith('bboss-rt')  }
+	into 'build/dist'
+	rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
+}
+task copyToolFiles(type: Copy ,dependsOn:'copyRTJarFiles')  {
+
+	from ('runfiles')
+			{
+				expand(
+						bboss_version:"${bboss_version}",
+						project:"${project.name}"
+				)
+
+			}
+	filteringCharset = 'UTF-8'
+	into 'build/dist/'
+
+
+
+}
+task copyResourcesfiles(type: Sync )  {
+	from fileTree(dir: 'src/main/resources')
+	filteringCharset = 'UTF-8'
+	into 'build/dist/resources'
+}
+
+task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyResourcesfiles']) {
+
+	//appendix = 'wrapper'
+	classifier = 'released'
+	from 'build/dist/'
+
+}
+
