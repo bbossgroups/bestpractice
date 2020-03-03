@@ -40,8 +40,8 @@ public class LoginNameQuery {
 	@HandlerMapping(value="/examples/namequery/{loginname}.page")
 	public @ResponseBody(charset="UTF-8") 
 		String loginnamequery(@PathVariable(value="loginname",decodeCharset="UTF-8") String loginname)
-	{			
-		if(loginname == null || loginname.trim().equals(""))			
+	{
+		if(loginname == null || loginname.trim().equals(""))
 			return "查询中的用户名为空，请重新输入用户名";
 		if(loginname.equals("多多"))
 		{
