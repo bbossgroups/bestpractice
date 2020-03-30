@@ -1,0 +1,75 @@
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+       resources
+       {
+            srcDirs 'resources'
+		   srcDirs 'src'  exclude '**/*.java'
+
+        }
+
+    }
+
+    test {
+        java {
+            srcDirs 'test'
+        }
+
+    }
+   
+    
+}
+
+ 
+
+dependencies {
+    compile(
+            [group: 'mysql', name: 'mysql-connector-java', version: '5.1.39', transitive: false],
+//            [group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2', transitive: true],
+//            [group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2', transitive: true],
+//            [group: 'org.apache.logging.log4j', name: 'log4j-api', version: "2.8.2", transitive: true],
+    )
+
+    compile(
+            //[group: 'org.elasticsearch.plugin', name: 'jdbc', version: "6.3.2", transitive: true],
+            [group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: "${PROJ_BBOSS_VERSION}", transitive: true],
+
+    )
+//            {
+//
+//        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+//    }
+    testCompile(
+            [group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.5.RELEASE', transitive: true],
+
+    )
+            {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    testCompile(
+             [group: 'net.bytebuddy', name: 'byte-buddy', version: '1.7.11', transitive: true],
+            [group: 'net.bytebuddy', name: 'byte-buddy-agent', version: '1.7.11', transitive: true]
+
+    )
+    compile(
+
+            [group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '2.2.5.RELEASE', transitive: true],
+
+    ){
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+            }
+
+    compile(
+
+            [group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.2.5.RELEASE', transitive: true]
+
+    ){
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+
+
+
+}
+
