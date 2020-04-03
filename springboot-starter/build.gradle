@@ -25,6 +25,9 @@ sourceSets {
  
 
 dependencies {
+    //mysql 8.0依赖
+    //compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    //mysql 5.x依赖
     compile(
             [group: 'mysql', name: 'mysql-connector-java', version: '5.1.39', transitive: false],
 //            [group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2', transitive: true],
@@ -68,6 +71,17 @@ dependencies {
     ){
         exclude group: 'ch.qos.logback', module: 'logback-classic'
     }
+
+    compile(
+            [group: 'com.bbossgroups.plugins', name: 'bboss-elasticsearch-rest-jdbc', version: "${bboss_es_version}", transitive: true],
+            [group: 'com.bbossgroups', name: 'bboss-schedule', version: "${bboss_version}", transitive: true],
+    )
+//		compile 'org.apache-extras.beanshell:bsh:2.0b6'
+    compile 'org.xerial:sqlite-jdbc:3.30.1'
+
+    compile (
+            [group: 'com.bbossgroups', name: 'bboss-rt', version: "${bboss_version}", transitive: false],
+    )
 
 
 

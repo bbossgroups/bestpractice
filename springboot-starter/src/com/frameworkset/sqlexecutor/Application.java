@@ -11,19 +11,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 
-@SpringBootApplication
 //改变自动扫描的包
 //@ComponentScan(basePackages = {"org.bboss.elasticsearchtest.springboot",
 //        "org.frameworkset.elasticsearch.boot"})
-
+@SpringBootApplication(scanBasePackages = "com.frameworkset.sqlexecutor")
 public class Application {
 
     private Logger logger = LoggerFactory.getLogger(Application.class);
     public Application(){
         System.out.println("aa");
+//        db2DBdemo.scheduleImportData();
     }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+
     }
 
 

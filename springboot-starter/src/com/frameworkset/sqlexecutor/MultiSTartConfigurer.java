@@ -30,16 +30,17 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 public class MultiSTartConfigurer {
 	@Primary
-	@Bean(initMethod = "start")
+	@Bean(name="bbossStarterDefault",initMethod = "start")
 	@ConfigurationProperties("spring.bboss.default")
+
 	public BBossStarter bbossStarterDefault(){
 		return new BBossStarter();
 
 	}
 
-	@Bean(initMethod = "start")
+	@Bean(name="bbossStarterSecond",initMethod = "start")
 	@ConfigurationProperties("spring.bboss.second")
-	public BBossStarter bbossESStarterSecond(){
+	public BBossStarter bbossStarterSecond(){
 		return new BBossStarter();
 	}
 }

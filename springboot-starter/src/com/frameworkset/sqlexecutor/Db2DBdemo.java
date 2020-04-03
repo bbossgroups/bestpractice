@@ -1,21 +1,21 @@
-/*
- * Copyright 1999-2018 Alibaba Group Holding Ltd.
- *
+package com.frameworkset.sqlexecutor;
+/**
+ * Copyright 2008 biaoping.yin
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.frameworkset.sqlexecutor;
 
-
+import org.frameworkset.spi.boot.BBossStarter;
 import org.frameworkset.tran.DataRefactor;
 import org.frameworkset.tran.DataStream;
 import org.frameworkset.tran.ExportResultHandler;
@@ -23,69 +23,47 @@ import org.frameworkset.tran.context.Context;
 import org.frameworkset.tran.db.input.db.DB2DBExportBuilder;
 import org.frameworkset.tran.metrics.TaskMetrics;
 import org.frameworkset.tran.task.TaskCommand;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * testCase必须和spring boot application启动类在同一个包路径下面，否则会报错：
- * java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @Context
- * 多集群演示功能测试用例，spring boot配置项以spring.bboss.集群名称开头，例如：
- * spring.bboss.db.firstds
- * spring.bboss.db.secondds
- *  spring.bboss.http.default
- *  spring.bboss.http.second
- * 两个集群通过  com.frameworkset.sqlexecutor.MultiSTartConfigurer
- * 对应的配置文件为application-multi.properties文件
- * @author yinbp [122054810@qq.com]
+ * <p>Description: 同步处理程序，如需调试同步功能，
+ * 请运行测试用例DbdemoTest中调试</p>
+ * <p></p>
+ * <p>Copyright (c) 2018</p>
+ * @Date 2018/9/27 20:38
+ * @author biaoping.yin
+ * @version 1.0
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@Service
+public class Db2DBdemo implements InitializingBean {
+	@Autowired
+	private BBossStarter bbossStarterDefault;
+	@Autowired
+	@Qualifier("bbossStarterSecond")
+	private BBossStarter bbossStarterSecond;
+	private static Logger logger = LoggerFactory.getLogger(Db2DBdemo.class);
+	public static void main(String args[]){
+		Db2DBdemo dbdemo = new Db2DBdemo();
+//		dbdemo.fullImportData(  dropIndice);
+//		dbdemo.scheduleImportData(dropIndice);
+		dbdemo.scheduleImportData();
+//		dbdemo.scheduleImportData(dropIndice);
+	}
+	public Db2DBdemo(){
+		System.out.println();
+	}
 
-@ActiveProfiles("multi")
-public class MultiBBossStartersTestCase {
-//	@Autowired
-//	private BBossStarter bbossStarterDefault;
-	private static Logger logger = LoggerFactory.getLogger(MultiBBossStartersTestCase.class);
-//    @Test
-//    public void testMultiBBossESStarterDefault() throws Exception {
-//		Map params = new HashMap();
-//		params.put("testp","aaaaa");
-//		params.put("dff","zzzz");
-//		List<Map> datas = HttpRequestProxy.httpPostForList("default","/demoproject/file/getUserInfo.page",params,Map.class);
-//		logger.info(SimpleStringUtil.object2json(datas));
-//    }
-//
-//	@Test
-//	public void testMultiBBossESStarterSecond() throws Exception {
-//		Map params = new HashMap();
-//		params.put("testp","aaaaa");
-//		params.put("dff","zzzz");
-//		List<Map> datas = HttpRequestProxy.sendJsonBodyForList("second",params,"/demoproject/file/getUserInfo.page",Map.class);
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
-//
-//	@Test
-//	public void testFirstQuery() throws Exception {
-//
-//		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"firstds","select * from user");
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
-//
-//	@Test
-//	public void testSecondQuery() throws Exception {
-//
-//		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"secondds","select * from user");
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
-	@Test
+	/**
+	 * elasticsearch地址和数据库地址都从外部配置文件application.properties中获取，加载数据源配置和es配置
+	 */
 	public void scheduleImportData(){
 		DB2DBExportBuilder importBuilder = DB2DBExportBuilder.newInstance();
 
@@ -307,5 +285,10 @@ public class MultiBBossStartersTestCase {
 		}
 
 
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+//		scheduleImportData();
 	}
 }
