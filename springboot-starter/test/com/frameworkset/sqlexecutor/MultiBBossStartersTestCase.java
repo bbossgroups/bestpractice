@@ -16,6 +16,9 @@
 package com.frameworkset.sqlexecutor;
 
 
+import com.frameworkset.common.poolman.SQLExecutor;
+import com.frameworkset.util.SimpleStringUtil;
+import org.frameworkset.spi.remote.http.HttpRequestProxy;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,6 +27,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * testCase必须和spring boot application启动类在同一个包路径下面，否则会报错：
@@ -45,37 +52,37 @@ public class MultiBBossStartersTestCase {
 	@Autowired
 	private Db2DBdemo db2DBdemo;
 	private static Logger logger = LoggerFactory.getLogger(MultiBBossStartersTestCase.class);
-//    @Test
-//    public void testMultiBBossESStarterDefault() throws Exception {
-//		Map params = new HashMap();
-//		params.put("testp","aaaaa");
-//		params.put("dff","zzzz");
-//		List<Map> datas = HttpRequestProxy.httpPostForList("default","/demoproject/file/getUserInfo.page",params,Map.class);
-//		logger.info(SimpleStringUtil.object2json(datas));
-//    }
-//
-//	@Test
-//	public void testMultiBBossESStarterSecond() throws Exception {
-//		Map params = new HashMap();
-//		params.put("testp","aaaaa");
-//		params.put("dff","zzzz");
-//		List<Map> datas = HttpRequestProxy.sendJsonBodyForList("second",params,"/demoproject/file/getUserInfo.page",Map.class);
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
-//
-//	@Test
-//	public void testFirstQuery() throws Exception {
-//
-//		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"firstds","select * from user");
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
-//
-//	@Test
-//	public void testSecondQuery() throws Exception {
-//
-//		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"secondds","select * from user");
-//		logger.info(SimpleStringUtil.object2json(datas));
-//	}
+    @Test
+    public void testMultiBBossESStarterDefault() throws Exception {
+		Map params = new HashMap();
+		params.put("testp","aaaaa");
+		params.put("dff","zzzz");
+		List<Map> datas = HttpRequestProxy.httpPostForList("default","/demoproject/file/getUserInfo.page",params,Map.class);
+		logger.info(SimpleStringUtil.object2json(datas));
+    }
+
+	@Test
+	public void testMultiBBossESStarterSecond() throws Exception {
+		Map params = new HashMap();
+		params.put("testp","aaaaa");
+		params.put("dff","zzzz");
+		List<Map> datas = HttpRequestProxy.sendJsonBodyForList("second",params,"/demoproject/file/getUserInfo.page",Map.class);
+		logger.info(SimpleStringUtil.object2json(datas));
+	}
+
+	@Test
+	public void testFirstQuery() throws Exception {
+
+		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"firstds","select * from user");
+		logger.info(SimpleStringUtil.object2json(datas));
+	}
+
+	@Test
+	public void testSecondQuery() throws Exception {
+
+		List<Map> datas = SQLExecutor.queryListWithDBName(Map.class,"secondds","select * from user");
+		logger.info(SimpleStringUtil.object2json(datas));
+	}
 	@Test
 	public void scheduleImportData(){
 		db2DBdemo.scheduleImportData();
