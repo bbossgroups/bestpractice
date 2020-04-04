@@ -17,6 +17,7 @@ package org.frameworkset.mvc;
 
 import com.frameworkset.common.poolman.SQLExecutor;
 import com.frameworkset.util.StringUtil;
+import org.frameworkset.http.FileBlob;
 import org.frameworkset.log.LogBiz;
 import org.frameworkset.spi.InitializingBean;
 import org.frameworkset.spi.remote.http.HttpRequestProxy;
@@ -27,6 +28,7 @@ import org.frameworkset.web.multipart.MultipartFile;
 import org.frameworkset.web.servlet.ModelMap;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
@@ -42,7 +44,7 @@ import java.util.*;
  * @version 1.0
  */
 public class FileController implements InitializingBean {
-	
+
 	public static String getWorkFoldPath()
 	{
 		return org.frameworkset.web.servlet.support.WebApplicationContextUtils.getWebApplicationContext().getProperty("file.workfolder");
@@ -189,25 +191,41 @@ public class FileController implements InitializingBean {
 	public @ResponseBody List<Map> getUserInfo(String testp,String dff) throws SQLException {
 		System.out.println("testp:"+testp);
 		System.out.println("dff:"+dff);
-		return SQLExecutor.queryList(Map.class,"select * from td_sm_user where user_id = ?",1000);
+		return SQLExecutor.queryList(Map.class,"select * from user");
+//		return SQLExecutor.queryList(Map.class,"select * from td_sm_user where user_id = ?",1000);
 //		return SQLExecutor.queryList(Map.class,"select * from td_sm_user");
 	}
 
 	public @ResponseBody List<Map> jsonUserInfo(@RequestBody Map params) throws SQLException {
 		System.out.println("params:"+params);
-		return new ArrayList<>();
+//		return new ArrayList<>();
+		return SQLExecutor.queryList(Map.class,"select * from user");
 //		return SQLExecutor.queryList(Map.class,"select * from td_sm_user");
 	}
+
+	public @ResponseBody
+	FileBlob downFile() throws FileNotFoundException {
+		FileBlob fb = new FileBlob ("pinpoint-agent-1.8.1-SNAPSHOT.zip",
+				new java.io.FileInputStream(new File("D:/environments/blackcat/pinpoint-agent-1.8.1-SNAPSHOT.zip")));//下载文件流
+		return fb;
+	}
+
+	public @ResponseBody
+	FileBlob collectrules() throws FileNotFoundException {
+		FileBlob fb = new FileBlob ("可视化运维数据采集规范.docx",
+				new java.io.FileInputStream(new File("D:/environments/blackcat/可视化运维数据采集规范.docx")));//下载文件流
+		return fb;
+	}
 	
-	public static void main(String[] args)
-	{
-		String dispoString = "attachment; name=\"filedata\"; filename=\"TempPlanDiagram.png\"";
-		 int iFindStart = dispoString.indexOf(" filename=\"") + 11;  
-         int iFindEnd = dispoString.indexOf("\"", iFindStart);  
-         String sFileName = dispoString.substring(iFindStart, iFindEnd);
-         iFindStart = dispoString.indexOf(" name=\"") + 7;  
-         iFindEnd = dispoString.indexOf("\"", iFindStart);  
-         String sFieldName = dispoString.substring(iFindStart, iFindEnd);
+	public static void main(String[] args) throws SQLException {
+//		String dispoString = "attachment; name=\"filedata\"; filename=\"TempPlanDiagram.png\"";
+//		 int iFindStart = dispoString.indexOf(" filename=\"") + 11;
+//         int iFindEnd = dispoString.indexOf("\"", iFindStart);
+//         String sFileName = dispoString.substring(iFindStart, iFindEnd);
+//         iFindStart = dispoString.indexOf(" name=\"") + 7;
+//         iFindEnd = dispoString.indexOf("\"", iFindStart);
+//         String sFieldName = dispoString.substring(iFindStart, iFindEnd);
+		List<Map> datas = SQLExecutor.queryList(Map.class,"select * from user");
 	}
 
 	@Override

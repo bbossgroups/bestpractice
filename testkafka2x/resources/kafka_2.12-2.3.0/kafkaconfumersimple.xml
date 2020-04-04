@@ -67,7 +67,7 @@
 	<property name="kafkabatchconsumerstore"
 			  class="org.frameworkset.plugin.kafka.TestKafkaBatchConsumer2ndStore" init-method="init"
 			  f:consumerPropes="attr:consumerPropes"
-			  f:topic="xinkonglog"
+			  f:topic="blackcatstore"
 			  f:threads="2"
 			  f:pollTimeout="5000"
 			  f:maxPollRecords="1000"
