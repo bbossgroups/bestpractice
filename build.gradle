@@ -68,9 +68,9 @@ configure(allprojects) { project ->
 		maven {
 			url "http://10.13.4.242:8888/nexus/content/groups/public/"
 		}
-		maven {
-			url "https://artifacts.elastic.co/maven"
-		}
+//		maven {
+//			url "https://artifacts.elastic.co/maven"
+//		}
 		mavenCentral()
 
 		

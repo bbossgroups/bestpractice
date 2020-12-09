@@ -44,7 +44,7 @@ dependencies {
     )
     compileOnly (
     		 
-    		[group: 'junit', name: 'junit', version: '4.12', transitive: false],
+    		[group: 'junit', name: 'junit', version: '4.13.1', transitive: false],
              
     )  
 } 
