@@ -15,7 +15,7 @@ sourceSets {
 
 dependencies {
    
-    compile  (
+    api  (
 			 [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-soa', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
@@ -64,8 +64,8 @@ dependencies {
             [group: 'xml-resolver', name: 'xml-resolver', version: '1.2', transitive: false],
             [group: 'org.apache.ws.xmlschema', name: 'xmlschema-core', version: '2.2.1', transitive: false],
             
-    )    
-     compile ( 
+    )
+	api (
          fileTree(dir: '../lib/cxf', include: '**/*.jar'),
     	)  
 }

@@ -52,33 +52,33 @@ if(isIdea){
 }*/
 
 dependencies {
-    compile (
+	api (
             [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka2x', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
 
     )
-	compile (
+	api (
 			[group: 'org.apache.kafka', name: 'kafka_2.12', version: "${kafka2x}", transitive: true],
 	){
 		exclude group: 'log4j', module: 'log4j'
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 
-	compile ([group: 'org.apache.kafka', name: 'kafka-tools', version: "${kafka2x}", transitive: true],){
+	api ([group: 'org.apache.kafka', name: 'kafka-tools', version: "${kafka2x}", transitive: true],){
 		exclude group: 'log4j', module: 'log4j'
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 
-	compile ([group: 'org.apache.kafka', name: 'kafka-clients', version: "${kafka2x}", transitive: true],){
+	api ([group: 'org.apache.kafka', name: 'kafka-clients', version: "${kafka2x}", transitive: true],){
 		exclude group: 'log4j', module: 'log4j'
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 
-	compile ([group: 'org.apache.kafka', name: 'kafka-streams', version: "${kafka2x}", transitive: true],){
+	api ([group: 'org.apache.kafka', name: 'kafka-streams', version: "${kafka2x}", transitive: true],){
 		exclude group: 'log4j', module: 'log4j'
 		exclude group: 'org.slf4j', module: 'slf4j-log4j12'
 	}
 
-	compile (
+	api (
 			[group: 'com.bbossgroups', name: 'bboss-rt', version: "${bboss_version}", transitive: false],
 	)
 
@@ -87,7 +87,10 @@ dependencies {
 
 
 task copyJarFiles(type: Sync,dependsOn:'jar'){
-	from configurations.compile
+	from configurations.api{
+		canBeResolved=true
+
+	}
 	from jar.outputs
 	exclude { details -> details.file.name.startsWith('bboss-rt')  }
 	into 'build/dist/lib'
@@ -96,7 +99,10 @@ task copyJarFiles(type: Sync,dependsOn:'jar'){
 
 task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
 
-	from configurations.compile
+	from configurations.api{
+		canBeResolved=true
+
+	}
 	include { details -> details.file.name.startsWith('bboss-rt')  }
 	into 'build/dist'
 	rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")

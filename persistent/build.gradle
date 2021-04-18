@@ -18,8 +18,8 @@ sourceSets {
  
 
 dependencies {
-	compile 'org.elasticsearch.plugin:x-pack-sql-jdbc:7.10.0'
-    compile(
+	api 'org.elasticsearch.plugin:x-pack-sql-jdbc:7.10.0'
+	api(
 			//[group: 'org.elasticsearch.plugin', name: 'jdbc', version: "6.3.2", transitive: true],
              [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${PROJ_BBOSS_VERSION}", transitive: true],
 
@@ -31,8 +31,8 @@ dependencies {
 			[group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: "${jacksonversion}",transitive: false],
 
     )
-    
-    testCompile(
+
+	testImplementation(
      		      [group: 'mysql', name: 'mysql-connector-java', version: '5.1.39', transitive: false],
 			[group: 'org.apache.derby', name: 'derby', version: '10.9.1.0', transitive: false],
 			[group: 'org.apache.derby', name: 'derbyclient', version: '10.12.1.1', transitive: false],

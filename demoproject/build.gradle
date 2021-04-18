@@ -12,7 +12,7 @@ sourceSets {
 
 webAppDirName = 'WebRoot'  
 dependencies {
-    compile (
+	api (
 			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-data', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
@@ -75,8 +75,8 @@ dependencies {
 
 			[group: 'org.jgroups', name: 'jgroups', version: '3.6.1.Final', transitive: false]
     )
-
-     compile ( 
+	api 'com.ai.visualops:metrics-apmagent:1.0.1'
+	api (
          fileTree(dir: '../lib/cxf', include: '**/*.jar'),
     	)
 	 

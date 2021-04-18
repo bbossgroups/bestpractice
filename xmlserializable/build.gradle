@@ -16,8 +16,8 @@ sourceSets {
  
 
 dependencies {
-	
-    compile(
+
+    api(
     				
             [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              [group: 'com.bbossgroups', name: 'bboss-soa', version: "${PROJ_BBOSS_VERSION}", transitive: false],

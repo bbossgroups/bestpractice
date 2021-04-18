@@ -22,7 +22,7 @@ sourceSets {
 }
 
 dependencies {
-    compile (
+	api (
            	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25', transitive: true],
 
 
@@ -37,7 +37,7 @@ dependencies {
                 
                
     )
-    runtime (
+    runtimeOnly (
              [group: 'com.bbossgroups', name: 'bboss-rt', version: "${PROJ_BBOSS_VERSION}", transitive: false],
              
                
@@ -49,7 +49,10 @@ task copyJarFiles(type: Sync,dependsOn:'jar'){
 
 
 
-	 from configurations.compile
+	 from configurations.api{
+		 canBeResolved=true
+
+	 }
 	 from jar.outputs
 	 exclude { details -> details.file.name.startsWith('bboss-rt')  }
 	 into 'build/dist/lib'
@@ -57,7 +60,13 @@ task copyJarFiles(type: Sync,dependsOn:'jar'){
 }
 
 task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
-	 from configurations.runtime - configurations.compile
+	 from configurations.runtimeOnly{
+		 canBeResolved=true
+
+	 } - configurations.api{
+		 canBeResolved=true
+
+	 }
 	 into 'build/dist'
      rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
 }
