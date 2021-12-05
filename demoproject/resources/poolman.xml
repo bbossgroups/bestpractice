@@ -5,7 +5,7 @@
 		<loadmetadata>false</loadmetadata>
 		<enablejta>true</enablejta>
 		<jndiName>dbcp_datasource_jndiname</jndiName>
-		<datasourceFile>dbcp.xml</datasourceFile>
+		<datasourceFile>dbcp117.xml</datasourceFile>
 		<autoprimarykey>false</autoprimarykey>
 		<showsql>false</showsql>
 		<keygenerate>composite</keygenerate>
