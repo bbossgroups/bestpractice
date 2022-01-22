@@ -29,7 +29,7 @@ dependencies {
     //compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
     //mysql 5.x依赖
     api(
-            [group: 'mysql', name: 'mysql-connector-java', version: '5.1.39', transitive: false],
+            [group: 'mysql', name: 'mysql-connector-java', version: '8.0.28', transitive: false],
 //            [group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2', transitive: true],
 //            [group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2', transitive: true],
 //            [group: 'org.apache.logging.log4j', name: 'log4j-api', version: "2.8.2", transitive: true],
