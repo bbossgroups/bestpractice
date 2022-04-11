@@ -14,7 +14,7 @@ webAppDirName = 'WebRoot'
 dependencies {
 	api (
 			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
-            [group: 'com.bbossgroups', name: 'bboss-data', version: "${bboss_version}", transitive: false],
+            [group: 'com.bbossgroups', name: 'bboss-data', version: "${PROJ_BBOSS_DATA_VERSION}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-event', version: "${bboss_version}", transitive: false],
             [group: 'com.bbossgroups.rpc', name: 'bboss-rpc', version: "${bbossrpc_version}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${bboss_version}", transitive: true],
