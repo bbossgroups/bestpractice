@@ -37,7 +37,7 @@ dependencies {
 
     api(
             //[group: 'org.elasticsearch.plugin', name: 'jdbc', version: "6.3.2", transitive: true],
-            [group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: "${bboss-spring-boot-starter}", transitive: true],
+            [group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: "${bboss_spring_boot_starter}", transitive: true],
 
     )
 //            {
