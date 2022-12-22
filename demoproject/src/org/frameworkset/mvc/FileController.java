@@ -17,6 +17,7 @@ package org.frameworkset.mvc;
 
 import com.frameworkset.common.poolman.SQLExecutor;
 import com.frameworkset.util.StringUtil;
+import org.apache.log4j.MDC;
 import org.frameworkset.http.FileBlob;
 import org.frameworkset.log.LogBiz;
 import org.frameworkset.spi.InitializingBean;
@@ -59,6 +60,8 @@ public class FileController implements InitializingBean {
 	public String foldertree()
 	{
 		LogBiz logBiz = new LogBiz();
+		String traceId = (String) MDC.get("APMTrace");
+//		String traceid = com.ai.visualops.apm.APMBizLog.getTraceId();
 		Map log = new HashMap();
 		log.put("modulename","demoproject");
 		log.put("servicename","filecontroller");

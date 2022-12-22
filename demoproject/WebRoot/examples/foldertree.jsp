@@ -1,14 +1,15 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="static org.frameworkset.spi.remote.http.HttpRequestProxy.*" %>
 <%
+
 /**
  * 简单的测试树
  */
  %>
 
  <%     
-	response.setHeader("Cache-Control", "no-cache"); 
-	response.setHeader("Pragma", "no-cache"); 
-	response.setDateHeader("Expires", -1);  
-	response.setDateHeader("max-age", 0); 
+
 	 String rootPath = org.frameworkset.mvc.FileController.getWorkFoldPath();
 %>
 <%@ taglib uri="/WEB-INF/treetag.tld" prefix="tree" %>
@@ -28,10 +29,7 @@ String id = treetype+"root";
 	background-color: #191970
 }
 </style>
-	<!--  
-	引入样式文件
-	-->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/include/treeview.css">
+
 	</head>
 	<body class="contentbodymargin" scroll="no">
 		<div id="contentborder">
@@ -84,5 +82,6 @@ String id = treetype+"root";
 		         </td></tr>
 		    </table>
 		</div>
+
 	</body>
 </html>

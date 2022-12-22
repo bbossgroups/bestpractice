@@ -18,13 +18,19 @@
         <!--是否启用跨站域名防火墙，为true，则启用，如果来源域名不在refererwallwhilelist中，则拒绝访问-->
         <init-param>
             <param-name>refererDefender</param-name>
-            <param-value>true</param-value>
+            <param-value>false</param-value>
 
         </init-param>
         <init-param>
             <param-name>refererwallwhilelist</param-name>
             <param-value>*.sany.com.cn,http://localhost:8080/</param-value>
         </init-param>
+        <init-param>
+            <param-name>enableCrossFirewall</param-name>
+            <param-value>false</param-value>
+
+        </init-param>
+
         <init-param>
             <param-name>Timing-Allow-Origin</param-name>
             <param-value>*</param-value>

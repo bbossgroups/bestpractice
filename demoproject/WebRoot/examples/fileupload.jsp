@@ -1,14 +1,32 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="static org.frameworkset.spi.remote.http.HttpRequestProxy.*" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="/WEB-INF/pager-taglib.tld" prefix="pg"%>
 <%@ taglib uri="/WEB-INF/treetag.tld" prefix="tree" %>
 <%
 String rootPath = org.frameworkset.mvc.FileController.getWorkFoldPath();
+	String testException = request.getParameter("e");
+	if(testException != null){
+		throw new NullPointerException("ee");
+	}
+	else{
+		Map params = new HashMap();
+		params.put("testp","aaaaa");
+		params.put("dff","zzzz");
+		List<Map> datas = httpPostForList("/demoproject/file/getUserInfo.page",params, Map.class);
+		System.out.println("getUserInfo :"+datas);
+		List<Map> postdatas = sendJsonBodyForList( params, "/demoproject/file/jsonUserInfo.page",Map.class);
+		System.out.println("jsonUserInfo:"+postdatas);
+	}
 %>
 <!-- 
 	bboss-mvc框架实现文件上传功能
 -->
 <html>
 <head>
+
 <title>资源上传</title>
 <link rel="stylesheet"
 			href="${pageContext.request.contextPath}/css/classic/tables.css"
@@ -27,6 +45,7 @@ String rootPath = org.frameworkset.mvc.FileController.getWorkFoldPath();
 			type="text/css">
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/include/treeview.css">
 	<pg:config enablecontextmenu="false" enabletree="false" />
+
 	<script src='../include/mutifile/jquery.MultiFile.js' type="text/javascript"></script>
   <script type="text/javascript">
   var workfolder = "";
@@ -147,6 +166,8 @@ String rootPath = org.frameworkset.mvc.FileController.getWorkFoldPath();
 			</script>
 			
 		</span>
-	
+
+
 </body>
+
 </html>
