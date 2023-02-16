@@ -12,7 +12,7 @@
 			  f:filedomain="attr:file.domain"
 			  class="org.frameworkset.mvc.FileController">
 	</property>
-	<property name="file.domain" value="http://www.asiainfo.com.cn/"/>
+	<property name="file.domain" value="http://www.bbossgroup.com/"/>
 	<!--<property name="file.workfolder" value="/data/bpit/www"/>-->
 	<property name="file.workfolder" value="d:/upload"/>
 </properties>
