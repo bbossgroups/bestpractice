@@ -1,6 +1,7 @@
 package org.frameworkset.plugin.kafka;
 
 import com.frameworkset.util.SimpleStringUtil;
+import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.RecordMetadata;
 
 import java.util.*;
@@ -56,6 +57,7 @@ public class TestKafka {
 		recordMetadataFuture = productor.send("blackcatstore", (long)13, SimpleStringUtil.object2json(datas));
 		if(syn) {
 			try {
+                //同步等待
 				RecordMetadata recordMetadata = recordMetadataFuture.get();
 				System.out.println(recordMetadata.topic() + "," + recordMetadata.offset() + "," + recordMetadata.partition());
 			} catch (InterruptedException e) {
@@ -102,6 +104,26 @@ public class TestKafka {
 				e.printStackTrace();
 			}
 		}
+
+        //回调处理案例
+        recordMetadataFuture = productor.send("blackcatstore", SimpleStringUtil.object2json(data), new Callback() {
+            @Override
+            public void onCompletion(RecordMetadata metadata, Exception exception) {
+                if(exception != null){
+                    exception.printStackTrace();
+                }
+            }
+        });
+        if(syn) {
+            try {
+                RecordMetadata recordMetadata = recordMetadataFuture.get();
+                System.out.println(recordMetadata.topic() + "," + recordMetadata.offset() + "," + recordMetadata.partition());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
 	}
 	public void testSend(boolean syn) {
 		KafkaUtil kafkaUtil = new KafkaUtil("kafka_2.12-2.3.0/kafka.xml");
