@@ -44,4 +44,11 @@ public class TestKafkaBatchConsumer2ndStore extends KafkaBatchConsumer2ndStore{
 		Object key =  message.key();
 		System.out.println("key="+key+",data="+data+",topic="+message.topic()+",partition="+message.partition()+",offset="+message.offset());
 	}
+
+
+    @Override
+    public void shutdown() {
+        super.shutdown();
+//        bulkprocessor.shutdown();
+    }
 }
