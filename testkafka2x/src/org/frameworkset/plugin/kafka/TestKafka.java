@@ -156,4 +156,10 @@ public class TestKafka {
 //		productor.send("blackcat",5l,"aaa",false);
 //		productor.send("blackcat",6l,"bbb",false);
 	}
+
+    public void shutdownProductor(){
+        KafkaUtil kafkaUtil = new KafkaUtil("kafka_2.12-2.3.0/kafka.xml");
+        KafkaProductor productor = kafkaUtil.getProductor("kafkaproductor");
+        productor.destroy();
+    }
 }
