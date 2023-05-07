@@ -1,11 +1,11 @@
 <properties>
     <!--
           指定apolloNamespace属性配置namespace
-          指定configChangeListener属性，设置elasticsearch节点（elasticsearch.rest.hostNames）自动发现和动态切换Dsl日志打印开关（elasticsearch.showTemplate）监听器
+          kafka消费线程数量变化监听器
        -->
 
     <config apolloNamespace="application"
-            configChangeListener="org.frameworkset.apollo.ESNodeChangeListener"/>
+            configChangeListener="org.frameworkset.plugin.kafka.ConsumerThreadChangeListener"/>
 	<property name="consumerPropes">
 		<propes>
 <!-- 
