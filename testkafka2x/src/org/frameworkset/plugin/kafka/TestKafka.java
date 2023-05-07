@@ -29,6 +29,8 @@ public class TestKafka {
 
 		}
 
+
+
 		Future<RecordMetadata> recordMetadataFuture = productor.send("blackcatstore", (long)12, SimpleStringUtil.object2json(datas));
 		if(syn) {
 			try {

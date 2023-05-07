@@ -18,6 +18,13 @@ public class TestKafkaConsumerSimple {
         //手动销毁所有容器中管理的kafka消费程序
 //        KafkaConsumersStarter.shutdownAllConsumers();
 
+        KafkaUtil kafkaUtil = new KafkaUtil("kafka_2.12-2.3.0/kafkaconfumersimple.xml");
+        BaseKafkaConsumer kafkaConsumer = kafkaUtil.getKafkaConsumer("kafkabatchconsumerstore");
+        //增加给定数量的消费线程
+        kafkaConsumer.increamentConsumerThead(2);
+        //消减给定数量的消费线程
+        kafkaConsumer.decreamentConsumerThead(2);
+
 	}
 
 }

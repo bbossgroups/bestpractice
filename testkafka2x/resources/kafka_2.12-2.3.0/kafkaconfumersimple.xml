@@ -25,7 +25,7 @@
 			<property name="auto.offset.reset" value="latest">
 				<description> <![CDATA[ What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server (e.g. because that data has been deleted): <ul><li>earliest: automatically reset the offset to the earliest offset<li>latest: automatically reset the offset to the latest offset</li><li>none: throw exception to the consumer if no previous offset is found for the consumer's group</li><li>anything else: throw exception to the consumer.</li></ul>]]></description>
 			</property>
-			<property name="bootstrap.servers" value="10.19.85.65:19092">
+			<property name="bootstrap.servers" value="192.168.137.133:9092">
 				<description> <![CDATA[ A list of host/port pairs to use for establishing the initial connection to the Kafka cluster. The client will make use of all servers irrespective of which servers are specified here for bootstrapping&mdash;this list only impacts the initial hosts used to discover the full set of servers. This list should be in the form "
                                                        + "<code>host1:port1,host2:port2,...</code>. Since these servers are just used for the initial connection to "
                                                        + "discover the full cluster membership (which may change dynamically), this list need not contain the full set of "
@@ -68,7 +68,7 @@
 			  class="org.frameworkset.plugin.kafka.TestKafkaBatchConsumer2ndStore" init-method="init"
 			  f:consumerPropes="attr:consumerPropes"
 			  f:topic="blackcatstore"
-			  f:threads="2"
+			  f:threads="1"
 			  f:pollTimeout="5000"
 			  f:maxPollRecords="1000"
 			  f:batch="true"
