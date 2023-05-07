@@ -25,6 +25,9 @@ public class TestKafkaConsumerSimple {
         //消减给定数量的消费线程
         kafkaConsumer.decreamentConsumerThead(2);
 
+        //重置消费线程数量
+        kafkaConsumer.resetConsumerThreads(3);
+
 	}
 
 }

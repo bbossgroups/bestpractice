@@ -53,7 +53,8 @@ if(isIdea){
 
 dependencies {
 	api (
-            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka2x', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
+            [group: 'com.bbossgroups.plugins', name: 'bboss-plugin-kafka2x', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true],
+			[group: 'com.bbossgroups.plugins', name: 'bboss-plugin-apollo', version: "${PROJ_BBOSS_plugin_VERSION}", transitive: true]
 
     )
 	api (
