@@ -72,7 +72,9 @@ public class ConsumerThreadChangeListener extends PropertiesChangeListener {
             int i_thread = Integer.parseInt(thread);
             BaseKafkaConsumer kafkaConsumer = applicationContext.getTBeanObject("kafkabatchconsumerstore",BaseKafkaConsumer.class);
             //重置消费线程数量
-            kafkaConsumer.resetConsumerThreads(i_thread);
+            if(kafkaConsumer != null) {
+                kafkaConsumer.resetConsumerThreads(i_thread);
+            }
         }
 
 
