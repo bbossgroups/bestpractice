@@ -62,17 +62,7 @@ configure(allprojects) { project ->
 		maven {
 			url "https://maven.aliyun.com/nexus/content/groups/public"
 		}
-//		maven {
-//	        url "http://10.13.4.242:8888/nexus/content/repositories/public/"
-//			allowInsecureProtocol=true
-//	    }
-//		maven {
-//			url "http://10.13.4.242:8888/nexus/content/groups/public/"
-//			allowInsecureProtocol=true
-//		}
-//		maven {
-//			url "https://artifacts.elastic.co/maven"
-//		}
+
 		mavenCentral()
 
 		
