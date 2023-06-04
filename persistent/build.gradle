@@ -37,7 +37,7 @@ dependencies {
 			[group: 'org.apache.derby', name: 'derby', version: '10.9.1.0', transitive: false],
 			[group: 'org.apache.derby', name: 'derbyclient', version: '10.12.1.1', transitive: false],
       		fileTree(dir: '../lib/jdbc', include: '**/*.jar'),
-              [group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11.2', transitive: false],
+              [group: 'org.xerial', name: 'sqlite-jdbc', version: '3.42.0.0', transitive: false],
     )
 
     
