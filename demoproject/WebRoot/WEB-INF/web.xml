@@ -23,7 +23,7 @@
         </init-param>
         <init-param>
             <param-name>refererwallwhilelist</param-name>
-            <param-value>*.sany.com.cn,http://localhost:8080/</param-value>
+            <param-value>*.test.com.cn,http://localhost:8080/</param-value>
         </init-param>
         <init-param>
             <param-name>enableCrossFirewall</param-name>

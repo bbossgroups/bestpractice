@@ -1,29 +1,24 @@
 package org.frameworkset.spi.remote.wsclient;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import javax.xml.ws.BindingProvider;
-import javax.xml.ws.Holder;
-
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.service.model.EndpointInfo;
 import org.apache.cxf.transport.http.HTTPConduit;
-import org.apache.cxf.ws.policy.Assertor;
-import org.apache.cxf.ws.policy.EndpointPolicy;
-import org.apache.cxf.ws.policy.EndpointPolicyImpl;
-import org.apache.cxf.ws.policy.PolicyEngine;
-import org.apache.cxf.ws.policy.PolicyEngineImpl;
+import org.apache.cxf.ws.policy.*;
 import org.apache.cxf.ws.policy.PolicyUtils.WrappedAssertor;
 import org.apache.cxf.ws.policy.selector.MaximalAlternativeSelector;
 import org.apache.neethi.Assertion;
 import org.apache.neethi.Policy;
 import org.frameworkset.util.ClassUtil;
 import org.frameworkset.util.ClassUtil.ClassInfo;
+
+import javax.xml.ws.BindingProvider;
+import javax.xml.ws.Holder;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 public class Test {
 	private ZWSFIFYKZV1 port;
@@ -145,9 +140,9 @@ public class Test {
 //		client.getData("0200", "2012-12-19", "泵送事业部");
 		
 		/*org.apache.cxf.jaxws.JaxWsProxyFactoryBean factory_ = new org.apache.cxf.jaxws.JaxWsProxyFactoryBean();
-		//http://sanybwpci.sany.com.cn:8001/sap/bc/srt/wsdl/sdef_ZWS_FI_FYKZ_V1/wsdl11/ws_policy/document?sap-client=800
-        //factory_.setAddress("http://DSP:%2F852*963@sanybwpci.sany.com.cn:8001/sap/bc/srt/rfc/sap/zws_fi_fykz_v1/800/zws_fi_fykz_v1/zws_fi_fykz_v1");
-		factory_.setAddress("http://DSP:%2F852*963@sanybwpci.sany.com.cn:8001/sap/bc/srt/wsdl/sdef_ZWS_FI_FYKZ_V1/wsdl11/ws_policy/document?sap-client=800");
+		//http://sanybwpci.s.com.cn:8001/sap/bc/srt/wsdl/sdef_ZWS_FI_FYKZ_V1/wsdl11/ws_policy/document?sap-client=800
+        //factory_.setAddress("http://DSP:%2F852*963@sanybwpci.s.com.cn:8001/sap/bc/srt/rfc/sap/zws_fi_fykz_v1/800/zws_fi_fykz_v1/zws_fi_fykz_v1");
+		factory_.setAddress("http://DSP:%2F852*963@sanybwpci.s.com.cn:8001/sap/bc/srt/wsdl/sdef_ZWS_FI_FYKZ_V1/wsdl11/ws_policy/document?sap-client=800");
 		factory_.setServiceClass(Test.class);
 		Test wsservice =  (Test)factory_.create();
 		ObjectFactory factory = new ObjectFactory();
