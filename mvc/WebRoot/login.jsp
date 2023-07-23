@@ -14,8 +14,7 @@
 <%@ page import="java.io.ByteArrayOutputStream"%>
 <%@ page import="java.io.PrintStream"%>
 <%@ page import="java.io.File"%>
-<%@ page import="java.io.File,org.frameworkset.util.CodeUtils,
-com.frameworkset.util.FileUtil,com.frameworkset.util.StringUtil"%>
+<%@ page import="java.io.File,com.frameworkset.util.FileUtil,com.frameworkset.util.StringUtil"%>
 <%@ taglib uri="/WEB-INF/pager-taglib.tld" prefix="pg"%>
 <%@ taglib uri="/WEB-INF/commontag.tld" prefix="common"%>
 
