@@ -18,6 +18,8 @@ package org.frameworkset.mvc;
 
 import org.frameworkset.util.annotations.RequestParam;
 
+import java.util.Date;
+
 /**
  * <p>ExampleBean.java</p>
  * <p> Description: </p>
@@ -30,10 +32,15 @@ import org.frameworkset.util.annotations.RequestParam;
  */
 public class ExampleBean
 {
+    @RequestParam(decodeCharset="UTF-8")
 	private String name = null;
 
 	@RequestParam(defaultvalue = "1")
 	private int age;
+
+
+
+    private Date birthDay;
 	public String getName()
 	{
 	
@@ -46,5 +53,21 @@ public class ExampleBean
 	
 		this.name = name;
 	}
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
 
 }

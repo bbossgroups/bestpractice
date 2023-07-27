@@ -15,6 +15,7 @@
  */
 package org.frameworkset.mvc;
 
+import com.frameworkset.util.SimpleStringUtil;
 import com.frameworkset.util.StringUtil;
 import org.frameworkset.util.annotations.MapKey;
 import org.frameworkset.util.annotations.RequestHeader;
@@ -119,6 +120,22 @@ public class HelloWord
 
 		return "path:sayHello";
 	}
+
+
+    /**
+     * http proxy post and get test api
+     * @param yourname
+     * @return
+     */
+    public @ResponseBody String sayHelloBeanHttp(ExampleBean yourname)
+    {
+
+
+
+        return SimpleStringUtil.object2json(yourname);
+    }
+
+
 
 	public String sayHelloBeanList(List<ExampleBean> yourname, ModelMap model)
 	{
