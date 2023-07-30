@@ -17,15 +17,13 @@ package org.frameworkset.mvc;
 
 import com.frameworkset.util.SimpleStringUtil;
 import com.frameworkset.util.StringUtil;
-import org.frameworkset.util.annotations.MapKey;
-import org.frameworkset.util.annotations.RequestHeader;
-import org.frameworkset.util.annotations.RequestParam;
-import org.frameworkset.util.annotations.ResponseBody;
+import org.frameworkset.util.annotations.*;
 import org.frameworkset.web.servlet.ModelMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -135,9 +133,25 @@ public class HelloWord
         return SimpleStringUtil.object2json(yourname);
     }
 
+    /**
+     * http proxy request body custom container api
+     * @param yourname
+     * @return
+     */
+    public @ResponseBody CustomContainer<ExampleBean> sayHelloBodyHttp( @RequestBody ExampleBean yourname)
+    {
+
+        CustomContainer<ExampleBean> customContainer = new CustomContainer<>();
+        List<ExampleBean> datas = new ArrayList<>();
+        datas.add(yourname);
+        customContainer.setDatas(datas);
+        customContainer.setName("大河");
+        return customContainer;
+    }
 
 
-	public String sayHelloBeanList(List<ExampleBean> yourname, ModelMap model)
+
+    public String sayHelloBeanList(List<ExampleBean> yourname, ModelMap model)
 	{
 
 		model.addAttribute("serverHelloListBean", yourname);
