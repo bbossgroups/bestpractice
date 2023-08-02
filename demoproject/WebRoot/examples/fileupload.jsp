@@ -15,7 +15,7 @@ String rootPath = org.frameworkset.mvc.FileController.getWorkFoldPath();
 		Map params = new HashMap();
 		params.put("testp","aaaaa");
 		params.put("dff","zzzz");
-		List<Map> datas = httpPostForList("/demoproject/file/getUserInfo.page",params, Map.class);
+		List<Map> datas = httpPostForListWithParams("/demoproject/file/getUserInfo.page",params, Map.class);
 		System.out.println("getUserInfo :"+datas);
 		List<Map> postdatas = sendJsonBodyForList( params, "/demoproject/file/jsonUserInfo.page",Map.class);
 		System.out.println("jsonUserInfo:"+postdatas);
