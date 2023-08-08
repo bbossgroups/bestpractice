@@ -9,6 +9,6 @@
 			class：实现类代码
 			
 		-->
-		<provider type="default" class="com.chinacreator.remote.EventRemoteServiceImpl" />
+		<provider type="default" class="com.frameworkset.remote.EventRemoteServiceImpl" />
 	</manager>
 </manager-config>

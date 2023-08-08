@@ -48,7 +48,7 @@ function finishIt()
 	doc.write('<html><body bgcolor=#1954BD leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">'+
 	'<img style="cursor:default;" src="../images/itemBottom.gif" width=100% height=100% border=0>'+
 	'<span style="position:absolute;font-size:9pt;COLOR: #FFE074;top:2;left:0;border:0;width:100%;height:100%;text-align:center;cursor:default;'+
-	'vertical-align:center;FILTER:DropShadow(Color=#001E88, OffX=-1, OffY=1, Positive=1);">&#169;版权所有&nbsp;2003<br>ChinaCreator</span></body></html>');	
+	'vertical-align:center;FILTER:DropShadow(Color=#001E88, OffX=-1, OffY=1, Positive=1);">&#169;版权所有&nbsp;2003<br>bboss</span></body></html>');
 
 	doc.close();
 }

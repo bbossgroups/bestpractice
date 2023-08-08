@@ -8,7 +8,7 @@
  * <p>Title: SPI服务监控树</p>
  * <p>Description: SPI服务监控树</p>
  * <p>Copyright: Copyright (c) 2008</p>
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-8
  * @author biaoping.yin
  * @version 1.0

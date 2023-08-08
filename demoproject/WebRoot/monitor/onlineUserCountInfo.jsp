@@ -3,7 +3,7 @@
  * <p>Title: 监控在线用户数</p>
  * <p>Description: 在线用户登陆系统的情况</p>
  * <p>Copyright: Copyright (c) 2008</p>
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-8
  * @author gao.tang
  * @version 1.0

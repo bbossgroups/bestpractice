@@ -3,7 +3,7 @@
  * <p>Title: 监控数据库信息页面</p>
  * <p>Description: 服务器链接数据库的状态，和使用情况</p>
  * <p>Copyright: Copyright (c) 2008</p>
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-8
  * @author gao.tang
  * @version 1.0

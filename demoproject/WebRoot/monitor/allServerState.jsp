@@ -3,7 +3,7 @@
  * <p>Title: 监控服务器状态</p>
  * <p>Description: 服务器运行是否正常</p>
  * <p>Copyright: Copyright (c) 2008</p>
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-8
  * @author gao.tang
  * @version 1.0

@@ -3,7 +3,7 @@
  * <p>Title: 监控数据库的使用链接情况</p>
  * <p>Description: 数据库链接的具体情况</p>
  * <p>Copyright: Copyright (c) 2008</p>
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-8
  * @author gao.tang
  * @version 1.0

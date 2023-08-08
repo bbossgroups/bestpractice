@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*,java.util.*,com.chinacreator.config.model.Operation" errorPage=""%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.sql.*,java.util.*,com.frameworkset.config.model.Operation" errorPage=""%>
 <%@ taglib uri="/WEB-INF/pager-taglib.tld" prefix="pg"%>
 <!-- 
 	测试在list标签上直接执行数据库，获取列表信息实例

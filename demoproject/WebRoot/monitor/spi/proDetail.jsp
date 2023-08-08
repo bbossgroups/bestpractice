@@ -14,7 +14,7 @@
  *
  * <p>Copyright: Copyright (c) 2008</p>
  *
- * <p>Company: chinacreator</p>
+ * <p>Company: bboss</p>
  * @Date 2008-9-19
  * @author gao.tang
  * @version 1.0
