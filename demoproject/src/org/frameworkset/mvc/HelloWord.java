@@ -150,6 +150,22 @@ public class HelloWord
     }
 
 
+    /**
+     * http proxy request body custom container api
+     * @param yourname
+     * @return
+     */
+    public @ResponseBody CustomContainer<ExampleBean> sayHelloBodyHttps( @RequestBody List<ExampleBean> yourname)
+    {
+
+        CustomContainer<ExampleBean> customContainer = new CustomContainer<>();
+
+        customContainer.setDatas(yourname);
+        customContainer.setName("大河");
+        return customContainer;
+    }
+
+
 
     public String sayHelloBeanList(List<ExampleBean> yourname, ModelMap model)
 	{
