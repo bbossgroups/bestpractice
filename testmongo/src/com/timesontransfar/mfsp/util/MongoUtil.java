@@ -1,14 +1,15 @@
 package com.timesontransfar.mfsp.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.frameworkset.nosql.mongodb.MongoDB;
-import org.frameworkset.nosql.mongodb.MongoDBHelper;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
+import org.frameworkset.nosql.mongodb.MongoDB;
+import org.frameworkset.nosql.mongodb.MongoDBHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Redis工具类  
@@ -19,12 +20,10 @@ import com.mongodb.DBObject;
    *
  */
 public abstract class MongoUtil {
-	
+	private static Logger logger = LoggerFactory.getLogger(MongoUtil.class);
 	/**
 	 * 存储键值对到Redis中，并指定失效时间(秒)
-	 * @param key
-	 * @param value
-	 * @param seconds
+
 	 * @throws Exception 
 	 */
 	public static void save() throws Exception {
@@ -44,8 +43,40 @@ public abstract class MongoUtil {
 			 
 		}
 	}
-	
-	/**
+
+    /**
+     * 存储键值对到Redis中，并指定失效时间(秒)
+
+     * @throws Exception
+     */
+    public static void appendData()  {
+        try {
+            DBCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
+                    "classes" //table
+            );
+            int i = 0;
+            do {
+//            MongoDB.remove(dbcollectoin, new BasicDBObject("name","一六班"));
+                MongoDB.insert(dbcollectoin, new BasicDBObject("name", "一六班-" + i)
+                        .append("creationTime", new Date())
+                        .append("members", 50)
+                );
+                i ++;
+                Thread.sleep(1000L);
+            }while (true);
+
+
+        } catch (Exception e) {
+            logger.error("",e);
+        } finally {
+
+        }
+    }
+
+
+
+
+    /**
 	 * 获取并同时移除指定KEY，并返回结果
 	 * @param key
 	 * @return
@@ -100,19 +131,21 @@ public abstract class MongoUtil {
 	
 	public static void main(String[] args)
 	{
-		System.out.println("run first time---------------------");
-		runtest();
-		System.out.println("run second time---------------------");
-		runtest();
-		System.out.println("run third time---------------------");
-		runtest();
-		System.out.println("run fourth time---------------------");
-		runtest();
-		System.out.println("run five time---------------------");
-		for(int i = 0; i < 100; i ++)
-		{
-			runtest();
-		}
+//		System.out.println("run first time---------------------");
+//		runtest();
+//		System.out.println("run second time---------------------");
+//		runtest();
+//		System.out.println("run third time---------------------");
+//		runtest();
+//		System.out.println("run fourth time---------------------");
+//		runtest();
+//		System.out.println("run five time---------------------");
+//		for(int i = 0; i < 100; i ++)
+//		{
+//			runtest();
+//		}
+
+        appendData();
 		
 	}
 	
@@ -120,9 +153,9 @@ public abstract class MongoUtil {
 	{
 		try {
 			save();
-			System.out.println("get test:"+get());
-			System.out.println("getAndRemove test:"+getAndRemove());
-			System.out.println("get test after remove:"+get());
+//			System.out.println("get test:"+get());
+//			System.out.println("getAndRemove test:"+getAndRemove());
+//			System.out.println("get test after remove:"+get());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

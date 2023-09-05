@@ -5,8 +5,8 @@ sourceSets {
             
         }
         resources{
-        	
-        	
+
+			srcDir 'resources'
         	
         }
     }
@@ -15,7 +15,7 @@ sourceSets {
             srcDir 'test'
         }
         resources{
-        	srcDir 'resources'
+
         }
     }
     
@@ -26,15 +26,10 @@ dependencies {
            	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.36', transitive: true],
 
 
-            [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],
-            
-            [group: 'com.bbossgroups', name: 'bboss-data', version: "${PROJ_BBOSS_DATA_VERSION}", transitive: false],
-            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
-              [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],
-                [group: 'cglib', name: 'cglib-nodep', version: '3.1', transitive: false],
-              
-              [group: 'org.mongodb', name: 'mongo-java-driver', version: "${mongodbversion}", transitive: false],
-                
+
+            [group: 'com.bbossgroups', name: 'bboss-data', version: "${PROJ_BBOSS_DATA_VERSION}", transitive: true],
+
+
                
     )
     runtimeOnly (
@@ -45,57 +40,55 @@ dependencies {
      
 }
 
+
 task copyJarFiles(type: Sync,dependsOn:'jar'){
+	from configurations.api{
+		canBeResolved=true
 
-
-
-	 from configurations.api{
-		 canBeResolved=true
-
-	 }
-	 from jar.outputs
-	 exclude { details -> details.file.name.startsWith('bboss-rt')  }
-	 into 'build/dist/lib'
+	}
+	from jar.outputs
+	exclude { details -> details.file.name.startsWith('bboss-rt')  }
+	into 'build/dist/lib'
 
 }
 
 task copyRTJarFiles(type: Copy,dependsOn:'copyJarFiles'){
-	 from configurations.runtimeOnly{
-		 canBeResolved=true
 
-	 } - configurations.api{
-		 canBeResolved=true
+	from configurations.api{
+		canBeResolved=true
 
-	 }
-	 into 'build/dist'
-     rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
+	}
+	include { details -> details.file.name.startsWith('bboss-rt')  }
+	into 'build/dist'
+	rename ("bboss-rt-${bboss_version}.jar", "${project.name}-${bboss_version}.jar")
 }
 task copyToolFiles(type: Copy ,dependsOn:'copyRTJarFiles')  {
-			from ('runfiles')
+
+	from ('runfiles')
 			{
 				expand(
 						bboss_version:"${bboss_version}",
-                        project:"${project.name}"
-						)
+						project:"${project.name}"
+				)
 
 			}
-		  filteringCharset = 'UTF-8'
-			into 'build/dist/'
+	filteringCharset = 'UTF-8'
+	into 'build/dist/'
 
 
 
 }
 task copyResourcesfiles(type: Sync )  {
-	from fileTree(dir: 'resources')
+	from fileTree(dir: 'src/main/resources')
 	filteringCharset = 'UTF-8'
 	into 'build/dist/resources'
 }
 
 task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyResourcesfiles']) {
 
-    //appendix = 'wrapper'
-   classifier = 'released'
-   from 'build/dist/'
+	//appendix = 'wrapper'
+	archiveClassifier = 'released'
+	from 'build/dist/'
 
 }
 
