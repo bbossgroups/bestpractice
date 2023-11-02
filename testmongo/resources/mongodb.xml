@@ -4,8 +4,10 @@
 		init-method="init" destroy-method="close" factory-method="getMongoClient">
 		
 		
-		<property name="serverAddresses" >
-			localhost:27017
+		<property name="connectString" >
+			<![CDATA[
+			mongodb://192.168.137.1:27017,192.168.137.1:27018,192.168.137.1:27019/
+			]]>
 		</property>
 		<property name="option" ></property>
 			

@@ -1,8 +1,10 @@
 package com.timesontransfar.mfsp.util;
 
 import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Projections;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 import org.frameworkset.nosql.mongodb.MongoDB;
 import org.frameworkset.nosql.mongodb.MongoDBHelper;
 import org.slf4j.Logger;
@@ -28,11 +30,11 @@ public abstract class MongoUtil {
 	 */
 	public static void save() throws Exception {
 		try {
-			DBCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
+			MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
 																	"classes" //table
 					);
 			MongoDB.remove(dbcollectoin, new BasicDBObject("name","一六班"));
-			MongoDB.insert(dbcollectoin,new BasicDBObject("name","一六班")
+			MongoDB.insert(dbcollectoin,new Document("name","一六班")
 					.append("creationTime", new Date())
 					.append("members",50)
 					);
@@ -51,13 +53,13 @@ public abstract class MongoUtil {
      */
     public static void appendData()  {
         try {
-            DBCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
+            MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
                     "classes" //table
             );
             int i = 0;
             do {
 //            MongoDB.remove(dbcollectoin, new BasicDBObject("name","一六班"));
-                MongoDB.insert(dbcollectoin, new BasicDBObject("name", "一六班-" + i)
+                MongoDB.insert(dbcollectoin, new Document("name", "一六班-" + i)
                         .append("creationTime", new Date())
                         .append("members", 50)
                 );
@@ -78,17 +80,16 @@ public abstract class MongoUtil {
 
     /**
 	 * 获取并同时移除指定KEY，并返回结果
-	 * @param key
 	 * @return
 	 */
 	public static String getAndRemove() {
-		DBCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
+		MongoCollection<Document> dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
 				"classes" //table
 				);
 		 
 		String attribute = "name";//MongoDBHelper.converterSpecialChar( "name");//如果名称中包含mongodb关键字特殊字符，则需要进行转换
 		 
-		DBObject obj = dbcollectoin.findAndRemove(new BasicDBObject(attribute,"一六班"));//查询条件，返回所有字段
+		Document obj = dbcollectoin.findOneAndDelete(new BasicDBObject(attribute,"一六班-1"));//查询条件，返回所有字段
 				
 		if(obj == null)
 			return null;
@@ -103,21 +104,24 @@ public abstract class MongoUtil {
 	
 	/**
 	 * 获取指定KEY对应的VALUE
-	 * @param key
 	 * @return
 	 */
 	public static String get() {
-		DBCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
+		MongoCollection<Document> dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
 				"classes" //table
 				);
-		BasicDBObject keys = new BasicDBObject();//设置查询字段
+//		BasicDBObject keys = new BasicDBObject();//设置查询字段
 		String attribute = "name";//MongoDBHelper.converterSpecialChar( "name");//如果名称中包含mongodb关键字特殊字符，则需要进行转换
-		keys.put(attribute, 1);
-		keys.put("creationTime", 1);
-		keys.put("members", 1);
-		DBObject obj = dbcollectoin.findOne(new BasicDBObject(attribute,"一六班")//查询条件
-															 ,keys //只返回需要查询的字段
-															 );
+//		keys.put(attribute, 1);
+//		keys.put("creationTime", 1);
+//		keys.put("members", 1);
+		Bson projectionFields = Projections.fields(
+				Projections.include(attribute,"creationTime","members")
+					,Projections.excludeId()
+		);
+		Document obj = dbcollectoin.find(new BasicDBObject(attribute,"一六班")//查询条件
+
+															 ).projection(projectionFields).first();
 		if(obj == null)
 			return null;		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -145,8 +149,9 @@ public abstract class MongoUtil {
 //			runtest();
 //		}
 
-        appendData();
-		
+//        appendData();
+		getAndRemove();
+
 	}
 	
 	public static void runtest()
