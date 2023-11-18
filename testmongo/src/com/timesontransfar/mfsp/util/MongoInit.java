@@ -86,5 +86,10 @@ public abstract class MongoInit {
 		boolean started = MongoDBHelper.init(mongoDBConfig);// started true标识数据源成功启动，false 标识数据源没有启动，可能已经启动过了，可能启动失败
 
 	}
+	
+	public void close(){
+		MongoDBHelper.closeDB("testes2mg");
+	}
+	
 
 }
