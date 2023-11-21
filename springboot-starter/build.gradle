@@ -73,7 +73,7 @@ dependencies {
     }
 
     api(
-            [group: 'com.bbossgroups.plugins', name: 'bboss-elasticsearch-rest-jdbc', version: "${bboss_es_version}", transitive: true],
+            [group: 'com.bbossgroups.plugins', name: 'bboss-datatran-jdbc', version: "${bboss_es_version}", transitive: true],
             [group: 'com.bbossgroups', name: 'bboss-schedule', version: "${bboss_version}", transitive: true],
     )
 //		compile 'org.apache-extras.beanshell:bsh:2.0b6'
