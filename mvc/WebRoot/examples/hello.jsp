@@ -21,11 +21,7 @@
 <%@ taglib uri="/WEB-INF/commontag.tld" prefix="common"%>	
 <%@ taglib uri="/WEB-INF/pager-taglib.tld" prefix="pg"%>
 <%
-	Exception exception = new Exception();
-	PrintStream printStream = new PrintStream(response.getOutputStream());
-	exception.printStackTrace(printStream);
-	if(true)
-		throw exception;
+
 %>
 <head>
 	<title>bboss-mvc - hello world,data bind!</title>

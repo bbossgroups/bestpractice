@@ -20,6 +20,7 @@ package org.frameworkset.soa;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.frameworkset.util.SimpleStringUtil;
 import org.junit.Test;
 
 import com.frameworkset.util.ValueObjectUtil;
@@ -90,7 +91,7 @@ public class SOAApplicationContextTest {
 		ArrayBean bean1 = ObjectSerializable.toBean(xmlcontent,ArrayBean.class);
 		System.out.println(new String(bean1.getArrays()));
 		System.out.println(bean1.getE());
-		
+        SimpleStringUtil.object2json(bean1);
 	}
 	
 	@Test
@@ -103,6 +104,7 @@ public class SOAApplicationContextTest {
 		System.out.println(xmlcontent);
 		FileBean bean1 = ObjectSerializable.convertXMLToBeanObject("beanfile",xmlcontent,FileBean.class);
 		System.out.println(ValueObjectUtil.getFileContent(bean1.getFile(),"UTF-8"));
+        SimpleStringUtil.object2json(bean1);
 	}
 	@Test
 	public void beanstoxml() throws Exception
@@ -163,8 +165,14 @@ public class SOAApplicationContextTest {
 		
 		List copybeans = ObjectSerializable.convertXMLToBeanObject("listObject", xmlcontent, List.class);
 		System.out.println(copybeans.size());
+       
 		
 	}
+    
+    @Test 
+    public void testJson(){
+      
+    }
 	
 	
 

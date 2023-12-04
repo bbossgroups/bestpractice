@@ -3,6 +3,7 @@ package com.frameworkset.sqlexecutor;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.frameworkset.common.poolman.util.SQLManager;
 import org.junit.Test;
 
 import com.frameworkset.common.poolman.SQLExecutor;
@@ -68,5 +69,10 @@ public class CustomPoolTest {
 			}
 		}
 	}
+    
+    @Test
+    public void testGetDbAdapter(){
+        SQLManager.getInstance().getDBAdapter("ddddd");
+    }
 
 }
