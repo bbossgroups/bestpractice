@@ -19,7 +19,7 @@ public class CustomPoolTest {
 	{
 		SQLUtil.startPool("test",//数据源名称
 				"oracle.jdbc.driver.OracleDriver",//oracle驱动
-				"jdbc:oracle:thin:@(description=(address_list=(load_balance=off)(failover=on)(address=(protocol=tcp)(host=10.0.8.226)(port=1521))(address=(protocol=tcp)(host=10.0.8.227)(port=1521)))(connect_data=(service_name=PF1)(failover_mode=(type=select)(method=basic)(RETRIES=180)(DELAY=5))))",//oracle rac链接串
+				"jdbc:oracle:thin:@(description=(address_list=(load_balance=off)(failover=on)(address=(protocol=tcp)(host=101.0.8.226)(port=1521))(address=(protocol=tcp)(host=101.0.8.227)(port=1521)))(connect_data=(service_name=PF1)(failover_mode=(type=select)(method=basic)(RETRIES=180)(DELAY=5))))",//oracle rac链接串
 				"mdm","Y6^21rtDFuTYEWR#s",//数据库账号和口令
 				 "select 1 from dual" //数据库连接校验sql
 				);//初始化数据源
