@@ -41,7 +41,7 @@ public class TestClickHouseDB {
     public   void testClickhouseBalanceRandom() throws SQLException {
 //        SQLUtil.startPool("test",//数据源名称
 //                "com.github.housepower.jdbc.ClickHouseDriver",//oracle驱动
-//                "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops",//oracle rac链接串
+//                "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops",//oracle rac链接串
 //                "default",null,//数据库账号和口令
 //                "select 1 " //数据库连接校验sql
 //        );//初始化数据源
@@ -49,7 +49,7 @@ public class TestClickHouseDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops");
+        tempConf.setJdbcurl( "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops");
         tempConf.setUsername("default");
         tempConf.setPassword(null);
         tempConf.setValidationQuery("select 1 ");
@@ -86,7 +86,7 @@ public class TestClickHouseDB {
     public   void testClickhouseBalanceRoundbin() throws SQLException {
 //        SQLUtil.startPool("test",//数据源名称
 //                "com.github.housepower.jdbc.ClickHouseDriver",//oracle驱动
-//                "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops",//oracle rac链接串
+//                "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops",//oracle rac链接串
 //                "default",null,//数据库账号和口令
 //                "select 1 " //数据库连接校验sql
 //        );//初始化数据源
@@ -94,7 +94,7 @@ public class TestClickHouseDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops");
+        tempConf.setJdbcurl( "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops");
         tempConf.setUsername("default");
         tempConf.setPassword(null);
         tempConf.setValidationQuery("select 1 ");
@@ -128,17 +128,17 @@ public class TestClickHouseDB {
     }
     @Test
     public void test() throws SQLException {
-        String url = "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops";
+        String url = "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops";
         DBClickhouse dbClickhouse = new DBClickhouse();
         List<String> hostsL = dbClickhouse.getBalanceUrls(url);
 
         System.out.println(SimpleStringUtil.object2json(hostsL));
-        url = "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/";
+        url = "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/";
 
         hostsL = dbClickhouse.getBalanceUrls(url);
 
         System.out.println(SimpleStringUtil.object2json(hostsL));
-        url = "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000";
+        url = "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000";
         hostsL = dbClickhouse.getBalanceUrls(url);
 
         System.out.println(SimpleStringUtil.object2json(hostsL));
@@ -146,7 +146,7 @@ public class TestClickHouseDB {
 
         System.out.println(SimpleStringUtil.object2json(p));
 
-        url = "jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops?b.balance=roundbin&b.enableBalance=true";
+        url = "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops?b.balance=roundbin&b.enableBalance=true";
         p = dbClickhouse.getUrlParams(url);
 
         System.out.println(SimpleStringUtil.object2json(p));
