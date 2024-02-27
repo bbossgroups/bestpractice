@@ -127,6 +127,7 @@ public abstract class MultiMongosUtil {
 	 */
 	public static void save() throws Exception {
 		try {
+            //在默认数据源上操作，第一个启动的MongoDB数据源为默认数据源，startDBs方法中第一个启动的数据源名称为：startDBs，所以默认为：testmg1
 			MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
 																	"classes" //table
 					);
