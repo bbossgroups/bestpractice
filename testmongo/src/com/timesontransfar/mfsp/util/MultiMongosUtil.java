@@ -30,24 +30,7 @@ public abstract class MultiMongosUtil {
      */
 	public static void startDBs(){
 
-		/**
-		 * 	    mongoDBOutputConfig.setName("testes2mg")
-		 * 			    .setDb("testdb1")
-		 * 			    .setDbCollection("demo")
-		 * 			    .setConnectTimeout(10000)
-		 * 			    .setWriteConcern("JOURNAL_SAFE")
-		 *
-		 * 			    .setMaxWaitTime(10000)
-		 * 			    .setSocketTimeout(1500).setSocketKeepAlive(true)
-		 * 			    .setConnectionsPerHost(10)
-		 * 			    .setConnectString("mongodb://192.168.137.1:27017,192.168.137.1:27018,192.168.137.1:27019/?replicaSet=rs0")//多个地址用回车换行符分割：127.0.0.1:27017\n127.0.0.1:27018
-		 * 	    // mechanism 取值范围：PLAIN GSSAPI MONGODB-CR MONGODB-X509，默认为MONGODB-CR
-		 * 	    //String database,String userName,String password,String mechanism
-		 * 	    //https://www.iteye.com/blog/yin-bp-2064662
-		 * //				.setUserName("bboss")
-		 * //		        .setPassword("bboss")
-		 * //		        .setMechanism("MONGODB-CR");
-		 */
+        //数据源testmg1定义
 		MongoDBConfig mongoDBConfig = new MongoDBConfig();
 		mongoDBConfig.setName("testmg1");
 //		mongoDBConfig.setCredentials(mongoDBInputConfig.getCredentials());
@@ -83,7 +66,7 @@ public abstract class MultiMongosUtil {
 		mongoDBConfig.setConnectString("mongodb://192.168.137.1:27017,192.168.137.1:27018,192.168.137.1:27019/?replicaSet=rs0");
 		boolean started = MongoDBHelper.init(mongoDBConfig);
 
-
+        //数据源testmg2定义
         mongoDBConfig = new MongoDBConfig();
         mongoDBConfig.setName("testmg2");
 //		mongoDBConfig.setCredentials(mongoDBInputConfig.getCredentials());
@@ -116,7 +99,7 @@ public abstract class MultiMongosUtil {
 
         mongoDBConfig.setSocketKeepAlive(true);//private Boolean socketKeepAlive = false;
 
-        mongoDBConfig.setConnectString("mongodb://192.168.137.1:27017,192.168.137.1:27018,192.168.137.1:27019/?replicaSet=rs0");
+        mongoDBConfig.setConnectString("mongodb://192.168.137.2:27017,192.168.137.2:27018,192.168.137.2:27019/?replicaSet=rs0");
         started = MongoDBHelper.init(mongoDBConfig);
 
 	}
