@@ -15,8 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Redis工具类  
-   * @ClassName: RedisUtil
+ * MongoDB工具类
+   * @ClassName: MongoUtil
    * @Description: TODO
    * @author Kimi.Qin
    * @date Jun 23, 2016 3:26:05 PM
