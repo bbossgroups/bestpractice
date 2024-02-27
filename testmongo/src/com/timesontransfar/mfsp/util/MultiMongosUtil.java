@@ -2,6 +2,7 @@ package com.timesontransfar.mfsp.util;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Projections;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -102,13 +103,26 @@ public abstract class MultiMongosUtil {
         mongoDBConfig.setConnectString("mongodb://192.168.137.2:27017,192.168.137.2:27018,192.168.137.2:27019/?replicaSet=rs0");
         started = MongoDBHelper.init(mongoDBConfig);
 
+
+        MongoDatabase mongoDatabase = MongoDBHelper.getDB("testmg1",//指定MongoDB数据源名称：testmg1
+                "useusu");//database;
+        MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("testmg1",//指定MongoDB数据源名称：testmg1
+                "useusu",//database
+                "classes" //table
+        );
 	}
+
+    public static void closeMongodb(){
+        MongoDBHelper.closeDB("testmg2");
+        MongoDBHelper.closeDB("testmg1");
+    
+    }
 	/**
 	 * 存储键值对到Redis中，并指定失效时间(秒)
 
 	 * @throws Exception 
 	 */
-	public static void save() throws Exception {
+	public static void save()  {
 		try {
             //在默认数据源上操作，第一个启动的MongoDB数据源为默认数据源，startDBs方法中第一个启动的数据源名称为：startDBs，所以默认为：testmg1
 			MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
@@ -121,14 +135,14 @@ public abstract class MultiMongosUtil {
 					);
 			
 		} catch (Exception e) {
-			throw e ;
+			e.printStackTrace();
 		} finally {
 			 
 		}
 	}
 
     /**
-     * 存储键值对到Redis中，并指定失效时间(秒)
+     * 新增数据测试
 
      * @throws Exception
      */
@@ -156,6 +170,7 @@ public abstract class MultiMongosUtil {
 
         }
     }
+
 
 
 
@@ -219,21 +234,10 @@ public abstract class MultiMongosUtil {
 	
 	public static void main(String[] args)
 	{
-//		System.out.println("run first time---------------------");
-//		runtest();
-//		System.out.println("run second time---------------------");
-//		runtest();
-//		System.out.println("run third time---------------------");
-//		runtest();
-//		System.out.println("run fourth time---------------------");
-//		runtest();
-//		System.out.println("run five time---------------------");
-//		for(int i = 0; i < 100; i ++)
-//		{
-//			runtest();
-//		}
+
         startDBs();
         appendData();
+        save();
 		getAndRemove();
 
 	}

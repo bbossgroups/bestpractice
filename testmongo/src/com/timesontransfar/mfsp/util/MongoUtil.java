@@ -85,7 +85,7 @@ public abstract class MongoUtil {
 
 	 * @throws Exception 
 	 */
-	public static void save() throws Exception {
+	public static void save()  {
 		try {
 			MongoCollection dbcollectoin  = MongoDBHelper.getDBCollection("useusu",//database
 																	"classes" //table
