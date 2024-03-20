@@ -55,7 +55,7 @@ dependencies {
             [group: 'org.ow2.asm', name: 'asm-commons', version: '9.6', transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-websocket', version: "${PROJ_BBOSS_VERSION}", transitive: true],
 
-           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '2.0.12', transitive: true],
+           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.36', transitive: true],
 
         
             [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],         
