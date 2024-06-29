@@ -30,11 +30,10 @@ dependencies {
 			[group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: "${jacksondatabindversion}",transitive: false],
 			[group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: "${jacksonversion}",transitive: false],
             [group: 'com.github.housepower', name: 'clickhouse-native-jdbc-shaded', version: "${clickhouse_verion}", transitive: true],
-
     )
-
+    api 'mysql:mysql-connector-java:8.0.33'
 	testImplementation(
-     		      [group: 'mysql', name: 'mysql-connector-java', version: '8.0.33', transitive: false],
+     		     
 			[group: 'org.apache.derby', name: 'derby', version: '10.9.1.0', transitive: false],
 			[group: 'org.apache.derby', name: 'derbyclient', version: '10.12.1.1', transitive: false],
       		fileTree(dir: '../lib/jdbc', include: '**/*.jar'),
