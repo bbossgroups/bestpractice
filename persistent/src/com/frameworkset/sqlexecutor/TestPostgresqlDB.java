@@ -75,7 +75,7 @@ public class TestPostgresqlDB {
         System.out.println(SimpleStringUtil.object2json(datas));
         List<Map> ss = SQLExecutor.queryList(Map.class," select * from (SELECT (1 - (embedding <=> '[3,1,2]')) AS cosine_similarity FROM public.items) where cosine_similarity > 0.8");
 
-        System.out.println(SimpleStringUtil.object2json(s));
+        System.out.println(SimpleStringUtil.object2json(ss));
     }
 
     @Test
