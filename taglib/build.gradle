@@ -28,7 +28,7 @@ dependencies {
             [group: 'org.ow2.asm', name: 'asm-analysis', version: '9.6', transitive: false],
             [group: 'org.ow2.asm', name: 'asm-tree', version: '9.6', transitive: false],
             [group: 'org.ow2.asm', name: 'asm-commons', version: '9.6', transitive: false],
-           [group: 'mysql', name: 'mysql-connector-java', version: "8.0.33", transitive: false],
+           [group: 'com.mysql', name: 'mysql-connector-j', version: "9.1.0", transitive: false],
             
             [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${PROJ_BBOSS_VERSION}", transitive: false],
             [group: 'com.bbossgroups', name: 'bboss-soa', version: "${PROJ_BBOSS_VERSION}", transitive: false],
