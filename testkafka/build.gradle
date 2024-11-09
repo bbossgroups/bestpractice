@@ -93,7 +93,7 @@ task copyResourcesfiles(type: Sync )  {
 task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyResourcesfiles']) {
 
     //appendix = 'wrapper'
-   classifier = 'released'
+   archiveClassifier = 'released'
    from 'build/dist/'
 
 }

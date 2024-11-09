@@ -82,8 +82,8 @@ dependencies {
 	api (
          fileTree(dir: '../lib/cxf', include: '**/*.jar'),
     	)
-	 
-    	
+
+    compileOnly 'javax.jws:javax.jws-api:1.1'
      compileOnly (            
               [group: 'org.apache.geronimo.specs', name: 'geronimo-servlet_3.0_spec', version: '1.0', transitive: false],
           
