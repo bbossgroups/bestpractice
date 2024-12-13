@@ -75,7 +75,7 @@ dependencies {
             [group: 'org.codehaus.woodstox', name: 'woodstox-core-asl', version: '4.2.0', transitive: false],
             [group: 'wsdl4j', name: 'wsdl4j', version: '1.6.3', transitive: false],
             [group: 'org.jasypt', name: 'jasypt', version: '1.9.2', transitive: false],
-			[group: 'mysql', name: 'mysql-connector-java', version: "${mysqlconnectorversion}", transitive: false],
+			[group: 'com.mysql', name: 'mysql-connector-j', version: "${mysqlconnectorversion}", transitive: false],
 
 			[group: 'org.jgroups', name: 'jgroups', version: '3.6.1.Final', transitive: false]
     )
