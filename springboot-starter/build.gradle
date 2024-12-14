@@ -50,6 +50,7 @@ dependencies {
     )
             {
         exclude group: 'ch.qos.logback', module: 'logback-classic'
+                exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
     }
     testImplementation(
              [group: 'net.bytebuddy', name: 'byte-buddy', version: '1.7.11', transitive: true],
