@@ -39,7 +39,11 @@ jar {
  
 dependencies {
 
-
+    api(
+            [group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4j2_version}", transitive: false],
+            [group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4j2_version}", transitive: false],
+            [group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "${log4j2_version}", transitive: true],
+    )
 
 	api  (
 			
@@ -55,7 +59,7 @@ dependencies {
             [group: 'org.ow2.asm', name: 'asm-commons', version: '9.6', transitive: false],
               [group: 'com.bbossgroups', name: 'bboss-websocket', version: "${PROJ_BBOSS_VERSION}", transitive: true],
 
-           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.36', transitive: true],
+//           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.36', transitive: true],
 
         
             [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],         
