@@ -110,7 +110,7 @@ public class TestPostgresqlDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("org.postgresql.Driver");
-        tempConf.setJdbcurl( "jdbc:postgresql://10.13.6.127:17700/visualops?currentSchema=visualops");
+        tempConf.setJdbcurl( "jdbc:postgresql://101.131.6.127:17700/visualops?currentSchema=visualops");
         tempConf.setUsername("baseadmin");
         tempConf.setPassword("&xxXzz3139%**");
         tempConf.setValidationQuery("select 1 ");
