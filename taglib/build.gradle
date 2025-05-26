@@ -23,11 +23,11 @@ dependencies {
 	api  (
 			
 			 [group: 'ant', name: 'ant', version: '1.6.4', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-util', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-analysis', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-tree', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-commons', version: '9.6', transitive: false],
+            [group: 'org.ow2.asm', name: 'asm', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-util', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-analysis', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-tree', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-commons', version: "${asm}", transitive: false],
            [group: 'com.mysql', name: 'mysql-connector-j', version: "8.2.0", transitive: false],
             
             [group: 'com.bbossgroups', name: 'bboss-mvc', version: "${PROJ_BBOSS_VERSION}", transitive: false],

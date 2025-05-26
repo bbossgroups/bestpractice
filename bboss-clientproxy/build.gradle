@@ -28,11 +28,11 @@ dependencies {
 			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
          
              [group: 'cglib', name: 'cglib-nodep', version: '3.3.0', transitive: false],
-             [group: 'org.ow2.asm', name: 'asm', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-util', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-analysis', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-tree', version: '9.6', transitive: false],
-            [group: 'org.ow2.asm', name: 'asm-commons', version: '9.6', transitive: false],
+             [group: 'org.ow2.asm', name: 'asm', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-util', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-analysis', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-tree', version: "${asm}", transitive: false],
+            [group: 'org.ow2.asm', name: 'asm-commons', version: "${asm}", transitive: false],
           
 //           	[group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.36', transitive: true],      
             [group: 'oro', name: 'oro', version: '2.0.8', transitive: false],
