@@ -51,5 +51,7 @@ dependencies {
     		[group: 'junit', name: 'junit', version: '4.13.1', transitive: false],
              
     )  
-} 
-webAppDirName = 'WebRoot'  
+}
+war {
+    webAppDirectory = file('WebRoot')
+}  

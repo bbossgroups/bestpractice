@@ -31,6 +31,17 @@ dependencies {
 			[group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: "${jacksonversion}",transitive: false],
             [group: 'com.github.housepower', name: 'clickhouse-native-jdbc-shaded', version: "${clickhouse_verion}", transitive: true],
     )
+
+    api(
+            [group: 'com.clickhouse', name: 'clickhouse-jdbc', version: "0.9.2", transitive: true],
+    )
+            {
+                exclude group: 'org.slf4j', module: 'slf4j-api'
+                exclude group: 'commons-codec', module: 'commons-codec'
+                exclude group: 'commons-io', module: 'commons-io'
+                exclude group: 'org.ow2.asm', module: 'asm'
+                exclude group: 'org.apache.commons', module: 'commons-lang3'
+            }
     api 'com.mysql:mysql-connector-j:8.2.0'
     api 'org.postgresql:postgresql:42.3.3'
 	testImplementation(

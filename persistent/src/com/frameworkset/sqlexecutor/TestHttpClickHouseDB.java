@@ -18,7 +18,6 @@ package com.frameworkset.sqlexecutor;
 import com.frameworkset.common.poolman.SQLExecutor;
 import com.frameworkset.common.poolman.util.DBConf;
 import com.frameworkset.common.poolman.util.SQLManager;
-import com.frameworkset.common.poolman.util.SQLUtil;
 import com.frameworkset.orm.adapter.DBClickhouse;
 import com.frameworkset.util.SimpleStringUtil;
 import org.frameworkset.spi.assemble.PropertiesContainer;
@@ -26,6 +25,7 @@ import org.frameworkset.spi.assemble.PropertiesUtil;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +36,7 @@ import java.util.Map;
  * @author biaoping.yin
  * @Date 2023/12/27
  */
-public class TestClickHouseDB {
+public class TestHttpClickHouseDB {
     @Test
     public   void testClickhouseBalanceRandom() throws SQLException {
 //        SQLUtil.startPool("test",//数据源名称
@@ -48,10 +48,10 @@ public class TestClickHouseDB {
 
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
-        tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops");
+        tempConf.setDriver("com.clickhouse.jdbc.ClickHouseDriver");
+        tempConf.setJdbcurl( "jdbc:clickhouse:http://10.13.6.4:28123,10.13.6.6:28123,10.13.6.7:28123/visualops?b.enableBalance=true&b.balance=roundbin");
         tempConf.setUsername("default");
-        tempConf.setPassword(null);
+        tempConf.setPassword("123456");
         tempConf.setValidationQuery("select 1 ");
         //tempConf.setTxIsolationLevel("READ_COMMITTED");
         tempConf.setJndiName("jndi-test");
@@ -80,6 +80,9 @@ public class TestClickHouseDB {
 
         datas = SQLExecutor.queryList(Map.class,"show tables");
         System.out.println(SimpleStringUtil.object2json(datas));
+        
+        Object v = SQLExecutor.insert("insert into iops_out_call_result_stat(HANDLE_TIME) values(?)",new Date());
+        System.out.println(v);
     }
 
     @Test
@@ -93,10 +96,10 @@ public class TestClickHouseDB {
 
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
-        tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops");
+        tempConf.setDriver("com.clickhouse.jdbc.ClickHouseDriver");
+        tempConf.setJdbcurl( "jdbc:clickhouse:http://10.13.6.4:28123,10.13.6.6:28123,10.13.6.7:28123/visualops?b.enableBalance=true&b.balance=roundbin");
         tempConf.setUsername("default");
-        tempConf.setPassword(null);
+        tempConf.setPassword("123456");
         tempConf.setValidationQuery("select 1 ");
         //tempConf.setTxIsolationLevel("READ_COMMITTED");
         tempConf.setJndiName("jndi-test");

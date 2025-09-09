@@ -10,7 +10,9 @@ sourceSets {
 }
 
 
-webAppDirName = 'WebRoot'  
+war {
+    webAppDirectory = file('WebRoot')
+} 
 dependencies {
 	api (
 			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
