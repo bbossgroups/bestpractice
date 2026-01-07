@@ -25,7 +25,7 @@ dependencies {
            [group: 'com.bbossgroups', name: 'bboss-core', version: "${PROJ_BBOSS_VERSION}", transitive: false],
            [group: 'com.bbossgroups', name: 'bboss-util', version: "${PROJ_BBOSS_VERSION}", transitive: false],         
            [group: 'com.bbossgroups', name: 'bboss-velocity', version: "${PROJ_BBOSS_VERSION}", transitive: false],
-			[group: 'com.bbossgroups', name: 'bboss-http', version: "${bboss_http_version}", transitive: true],
+			[group: 'com.bbossgroups', name: 'bboss-http5', version: "${bboss_http_version}", transitive: true],
          
              [group: 'cglib', name: 'cglib-nodep', version: '3.3.0', transitive: false],
              [group: 'org.ow2.asm', name: 'asm', version: "${asm}", transitive: false],
