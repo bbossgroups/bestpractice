@@ -26,6 +26,7 @@ import org.frameworkset.spi.assemble.PropertiesUtil;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,9 +50,9 @@ public class TestClickHouseDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse://101.13.6.4:29000,101.13.6.7:29000,101.13.6.6:29000/visualops");
+        tempConf.setJdbcurl( "jdbc:clickhouse://100.130.60.4:29000,100.130.60.7:29000,100.130.60.6:29000/visualops");
         tempConf.setUsername("default");
-        tempConf.setPassword(null);
+        tempConf.setPassword("123456");
         tempConf.setValidationQuery("select 1 ");
         //tempConf.setTxIsolationLevel("READ_COMMITTED");
         tempConf.setJndiName("jndi-test");
@@ -79,6 +80,17 @@ public class TestClickHouseDB {
         System.out.println(SimpleStringUtil.object2json(datas));
 
         datas = SQLExecutor.queryList(Map.class,"show tables");
+        System.out.println(SimpleStringUtil.object2json(datas));
+        Map params = new LinkedHashMap();
+        datas = SQLExecutor.queryListBeanWithDBName(Map.class,"test", "select * from iops_channel_order where PREFERENTIAL_CODE= #[preferentialCode,type=string,default=99079306]",params);
+
+        System.out.println(SimpleStringUtil.object2json(datas));
+
+        ClickBean clickBean = new ClickBean();
+
+        datas = SQLExecutor.queryListBeanWithDBName(Map.class,"test", "select * from iops_channel_order where " +
+                "PREFERENTIAL_CODE= #[preferentialCode,type=string,default=99079306]",clickBean);
+
         System.out.println(SimpleStringUtil.object2json(datas));
     }
 

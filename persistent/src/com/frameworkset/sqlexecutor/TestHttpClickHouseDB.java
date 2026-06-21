@@ -49,7 +49,7 @@ public class TestHttpClickHouseDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("com.clickhouse.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse:http://10.13.6.4:28123,10.13.6.6:28123,10.13.6.7:28123/visualops?b.enableBalance=true&b.balance=roundbin");
+        tempConf.setJdbcurl( "jdbc:clickhouse:http://100.130.60.4:28123,100.130.60.6:28123,100.130.60.7:28123/vislops?b.enableBalance=true&b.balance=roundbin");
         tempConf.setUsername("default");
         tempConf.setPassword("123456");
         tempConf.setValidationQuery("select 1 ");
@@ -97,7 +97,7 @@ public class TestHttpClickHouseDB {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("test");
         tempConf.setDriver("com.clickhouse.jdbc.ClickHouseDriver");
-        tempConf.setJdbcurl( "jdbc:clickhouse:http://10.13.6.4:28123,10.13.6.6:28123,10.13.6.7:28123/visualops?b.enableBalance=true&b.balance=roundbin");
+        tempConf.setJdbcurl( "jdbc:clickhouse:http://100.130.60.4:28123,100.130.60.6:28123,100.130.60.7:28123/valops?b.enableBalance=true&b.balance=roundbin");
         tempConf.setUsername("default");
         tempConf.setPassword("123456");
         tempConf.setValidationQuery("select 1 ");
